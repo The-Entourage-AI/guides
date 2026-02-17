@@ -1,0 +1,2939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Exact AI Tool Stack We Use to Run 1,116,529+ Automations — The Entourage AI</title>
+  <style>
+    /* The Entourage AI — Lead Magnet HTML Styles */
+/* Brand: Navy #030517, Blue #146EF5, Inter font */
+/* Animated web page — same design language as SBC system guides */
+
+/* ============================================================
+   FONTS
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================================
+   CSS VARIABLES
+   ============================================================ */
+:root {
+  --blue: #146EF5;
+  --blue-dark: #0A3D8F;
+  --blue-light: #3B82F6;
+  --blue-glow: rgba(20,110,245,0.4);
+  --blue-subtle: rgba(20,110,245,0.08);
+  --pink: #D92B6B;
+  --pink-subtle: rgba(217,43,107,0.08);
+  /* Primary: blue-to-blue. Pop: blue-to-pink (use sparingly) */
+  --gradient: linear-gradient(135deg, #0A3D8F, #146EF5, #3B82F6);
+  --gradient-pop: linear-gradient(135deg, #146EF5, #D92B6B);
+  --gradient-wide: linear-gradient(90deg, #0A3D8F 0%, #146EF5 50%, #3B82F6 100%);
+  --navy: #030517;
+  --navy-card: #0A0E23;
+  --navy-light: #0f1430;
+  --navy-border: rgba(255,255,255,0.06);
+  --white: #FFFFFF;
+  --white-90: rgba(255,255,255,0.9);
+  --white-70: rgba(255,255,255,0.7);
+  --white-50: rgba(255,255,255,0.5);
+  --white-30: rgba(255,255,255,0.3);
+  --white-10: rgba(255,255,255,0.06);
+  --green: #34D399;
+  --green-subtle: rgba(52,211,153,0.08);
+  --amber: #FBBF24;
+  --amber-subtle: rgba(251,191,36,0.08);
+  --red: #F87171;
+  --red-subtle: rgba(248,113,113,0.08);
+  --radius: 16px;
+  --radius-sm: 12px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+
+/* ============================================================
+   PARTICLE CANVAS — Floating dots background
+   ============================================================ */
+.particle-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   GRADIENT MESH BLOBS — Soft colored blobs
+   ============================================================ */
+.mesh-blobs {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.07;
+  animation: blob-drift 20s ease-in-out infinite;
+}
+.blob-1 {
+  width: 600px; height: 600px;
+  background: var(--blue);
+  top: 10%; left: -10%;
+  animation-delay: 0s;
+}
+.blob-2 {
+  width: 500px; height: 500px;
+  background: var(--blue-dark);
+  top: 50%; right: -10%;
+  animation-delay: -7s;
+  animation-duration: 25s;
+}
+.blob-3 {
+  width: 400px; height: 400px;
+  background: var(--pink);
+  bottom: 10%; left: 30%;
+  animation-delay: -14s;
+  animation-duration: 22s;
+  opacity: 0.04;
+}
+@keyframes blob-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(40px, -30px) scale(1.05); }
+  50% { transform: translate(-20px, 40px) scale(0.95); }
+  75% { transform: translate(30px, 20px) scale(1.02); }
+}
+
+/* ============================================================
+   FADE-IN ANIMATIONS
+   ============================================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================================
+   SECTION DIVIDER
+   ============================================================ */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(10,61,143,0.3), rgba(20,110,245,0.25), rgba(59,130,246,0.15), transparent);
+}
+
+/* ============================================================
+   SECTIONS — Proper spacing between major parts
+   ============================================================ */
+.section {
+  padding: 80px 0;
+}
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+  color: var(--white);
+}
+.section-subtitle {
+  font-size: 17px;
+  color: var(--white-50);
+  max-width: 640px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   STICKY TOP BAR — follows on scroll
+   ============================================================ */
+.sticky-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(3,5,23,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(20,110,245,0.1);
+  padding: 12px 40px;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.sticky-bar.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+.sticky-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sticky-brand {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white-90);
+  letter-spacing: 0.5px;
+}
+.sticky-cta {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--gradient-pop);
+  padding: 10px 24px;
+  border-radius: 100px;
+  letter-spacing: 0.3px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(20,110,245,0.2);
+}
+.sticky-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(20,110,245,0.3), 0 6px 24px rgba(217,43,107,0.1);
+}
+
+/* ============================================================
+   HERO / COVER
+   ============================================================ */
+.hero {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 80px;
+  background: linear-gradient(180deg, #060A20 0%, var(--navy) 60%, #0a0520 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(20,110,245,0.12) 0%, rgba(10,61,143,0.06) 40%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,43,107,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 100px;
+  background: rgba(20,110,245,0.1);
+  border: 1px solid rgba(20,110,245,0.25);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white-90);
+  margin-bottom: 32px;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+.hero-badge .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.hero h1 {
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+  position: relative;
+  line-height: 1.1;
+  max-width: 800px;
+  background: linear-gradient(135deg, var(--white) 0%, var(--white) 50%, #3B82F6 85%, #146EF5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero h1::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 4px;
+  margin: 20px auto 0;
+  border-radius: 4px;
+  background: var(--gradient);
+}
+.hero h2 {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--white-50);
+  margin-bottom: 12px;
+  max-width: 500px;
+  line-height: 1.6;
+}
+.hero .date {
+  font-size: 15px;
+  color: var(--white-30);
+  margin-bottom: 40px;
+}
+.hero-logo {
+  font-size: 14px;
+  color: var(--white-30);
+  letter-spacing: 1px;
+}
+.hero-logo span {
+  background: var(--gradient-pop);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+/* ============================================================
+   CONTENT BODY
+   ============================================================ */
+.content {
+  padding: 0;
+}
+
+/* ============================================================
+   HEADINGS inside content
+   ============================================================ */
+.content h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--white);
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+.content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white-90);
+  margin: 32px 0 12px 0;
+  line-height: 1.35;
+}
+.content h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white-90);
+  margin: 24px 0 8px 0;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   PARAGRAPHS & INLINE
+   ============================================================ */
+.content p {
+  font-size: 17px;
+  color: var(--white-50);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.content strong {
+  font-weight: 600;
+  color: var(--white-90);
+}
+.content em {
+  font-style: italic;
+  color: var(--white-70);
+}
+.content a {
+  color: var(--blue);
+  text-decoration: none;
+}
+.content a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   LISTS
+   ============================================================ */
+.content ul,
+.content ol {
+  margin: 8px 0 24px 0;
+  padding-left: 0;
+  list-style: none;
+}
+.content li {
+  padding: 6px 0 6px 20px;
+  font-size: 15px;
+  color: var(--white-50);
+  position: relative;
+  line-height: 1.6;
+}
+.content li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.6;
+}
+.content ol {
+  counter-reset: item;
+}
+.content ol li {
+  counter-increment: item;
+}
+.content ol li::before {
+  content: counter(item);
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  opacity: 1;
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 15px;
+  top: 6px;
+  left: 0;
+}
+.content li strong {
+  color: var(--white-90);
+}
+.content li > ul,
+.content li > ol {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   STEP CARDS — Numbered step sections
+   ============================================================ */
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.step-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.step-card:hover {
+  border-color: rgba(20,110,245,0.15);
+}
+.step-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--navy-border);
+}
+.step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.step-card-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  flex: 1;
+  margin: 0;
+  color: var(--white);
+}
+.step-card-body {
+  padding: 28px 32px;
+}
+.step-card-body p {
+  font-size: 15px;
+  color: var(--white-50);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.step-card-body p:last-child {
+  margin-bottom: 0;
+}
+.step-card-body ul,
+.step-card-body ol {
+  margin: 8px 0 16px 0;
+}
+.step-card-body h4 {
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+.step-card-body table {
+  margin: 12px 0 20px 0;
+}
+.step-card-body blockquote {
+  margin: 16px 0;
+}
+
+/* ============================================================
+   INFO CARDS — Two-column grid
+   ============================================================ */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+.info-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius-sm);
+  padding: 28px;
+  transition: border-color 0.3s;
+}
+.info-card:hover {
+  border-color: rgba(20,110,245,0.15);
+}
+.info-card .info-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.info-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: var(--white);
+}
+.info-card p {
+  font-size: 14px;
+  color: var(--white-50);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================================
+   QUICK CARDS — Three-column overview grid
+   ============================================================ */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 24px 0 32px 0;
+}
+.quick-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.quick-card:hover {
+  border-color: rgba(20,110,245,0.2);
+  transform: translateY(-2px);
+}
+.quick-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 24px;
+  box-shadow: 0 4px 20px rgba(20,110,245,0.25);
+}
+.quick-card h4 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: var(--white);
+}
+.quick-card p {
+  font-size: 14px;
+  color: var(--white-50);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================================
+   TABLES — Navy card, blue header labels
+   ============================================================ */
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0 32px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.content thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(20,110,245,0.12);
+}
+.content tbody td {
+  padding: 14px 20px;
+  font-size: 14px;
+  color: var(--white-70);
+  border-bottom: 1px solid var(--navy-border);
+}
+.content tbody tr:last-child td {
+  border-bottom: none;
+}
+.content tbody tr:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+/* ============================================================
+   BLOCKQUOTES — Callout cards with icon
+   ============================================================ */
+.content blockquote {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  line-height: 1.7;
+  background: rgba(20,110,245,0.06);
+  border: 1px solid rgba(20,110,245,0.15);
+  color: var(--white-70);
+  margin: 24px 0 32px 0;
+}
+.callout-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-top: -2px;
+}
+.content blockquote p {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  color: var(--white-70);
+}
+.content blockquote p:last-child {
+  margin-bottom: 0;
+}
+.content blockquote strong {
+  color: var(--white-90);
+}
+
+/* Callout variants */
+.callout-green {
+  background: rgba(52,211,153,0.06) !important;
+  border-color: rgba(52,211,153,0.15) !important;
+}
+.callout-amber {
+  background: rgba(251,191,36,0.06) !important;
+  border-color: rgba(251,191,36,0.15) !important;
+}
+.callout-red {
+  background: rgba(248,113,113,0.06) !important;
+  border-color: rgba(248,113,113,0.15) !important;
+}
+
+/* ============================================================
+   COMPARE CARDS — Bad vs Good, Before vs After
+   ============================================================ */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+.compare-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  overflow: hidden;
+}
+.compare-card.compare-bad {
+  border-top: 3px solid var(--red);
+}
+.compare-card.compare-good {
+  border-top: 3px solid var(--green);
+}
+.compare-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.compare-bad .compare-label {
+  color: var(--red);
+}
+.compare-good .compare-label {
+  color: var(--green);
+}
+.compare-card p {
+  font-size: 14px;
+  color: var(--white-50);
+  line-height: 1.6;
+  margin: 0;
+}
+.compare-card ol {
+  margin: 8px 0 0 0;
+}
+
+/* ============================================================
+   TABLE OF CONTENTS — Clickable navigation
+   ============================================================ */
+.toc {
+  padding: 60px 0;
+}
+.toc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 32px;
+}
+.toc-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: border-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+.toc-item:hover {
+  border-color: rgba(20,110,245,0.25);
+  transform: translateX(4px);
+}
+.toc-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.toc-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+}
+
+/* ============================================================
+   SUB-CARDS — Individual content blocks within a section
+   ============================================================ */
+.sub-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.sub-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  transition: border-color 0.3s;
+}
+.sub-card:hover {
+  border-color: rgba(20,110,245,0.12);
+}
+.sub-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sub-card-intro {
+  font-size: 15px;
+  color: var(--white-50);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.sub-card p {
+  font-size: 15px;
+  color: var(--white-50);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.sub-card p:last-child {
+  margin-bottom: 0;
+}
+.sub-card strong {
+  color: var(--white-90);
+  font-weight: 600;
+}
+.sub-card ul, .sub-card ol {
+  margin: 8px 0 12px 0;
+  padding-left: 0;
+  list-style: none;
+}
+.sub-card li {
+  padding: 4px 0 4px 18px;
+  font-size: 14px;
+  color: var(--white-50);
+  position: relative;
+  line-height: 1.6;
+}
+.sub-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.6;
+}
+.sub-card ol { counter-reset: item; }
+.sub-card ol li { counter-increment: item; }
+.sub-card ol li::before {
+  content: counter(item);
+  width: auto; height: auto; border-radius: 0;
+  background: none; opacity: 1;
+  color: var(--blue); font-weight: 600; font-size: 13px;
+  top: 4px;
+}
+.sub-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 13px;
+  border: 1px solid var(--navy-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sub-card thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--navy-border);
+}
+.sub-card tbody td {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--white-70);
+  border-bottom: 1px solid var(--navy-border);
+}
+.sub-card tbody tr:last-child td { border-bottom: none; }
+.sub-card blockquote {
+  margin: 16px 0;
+  padding: 18px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  background: rgba(20,110,245,0.06);
+  border: 1px solid rgba(20,110,245,0.15);
+  color: var(--white-70);
+}
+
+/* ============================================================
+   ICON LIST — Bullet items as icon rows
+   ============================================================ */
+.icon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.icon-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  border: 1px solid var(--navy-border);
+  transition: border-color 0.3s;
+}
+.icon-item:hover {
+  border-color: rgba(20,110,245,0.15);
+}
+.icon-item-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+  margin-top: 2px;
+}
+.icon-item-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+  line-height: 1.4;
+}
+.icon-item-desc {
+  font-size: 13px;
+  color: var(--white-50);
+  line-height: 1.5;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   TEMPLATE CARD — Tables with special styling
+   ============================================================ */
+.template-card {
+  background: var(--navy-card);
+  border: 1px solid rgba(20,110,245,0.15);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.template-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-wide);
+}
+.template-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.template-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.template-intro {
+  font-size: 14px;
+  color: var(--white-50);
+  margin-bottom: 16px;
+}
+.template-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  border: 1px solid var(--navy-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.template-card thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--navy-border);
+}
+.template-card tbody td {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--white-70);
+  border-bottom: 1px solid var(--navy-border);
+}
+.template-card tbody tr:last-child td { border-bottom: none; }
+
+/* ============================================================
+   MINI STATS — Highlighted numbers
+   ============================================================ */
+.stat-card {
+  border-color: rgba(20,110,245,0.15);
+}
+.mini-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.mini-stat {
+  padding: 10px 20px;
+  background: var(--blue-subtle);
+  border: 1px solid rgba(20,110,245,0.2);
+  border-radius: 10px;
+}
+.mini-stat-num {
+  font-size: 18px;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+/* ============================================================
+   HIGHLIGHT BAR — Key metric strip
+   ============================================================ */
+.highlight-bar {
+  display: flex;
+  gap: 20px;
+  padding: 24px 0;
+  margin: 20px 0 32px 0;
+  flex-wrap: wrap;
+}
+.highlight-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: var(--navy-card);
+  border: 1px solid rgba(20,110,245,0.15);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+  transition: border-color 0.3s;
+}
+.highlight-chip:hover {
+  border-color: rgba(20,110,245,0.3);
+}
+.highlight-chip .chip-num {
+  color: var(--blue);
+  font-weight: 800;
+}
+
+/* ============================================================
+   COMPARE TEXT — Inside compare cards
+   ============================================================ */
+.compare-text {
+  font-size: 14px;
+  color: var(--white-50);
+  line-height: 1.6;
+}
+.compare-text ol, .compare-text ul {
+  margin: 8px 0;
+  padding-left: 0;
+  list-style: none;
+}
+.compare-text ul li {
+  padding: 3px 0 3px 16px;
+  font-size: 13px;
+  position: relative;
+}
+.compare-text ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--white-30);
+}
+.compare-text ol {
+  counter-reset: compare-step;
+}
+.compare-text ol li {
+  counter-increment: compare-step;
+  padding: 6px 0 6px 28px;
+  font-size: 13px;
+  position: relative;
+  border-bottom: 1px solid var(--navy-border);
+}
+.compare-text ol li:last-child {
+  border-bottom: none;
+}
+.compare-text ol li::before {
+  content: counter(compare-step);
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: var(--green-subtle);
+  color: var(--green);
+  font-weight: 700;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.compare-card ul, .compare-card ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.compare-card li {
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--white-70);
+  border-bottom: 1px solid var(--navy-border);
+  padding-left: 0;
+}
+.compare-card li::before {
+  display: none;
+}
+.compare-card li:last-child {
+  border-bottom: none;
+}
+
+/* ============================================================
+   NUMBERED VISUAL — Styled ordered lists
+   ============================================================ */
+.numbered-visual {
+  counter-reset: step;
+}
+.numbered-visual li {
+  counter-increment: step;
+  padding: 8px 0 8px 32px;
+  position: relative;
+  font-size: 14px;
+  color: var(--white-50);
+}
+.numbered-visual li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   FLOW DIAGRAM — Animated process arrows
+   ============================================================ */
+.flow-section {
+  background: linear-gradient(180deg, var(--navy) 0%, #060A20 50%, var(--navy) 100%);
+}
+.flow-diagram {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 32px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 130px;
+  min-width: 100px;
+}
+.flow-box {
+  padding: 14px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--navy-card);
+  border: 1px solid rgba(20,110,245,0.2);
+  box-shadow: 0 0 20px rgba(20,110,245,0.1), 0 0 40px rgba(10,61,143,0.06);
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  color: var(--white-90);
+}
+.flow-arrow {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.flow-arrow-line {
+  width: 20px;
+  height: 2px;
+  background: rgba(20,110,245,0.3);
+  position: relative;
+  overflow: hidden;
+  margin-top: 23px;
+}
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue-dark), var(--blue), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% { left: -20px; }
+  100% { left: 20px; }
+}
+
+/* ============================================================
+   PROGRESS BARS — Animated horizontal bars for metrics
+   ============================================================ */
+.progress-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 24px 0 32px 0;
+}
+.progress-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.progress-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+  min-width: 160px;
+}
+.progress-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  min-width: 60px;
+  text-align: right;
+}
+.progress-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(20,110,245,0.1);
+  border-radius: 100px;
+  overflow: hidden;
+  min-width: 100px;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: var(--gradient-wide);
+  animation: progress-grow 1.2s ease-out forwards;
+  transform-origin: left;
+}
+@keyframes progress-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* ============================================================
+   LEVEL LADDER — Visual stages/tiers
+   ============================================================ */
+.level-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0 32px 0;
+}
+.level-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  transition: border-color 0.3s;
+}
+.level-card:hover {
+  border-color: rgba(20,110,245,0.2);
+}
+.level-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.level-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.level-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+}
+.level-bar-track {
+  height: 6px;
+  background: rgba(20,110,245,0.08);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.level-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: var(--gradient-wide);
+  animation: progress-grow 1s ease-out forwards;
+}
+.level-details {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+.level-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.level-detail-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--white-30);
+}
+.level-detail-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+}
+.level-best {
+  font-size: 13px;
+  color: var(--white-50);
+  font-style: italic;
+}
+
+/* ============================================================
+   MINI FLOW — Horizontal process diagrams inside sub-cards
+   ============================================================ */
+.mini-flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 16px 0;
+  overflow-x: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.mini-flow-node {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(20,110,245,0.06);
+  border: 1px solid rgba(20,110,245,0.15);
+  border-radius: 10px;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+.mini-flow-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.mini-flow-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white-90);
+}
+.mini-flow-arrow {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 4px;
+}
+.mini-flow-arrow-line {
+  width: 24px;
+  height: 2px;
+  background: rgba(20,110,245,0.25);
+  position: relative;
+  overflow: hidden;
+}
+.mini-flow-arrow-line .shimmer {
+  position: absolute;
+  top: 0;
+  left: -24px;
+  width: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue-dark), var(--blue), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ============================================================
+   SECTION CONNECTOR — Animated vertical line between sections
+   ============================================================ */
+.section-connector {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+}
+.section-connector-line {
+  width: 2px;
+  height: 48px;
+  background: linear-gradient(180deg, rgba(20,110,245,0.3), rgba(20,110,245,0.05));
+  position: relative;
+  overflow: hidden;
+}
+.section-connector-line::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 16px;
+  background: linear-gradient(180deg, transparent, var(--blue), transparent);
+  animation: connector-pulse 2.5s ease-in-out infinite;
+  top: -16px;
+}
+@keyframes connector-pulse {
+  0% { top: -16px; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: 48px; opacity: 0; }
+}
+.section-connector-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  position: absolute;
+  bottom: -4px;
+  left: -3px;
+  box-shadow: 0 0 12px var(--blue-glow);
+  animation: dot-glow 2.5s ease-in-out infinite;
+}
+@keyframes dot-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(20,110,245,0.2); }
+  50% { box-shadow: 0 0 16px rgba(20,110,245,0.5); }
+}
+
+/* ============================================================
+   ANIMATED COUNTER — Numbers count up on scroll
+   ============================================================ */
+.counter-row {
+  display: flex;
+  gap: 20px;
+  margin: 24px 0 32px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.counter-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  text-align: center;
+  flex: 1;
+  min-width: 140px;
+}
+.counter-number {
+  font-size: 36px;
+  font-weight: 900;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+.counter-label {
+  font-size: 13px;
+  color: var(--white-50);
+  margin-top: 6px;
+}
+
+/* ============================================================
+   SVG DONUT CHART — Animated ring chart
+   ============================================================ */
+.donut-row {
+  display: flex;
+  gap: 32px;
+  margin: 24px 0 32px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.donut-card {
+  text-align: center;
+}
+.donut-svg {
+  width: 120px;
+  height: 120px;
+}
+.donut-track {
+  fill: none;
+  stroke: rgba(20,110,245,0.1);
+  stroke-width: 8;
+}
+.donut-fill {
+  fill: none;
+  stroke: url(#donutGrad);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 1.5s ease-out;
+}
+.donut-fill.animated {
+  /* JS sets the final dashoffset */
+}
+.donut-center {
+  font-size: 24px;
+  font-weight: 800;
+  fill: var(--white);
+}
+.donut-label {
+  font-size: 13px;
+  color: var(--white-50);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   BAR CHART — Horizontal animated bars
+   ============================================================ */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0 32px 0;
+}
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bar-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white-90);
+  min-width: 130px;
+}
+.bar-track {
+  flex: 1;
+  height: 24px;
+  background: rgba(20,110,245,0.08);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: var(--gradient-wide);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s ease-out;
+}
+.bar-fill.animated { transform: scaleX(1); }
+.bar-value {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+/* ============================================================
+   GAUGE — Speedometer-style comparison
+   ============================================================ */
+.gauge-row {
+  display: flex;
+  gap: 40px;
+  margin: 24px 0 32px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.gauge-card {
+  text-align: center;
+}
+.gauge-svg {
+  width: 140px;
+  height: 80px;
+}
+.gauge-track {
+  fill: none;
+  stroke: rgba(20,110,245,0.1);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+.gauge-fill {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 157;
+  stroke-dashoffset: 157;
+  transition: stroke-dashoffset 1.5s ease-out;
+}
+.gauge-fill.bad { stroke: var(--red); }
+.gauge-fill.good { stroke: var(--green); }
+.gauge-fill.great { stroke: url(#gaugeGrad); }
+.gauge-value {
+  font-size: 20px;
+  font-weight: 800;
+  fill: var(--white);
+}
+.gauge-label {
+  font-size: 13px;
+  color: var(--white-50);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   TIMELINE — Animated vertical timeline
+   ============================================================ */
+.timeline {
+  position: relative;
+  margin: 32px 0;
+  padding-left: 40px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--blue), rgba(20,110,245,0.1));
+}
+.timeline-item {
+  position: relative;
+  padding: 0 0 32px 24px;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -31px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gradient);
+  box-shadow: 0 0 12px var(--blue-glow);
+}
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(20,110,245,0.2);
+}
+.timeline-date {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+.timeline-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.timeline-desc {
+  font-size: 14px;
+  color: var(--white-50);
+}
+.timeline-stat {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--blue-subtle);
+  border: 1px solid rgba(20,110,245,0.2);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue-light);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   ACCORDION — Expand/collapse sections
+   ============================================================ */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+.accordion-item {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.accordion-item.open {
+  border-color: rgba(20,110,245,0.2);
+}
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+  gap: 12px;
+}
+.accordion-header:hover {
+  background: rgba(255,255,255,0.02);
+}
+.accordion-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white-90);
+}
+.accordion-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: rgba(20,110,245,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  color: var(--blue);
+  font-size: 14px;
+}
+.accordion-item.open .accordion-icon {
+  transform: rotate(45deg);
+}
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.accordion-item.open .accordion-body {
+  max-height: 800px;
+}
+.accordion-content {
+  padding: 0 20px 16px;
+  font-size: 14px;
+  color: var(--white-50);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   INTERACTIVE CHECKLIST — Tickable items
+   ============================================================ */
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s;
+  user-select: none;
+}
+.checklist-item:hover {
+  border-color: rgba(20,110,245,0.2);
+}
+.checklist-item.checked {
+  border-color: rgba(52,211,153,0.3);
+  background: rgba(52,211,153,0.04);
+}
+.checklist-box {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--white-30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  margin-top: 1px;
+}
+.checklist-item.checked .checklist-box {
+  background: var(--green);
+  border-color: var(--green);
+}
+.checklist-box svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.checklist-item.checked .checklist-box svg {
+  opacity: 1;
+}
+.checklist-text {
+  font-size: 14px;
+  color: var(--white-70);
+  line-height: 1.5;
+  transition: color 0.3s;
+}
+.checklist-item.checked .checklist-text {
+  color: var(--white-50);
+  text-decoration: line-through;
+  text-decoration-color: var(--white-30);
+}
+
+/* ============================================================
+   BEFORE/AFTER SLIDER — Drag comparison
+   ============================================================ */
+.ba-slider {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 24px 0 32px 0;
+  border: 1px solid var(--navy-border);
+  user-select: none;
+  touch-action: none;
+}
+.ba-side {
+  padding: 28px;
+  min-height: 200px;
+}
+.ba-before {
+  background: rgba(248,113,113,0.05);
+  border-right: 2px solid var(--red);
+}
+.ba-after {
+  background: rgba(52,211,153,0.05);
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  border-left: 2px solid var(--green);
+}
+.ba-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.ba-before .ba-label { color: var(--red); }
+.ba-after .ba-label { color: var(--green); }
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  transform: translateX(-50%);
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.ba-handle-line {
+  width: 3px;
+  height: 100%;
+  background: var(--blue);
+  border-radius: 3px;
+  box-shadow: 0 0 12px var(--blue-glow);
+}
+.ba-handle-grip {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  color: var(--white);
+  font-size: 14px;
+}
+
+/* ============================================================
+   PROGRESS TRACKER — Sticky sidebar showing current section
+   ============================================================ */
+.progress-tracker {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.progress-tracker.visible {
+  opacity: 1;
+}
+.pt-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--white-10);
+  border: 1.5px solid var(--white-30);
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+.pt-dot.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  box-shadow: 0 0 8px var(--blue-glow);
+}
+.pt-dot:hover::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--white-90);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ============================================================
+   DRAW-ON-SCROLL SVG — Lines that animate in
+   ============================================================ */
+.draw-svg {
+  overflow: visible;
+}
+.draw-path {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: var(--path-length);
+  stroke-dashoffset: var(--path-length);
+  transition: stroke-dashoffset 1.5s ease-out;
+  opacity: 0.3;
+}
+.draw-path.drawn {
+  stroke-dashoffset: 0;
+}
+
+/* ============================================================
+   SVG ICONS — Clean vector icons (replacing emojis)
+   ============================================================ */
+.svg-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.svg-icon path, .svg-icon circle, .svg-icon rect,
+.svg-icon polyline, .svg-icon line {
+  stroke: var(--blue);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-item-icon .svg-icon {
+  width: 20px;
+  height: 20px;
+}
+.quick-icon .svg-icon {
+  width: 28px;
+  height: 28px;
+}
+.quick-icon .svg-icon path,
+.quick-icon .svg-icon circle,
+.quick-icon .svg-icon polyline,
+.quick-icon .svg-icon line,
+.quick-icon .svg-icon rect {
+  stroke: var(--white);
+}
+.flow-box .svg-icon {
+  width: 18px;
+  height: 18px;
+}
+.flow-box .svg-icon path,
+.flow-box .svg-icon circle,
+.flow-box .svg-icon polyline,
+.flow-box .svg-icon line {
+  stroke: var(--white-90);
+}
+.sub-card-title .svg-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================================
+   SECTION ILLUSTRATIONS — Animated SVG visuals for steps
+   ============================================================ */
+.section-illus-wrap {
+  display: flex;
+  justify-content: center;
+  margin: -8px 0 32px 0;
+}
+.section-illus {
+  width: 240px;
+  height: auto;
+  opacity: 0.7;
+  transition: opacity 0.5s;
+}
+.section-illus-wrap:hover .section-illus {
+  opacity: 1;
+}
+
+/* ============================================================
+   DRAW DIVIDER — Decorative SVG separators between sections
+   ============================================================ */
+.draw-divider {
+  padding: 16px 40px;
+  display: flex;
+  justify-content: center;
+}
+.draw-divider svg {
+  width: 100%;
+  max-width: 800px;
+  height: 40px;
+  overflow: visible;
+}
+
+/* ============================================================
+   CODE BLOCKS
+   ============================================================ */
+.content code {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 13px;
+  background: var(--navy-card);
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: var(--blue);
+  border: 1px solid var(--navy-border);
+}
+.content pre {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  padding: 24px 28px;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin: 20px 0 32px 0;
+}
+.content pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--white-70);
+}
+
+/* ============================================================
+   BACK COVER / CTA SECTION
+   ============================================================ */
+.back-cover {
+  padding: 100px 40px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--navy) 0%, #060A20 100%);
+  position: relative;
+}
+.back-cover::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(20,110,245,0.08) 0%, rgba(10,61,143,0.04) 40%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.back-cover .company-name {
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+  position: relative;
+}
+.back-cover .stats {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  margin-bottom: 48px;
+  position: relative;
+  flex-wrap: wrap;
+}
+.back-cover .stat {
+  text-align: center;
+}
+.back-cover .stat-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--white);
+  display: block;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+.back-cover .stat-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--white-50);
+  display: block;
+  margin-top: 4px;
+}
+.back-cover .cta {
+  margin-top: 20px;
+  padding-top: 40px;
+  border-top: 1px solid var(--navy-border);
+  position: relative;
+}
+.back-cover .cta-text {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--white-50);
+  margin-bottom: 12px;
+}
+.back-cover .cta-url {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--gradient-pop);
+  padding: 16px 40px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 24px rgba(20,110,245,0.3), 0 8px 40px rgba(217,43,107,0.1);
+}
+.back-cover .cta-url:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 32px rgba(20,110,245,0.4), 0 12px 48px rgba(217,43,107,0.15);
+}
+.back-cover .website {
+  margin-top: 48px;
+  font-size: 14px;
+  color: var(--white-30);
+  position: relative;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  padding: 60px 0;
+  text-align: center;
+  border-top: 1px solid var(--navy-border);
+}
+.footer p {
+  font-size: 14px;
+  color: var(--white-30);
+}
+.footer a {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+/* ============================================================
+   MOBILE — iPhone-first responsive
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Layout */
+  .container { padding: 0 16px; }
+  body { font-size: 16px; }
+
+  /* Hero */
+  .hero { padding: 60px 16px 48px; min-height: 45vh; }
+  .hero h1 { font-size: 28px; letter-spacing: -1px; }
+  .hero h2 { font-size: 16px; }
+  .hero-badge { font-size: 12px; padding: 6px 14px; }
+
+  /* Sections */
+  .section { padding: 48px 0; }
+  .section-title { font-size: 24px; }
+  .section-subtitle { font-size: 15px; margin-bottom: 32px; }
+  .section-label { font-size: 11px; }
+
+  /* Grids → single column */
+  .quick-grid { grid-template-columns: 1fr; gap: 12px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .toc-grid { grid-template-columns: 1fr; gap: 8px; }
+
+  /* Cards — tighter padding */
+  .quick-card { padding: 20px 16px; }
+  .sub-card { padding: 16px; }
+  .template-card { padding: 16px; }
+  .step-card-header { padding: 16px; }
+  .step-card-body { padding: 16px; }
+  .icon-item { padding: 10px 12px; }
+
+  /* Text sizes for mobile readability */
+  .content p { font-size: 15px; }
+  .content li { font-size: 14px; }
+  .sub-card p { font-size: 14px; }
+  .sub-card-title { font-size: 15px; }
+  .sub-card li { font-size: 13px; }
+
+  /* Tables — scroll horizontally */
+  .sub-card table, .template-card table, .content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 12px;
+  }
+
+  /* Stats */
+  .mini-stats { flex-direction: column; }
+  .back-cover .stats { flex-direction: column; gap: 24px; }
+  .back-cover .stat-number { font-size: 28px; }
+  .back-cover { padding: 60px 16px; }
+
+  /* Progress bars */
+  .progress-row { flex-direction: column; align-items: stretch; gap: 4px; }
+  .progress-label { min-width: 0; font-size: 13px; }
+  .progress-value { min-width: 0; text-align: left; font-size: 12px; }
+  .progress-track { min-width: 0; }
+
+  /* Level ladder */
+  .level-card { padding: 16px; }
+  .level-details { flex-direction: column; gap: 8px; }
+
+  /* Flow diagrams → vertical on mobile */
+  .flow-diagram { flex-direction: column; align-items: center; }
+  .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+  .flow-node { max-width: 200px; }
+  .mini-flow { flex-direction: column; align-items: stretch; }
+  .mini-flow-arrow { transform: rotate(90deg); justify-content: center; padding: 4px 0; }
+  .mini-flow-text { white-space: normal; }
+
+  /* Compare cards */
+  .compare-card { padding: 16px; }
+  .compare-label { font-size: 11px; }
+
+  /* Sticky bar */
+  .sticky-bar { padding: 10px 16px; }
+  .sticky-brand { font-size: 12px; }
+  .sticky-cta { font-size: 11px; padding: 8px 16px; }
+
+  /* TOC */
+  .toc-item { padding: 12px 14px; }
+  .toc-num { width: 28px; height: 28px; font-size: 12px; }
+  .toc-text { font-size: 13px; }
+
+  /* Section connector — shorter on mobile */
+  .section-connector-line { height: 32px; }
+
+  /* New components */
+  .counter-row { gap: 12px; }
+  .counter-card { padding: 20px 16px; min-width: 100px; }
+  .counter-number { font-size: 28px; }
+  .donut-row { gap: 20px; }
+  .donut-svg { width: 100px; height: 100px; }
+  .gauge-row { gap: 20px; }
+  .gauge-svg { width: 120px; height: 68px; }
+  .bar-label { min-width: 0; font-size: 12px; }
+  .bar-row { flex-wrap: wrap; }
+  .bar-track { min-width: 100px; }
+  .timeline { padding-left: 32px; }
+  .timeline::before { left: 11px; }
+  .timeline-dot { left: -27px; }
+  .accordion-header { padding: 14px 16px; }
+  .accordion-content { padding: 0 16px 14px; }
+  .ba-side { padding: 20px; }
+  .progress-tracker { display: none; }
+  .checklist-item { padding: 10px 12px; }
+
+  /* Section illustrations */
+  .section-illus-wrap { margin: 0 0 24px 0; }
+  .section-illus { width: 180px; }
+
+  /* Draw dividers */
+  .draw-divider { padding: 8px 16px; }
+  .draw-divider svg { height: 24px; }
+
+  /* Footer */
+  .footer { padding: 40px 0; }
+}
+
+/* Extra small — iPhone SE, older devices */
+@media (max-width: 375px) {
+  .hero h1 { font-size: 24px; }
+  .section-title { font-size: 22px; }
+  .quick-icon { width: 44px; height: 44px; font-size: 20px; }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- PARTICLE BACKGROUND -->
+  <canvas id="particles" class="particle-canvas"></canvas>
+
+  <!-- GRADIENT MESH BLOBS -->
+  <div class="mesh-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- STICKY TOP BAR — appears on scroll -->
+  <div class="sticky-bar" id="stickyBar">
+    <div class="sticky-inner">
+      <span class="sticky-brand">The Entourage AI</span>
+      <a class="sticky-cta" href="https://theentourageai.com/book" target="_blank">Book a Free Consultation &rarr;</a>
+    </div>
+  </div>
+
+  <!-- HERO / COVER -->
+  <section class="hero">
+    <div class="hero-badge fade-in"><span class="dot"></span> Free Guide</div>
+    <h1 class="fade-in fade-in-delay-1">The Exact AI Tool Stack We Use to Run 1,116,529+ Automations</h1>
+    <h2 class="fade-in fade-in-delay-2">Every tool, what it costs, how to set it up, and why we picked it over the alternatives.</h2>
+    <p class="date fade-in fade-in-delay-3">2026</p>
+    <p class="hero-logo fade-in fade-in-delay-4">Built by <span>The Entourage AI</span></p>
+  </section>
+
+  <!-- CONTENT — each section wraps its own container -->
+  <div class="content">
+    <div class="progress-tracker"><div class="pt-dot" data-section="introduction" data-label="Introduction"></div><div class="pt-dot" data-section="the-brain-ai-models" data-label="The Brain: AI Models"></div><div class="pt-dot" data-section="the-brain-backup-research" data-label="The Brain: Backup + ..."></div><div class="pt-dot" data-section="the-engine-n8n" data-label="THE ENGINE: n8n"></div><div class="pt-dot" data-section="the-engine-alternatives" data-label="The Engine: Alternat..."></div><div class="pt-dot" data-section="the-infrastructure-data" data-label="The Infrastructure: ..."></div><div class="pt-dot" data-section="the-infrastructure-scraping-compute" data-label="The Infrastructure: ..."></div><div class="pt-dot" data-section="pick-your-stack" data-label="Pick Your Stack"></div><div class="pt-dot" data-section="how-it-all-connects" data-label="How It All Connects"></div><div class="pt-dot" data-section="your-next-steps" data-label="Your Next Steps"></div></div>
+<section class="section"><div class="container"><div class="sub-cards"><div class="sub-card fade-in"><hr />
+</div></div></div></section>
+
+<section class="section toc">
+  <div class="container">
+    <p class="section-label fade-in">Contents</p>
+    <h3 class="section-title fade-in">What's Inside</h3>
+    <div class="toc-grid"><a href="#introduction" class="toc-item fade-in fade-in-delay-2"><div class="toc-num">1</div><div class="toc-text">Introduction</div></a><a href="#the-brain-ai-models" class="toc-item fade-in fade-in-delay-3"><div class="toc-num">2</div><div class="toc-text">The Brain: AI Models</div></a><a href="#the-brain-backup-research" class="toc-item fade-in fade-in-delay-4"><div class="toc-num">3</div><div class="toc-text">The Brain: Backup + Research</div></a><a href="#the-engine-n8n" class="toc-item fade-in fade-in-delay-1"><div class="toc-num">4</div><div class="toc-text">THE ENGINE: n8n</div></a><a href="#the-engine-alternatives" class="toc-item fade-in fade-in-delay-2"><div class="toc-num">5</div><div class="toc-text">The Engine: Alternatives</div></a><a href="#the-infrastructure-data" class="toc-item fade-in fade-in-delay-3"><div class="toc-num">6</div><div class="toc-text">The Infrastructure: Data</div></a><a href="#the-infrastructure-scraping-compute" class="toc-item fade-in fade-in-delay-4"><div class="toc-num">7</div><div class="toc-text">The Infrastructure: Scraping + Compute</div></a><a href="#pick-your-stack" class="toc-item fade-in fade-in-delay-1"><div class="toc-num">8</div><div class="toc-text">Pick Your Stack</div></a><a href="#how-it-all-connects" class="toc-item fade-in fade-in-delay-2"><div class="toc-num">9</div><div class="toc-text">How It All Connects</div></a><a href="#your-next-steps" class="toc-item fade-in fade-in-delay-3"><div class="toc-num">10</div><div class="toc-text">Your Next Steps</div></a></div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="introduction">
+  <div class="container">
+    <p class="section-label fade-in">Overview</p>
+    <h3 class="section-title fade-in">Introduction</h3>
+        
+    
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Why Most &quot;Tool Stack&quot; Guides Are Useless</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">The Brain** picks the right AI model for the task</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">The Engine** connects everything and runs automations 24/7</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">The Infrastructure** handles data, scraping, compute, and video</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="draw-divider draw-svg fade-in"><svg viewBox="0 0 800 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path class="draw-path" style="--path-length:900" d="M0 20 H250 L300 5 L350 35 L400 5 L450 35 L500 20 H800" /></svg></div>
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="the-brain-ai-models">
+  <div class="container">
+    <p class="section-label fade-in">Section</p>
+    <h3 class="section-title fade-in">The Brain: AI Models</h3>
+        
+    
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Layer 1: The Brain (AI Models)</div><p class="fade-in">The model you pick matters less than how you use it. But it still matters. Here's what we've learned after building hundreds of workflows.</p>
+</div>
+<div class="sub-card fade-in"><div class="sub-card-title">Claude (Our Primary)</div><p class="fade-in"><strong>What it does:</strong> Anthropic's flagship AI. Best reasoning we've tested for business tasks. Analyses documents, writes SOPs, generates code, handles multi-step logic. When accuracy matters more than speed, Claude wins.</p>
+<p class="fade-in"><strong>How we use it:</strong> Claude Code is our main development tool. We build entire automation systems, write scripts, analyse competitor data, and generate client deliverables with it. One person with Claude Code does the work of three without it.</p>
+</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Pricing:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$20</span></div><div class="mini-stat"><span class="mini-stat-num">$100</span></div></div><p class="sub-card-intro">- Free tier: Limited access (enough to test) - Pro: /mo (includes Claude Code access) - Max: From /mo (5-20x more usage) - API: Pay-per-token for...</p></div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Setup in 5 minutes:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$20</span></div><div class="mini-stat"><span class="mini-stat-num">$20</span></div></div><p class="sub-card-intro">1. Sign up at claude.ai 2. Upgrade to Pro (/mo) 3. Install Claude Code: open your terminal and follow the install prompts 4. Create a CLAUDE.md...</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="the-brain-backup-research">
+  <div class="container">
+    <p class="section-label fade-in">Section</p>
+    <h3 class="section-title fade-in">The Brain: Backup + Research</h3>
+        
+    
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Layer 1 (continued): Research and Backup Models</div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">ChatGPT (Our Backup)</div><p class="fade-in"><strong>What it does:</strong> OpenAI's models. GPT-4o for general tasks, image generation with DALL-E, and the broadest plugin ecosystem.</p>
+<p class="fade-in"><strong>When to use it:</strong> When a client's existing stack is already built on OpenAI, or when you need image generation. We default to Claude for reasoning tasks, but ChatGPT handles quick classification and image work well.</p>
+</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Pricing:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$20</span></div><div class="mini-stat"><span class="mini-stat-num">$2</span></div></div><p class="sub-card-intro">- Free tier: GPT-4o mini access - Plus: /mo - API: From .50 per million input tokens</p></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Perplexity (Our Research Tool)</div><p class="fade-in"><strong>What it does:</strong> AI-powered search engine that gives you direct answers with cited sources. Instead of reading 20 articles to answer a question, Perplexity reads them for you and summarises the key points with links to verify.</p>
+<p class="fade-in"><strong>How we use it:</strong> Competitive research, fact-checking content before publishing, staying current on AI industry trends, and verifying tool pricing and features.</p>
+</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Pricing:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$20</span></div><div class="mini-stat"><span class="mini-stat-num">$20</span></div></div><p class="sub-card-intro">- Free: Basic searches (limited Pro queries per day) - Pro: /mo (300 Pro searches/day, access to GPT-4o, Claude, Gemini) **Setup tip:** Start...</p></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Cursor (Our Code Editor)</div><p class="fade-in"><strong>What it does:</strong> An AI-powered code editor built on VS Code that autocompletes code, answers questions about your codebase, and makes multi-file edits from plain English instructions.</p>
+<p class="fade-in"><strong>How we use it:</strong> Cursor for interactive editing when we're in the weeds. Claude Code for autonomous tasks from the terminal. They complement each other.</p>
+</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Pricing:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$20</span></div><div class="mini-stat"><span class="mini-stat-num">95%</span></div></div><p class="sub-card-intro">- Free: 2,000 completions/mo, 50 slow premium requests - Pro: /mo (500 fast premium requests) &gt; **Key Takeaway:** Don&#x27;t pay for five AI tools....</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="the-engine-n8n">
+  <div class="container">
+    <p class="section-label fade-in">Section</p>
+    <h3 class="section-title fade-in">THE ENGINE: n8n</h3>
+        
+    <div class="progress-bars"><div class="progress-row fade-in"><div class="progress-label">Automations executed</div><div class="progress-value">1.1M+</div><div class="progress-track"><div class="progress-fill" style="width:95%"></div></div></div><div class="progress-row fade-in"><div class="progress-label">Competitors tracked daily</div><div class="progress-value">13 accounts</div><div class="progress-track"><div class="progress-fill" style="width:80%"></div></div></div><div class="progress-row fade-in"><div class="progress-label">Platforms scraped</div><div class="progress-value">4 platforms</div><div class="progress-track"><div class="progress-fill" style="width:70%"></div></div></div></div>
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Layer 2: The Engine (Workflow Automation)</div><p class="fade-in">This is where most businesses get it wrong. They pick a tool based on a YouTube demo and hit a wall two weeks later.</p>
+</div>
+<div class="sub-card fade-in"><div class="sub-card-title">n8n (Our Primary, Recommended)</div><p class="fade-in"><strong>What it does:</strong> Open-source workflow automation. You build visual workflows that connect apps, process data, and run AI tasks on autopilot. Unlike Zapier, it charges per workflow run, not per step. A 15-step workflow costs the same as a 2-step one.</p>
+</div>
+<div class="sub-card fade-in"><div class="sub-card-title">Why we picked it over everything else:</div><div class="icon-list"><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">You own your</div><div class=icon-item-desc>workflows. No vendor lock-in.</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">No per-task pricing</div><div class=icon-item-desc>that blows up when you scale</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Full JavaScript and</div><div class=icon-item-desc>Python support for custom logic</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Self-hosted means unlimited</div><div class=icon-item-desc>runs for the cost of a cheap server</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Execution logs show</div><div class=icon-item-desc>exactly what happened, when, and why</div></div></div></div></div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Pricing:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$5</span></div><div class="mini-stat"><span class="mini-stat-num">$26</span></div><div class="mini-stat"><span class="mini-stat-num">$65</span></div></div><p class="sub-card-intro">- Self-hosted: Free (unlimited runs, you pay ~-20/mo for a VPS) - Cloud Starter: ~/mo (2,500 executions) - Cloud Pro: ~/mo (10,000 executions)</p></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Setup guide:</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">Go to n8n.io and create a cloud account (free trial available)</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Build your first workflow: set a Schedule trigger, add a Google Sheets node, connect your spreadsheet</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Test it manually with &quot;Execute Workflow&quot;</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">4</div><div class="mini-flow-text">Activate it and let it run on schedule</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">5</div><div class="mini-flow-text">Check the Executions tab to see exactly what happened each run</div></div></div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Tips from 1M+ automations:</div><div class="icon-list"><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Start with Cloud.</div><div class=icon-item-desc>Self-host later when you need unlimited runs.</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Never use strict</div><div class=icon-item-desc>type validation on filter nodes when a field might not...</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">If a workflow</div><div class=icon-item-desc>runs longer than ~5 minutes on Cloud, split it into two...</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Use the SplitInBatches</div><div class=icon-item-desc>node for processing lists, but keep batch sizes small...</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></span><div><div class="icon-item-label">Always set `alwaysOutputData:</div><div class=icon-item-desc>true` on loop nodes so the workflow doesn&#x27;t break on...</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="draw-divider draw-svg fade-in"><svg viewBox="0 0 800 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path class="draw-path" style="--path-length:850" d="M0 30 L100 10 L200 30 L300 10 L400 30 L500 10 L600 30 L700 10 L800 30" /></svg></div>
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="the-engine-alternatives">
+  <div class="container">
+    <p class="section-label fade-in">Section</p>
+    <h3 class="section-title fade-in">The Engine: Alternatives</h3>
+        
+    <div class="gauge-row fade-in"><div class="gauge-card fade-in"><svg class="gauge-svg" viewBox="0 0 140 80"><path class="gauge-track" d="M 20 70 A 50 50 0 0 1 120 70"/><path class="gauge-fill bad" d="M 20 70 A 50 50 0 0 1 120 70" data-percent="40"/><text class="gauge-value" x="70" y="65" text-anchor="middle">40%</text></svg><div class="gauge-label">ChatGPT alone</div></div><div class="gauge-card fade-in"><svg class="gauge-svg" viewBox="0 0 140 80"><path class="gauge-track" d="M 20 70 A 50 50 0 0 1 120 70"/><path class="gauge-fill great" d="M 20 70 A 50 50 0 0 1 120 70" data-percent="95"/><text class="gauge-value" x="70" y="65" text-anchor="middle">95%</text></svg><div class="gauge-label">Full AI workflow</div></div></div>
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Layer 2 (continued): When to Use the Alternatives</div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Make.com (The Visual Middle Ground)</div><p class="fade-in"><strong>What it does:</strong> Visual automation builder with 2,000+ app integrations. More flexible than Zapier for complex logic (branching, loops, error handling) but charges per operation. Each step in a workflow counts separately.</p>
+<p class="fade-in"><strong>When to use it:</strong> When your team isn't technical and won't self-host n8n. The visual builder is more intuitive than n8n for non-developers.</p>
+</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Pricing:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$11</span></div><div class="mini-stat"><span class="mini-stat-num">$19</span></div></div><p class="sub-card-intro">- Free: 1,000 operations/mo - Core: ~/mo (10,000 operations) - Pro: ~/mo (priority execution, better error handling)</p></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Zapier (The Easy Button)</div><p class="fade-in"><strong>What it does:</strong> The most popular automation platform with 7,000+ app integrations. Dead simple to set up basic automations but gets expensive fast. Every action a &quot;Zap&quot; performs counts as one task, so a 5-step workflow uses 5 tasks per run.</p>
+<p class="fade-in"><strong>When to use it:</strong> Only for simple 2-3 step automations where the app integration library matters most. If you're running anything complex or high-volume, you'll save significantly with Make or n8n.</p>
+</div>
+<div class="sub-card fade-in"><div class="sub-card-title">Pricing:</div><div class="icon-list"><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Free: 100 tasks/mo</div><div class=icon-item-desc>(barely enough to test)</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Professional: $20/mo (750 tasks/mo)</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><div><div class="icon-item-label">Team: $69/mo</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="the-infrastructure-data">
+  <div class="container">
+    <p class="section-label fade-in">Section</p>
+    <h3 class="section-title fade-in">The Infrastructure: Data</h3>
+        
+    
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Layer 3: The Infrastructure</div><p class="fade-in">The brain thinks. The engine runs. The infrastructure is everything underneath that makes it actually work.</p>
+</div>
+<div class="sub-card fade-in"><div class="sub-card-title">Google Sheets (Our Data Layer)</div><p class="fade-in"><strong>What it does:</strong> Yes, Google Sheets. Don't laugh.</p>
+<p class="fade-in"><strong>Why it's secretly powerful:</strong> Your team already knows it. No training needed. It connects to everything via APIs. For businesses doing $5M-$50M, a well-structured Sheet with automations feeding into it beats a $500/mo database tool that nobody updates.</p>
+<p class="fade-in"><strong>How we use it:</strong> Our entire content pipeline, analytics dashboard, competitor tracking, and delegation system runs on Google Sheets connected to n8n. Six active systems, all feeding into one spreadsheet with multiple tabs. Real-time data, no extra software to learn.</p>
+</div>
+<div class="sub-card fade-in"><div class="sub-card-title">What we track in one Sheet:</div><div class="icon-list"><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Content Pipeline (idea</div><div class=icon-item-desc>to posted, with status tracking)</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Our own post</div><div class=icon-item-desc>analytics (views, engagement, transcripts)</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">13 competitors&#x27; analytics</div><div class=icon-item-desc>across 4 platforms</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Concept Bank (proven</div><div class=icon-item-desc>content formats to replicate)</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Content Insights (weekly/monthly</div><div class=icon-item-desc>performance analysis)</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">SEO Content Bank</div><div class=icon-item-desc>(all SEO content from ideation to publication)</div></div></div></div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">The secret weapon: Google Sheets MCP</div><p class="fade-in">MCP (Model Context Protocol) is an open protocol that lets AI tools read and write to external apps. We connect Google Sheets via MCP so Claude Code can read our analytics, write content briefs, and update pipeline statuses directly.</p>
+</div>
+<div class="sub-card fade-in"><div class="sub-card-title">Setup:</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">You already have Google Sheets (it&#x27;s free)</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Structure your sheet with clear column headers and status dropdowns</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Connect it to n8n using the Google Sheets node (OAuth, takes 2 minutes)</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">4</div><div class="mini-flow-text">For AI access, set up a Google Sheets MCP server with OAuth authentication</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">5</div><div class="mini-flow-text">Now your automations AND your AI assistant can both read and write to the same source of truth</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="the-infrastructure-scraping-compute">
+  <div class="container">
+    <p class="section-label fade-in">Section</p>
+    <h3 class="section-title fade-in">The Infrastructure: Scraping + Compute</h3>
+        
+    
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Layer 3 (continued): Scraping, Compute, and Video</div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Apify (Our Scraping Platform)</div><p class="fade-in"><strong>What it does:</strong> Cloud platform for web scraping without writing code. It runs pre-built scrapers (called &quot;Actors&quot;) for Instagram, TikTok, YouTube, LinkedIn, and thousands of websites. You configure what you want, hit run, and get structured data back.</p>
+<p class="fade-in"><strong>How we use it:</strong> We scrape our own posts daily for performance analytics (System 2) and 13 competitors across 4 platforms daily for competitive intelligence (System 3). All automated through n8n on a schedule.</p>
+<p class="fade-in"><strong>What we scrape per post:</strong> Post links, hooks, transcripts, CTAs, lead magnets, content concepts, thumbnails, views, likes, comments, shares, engagement rates.</p>
+</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Pricing:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$5</span></div><div class="mini-stat"><span class="mini-stat-num">$39</span></div><div class="mini-stat"><span class="mini-stat-num">$199</span></div></div><p class="sub-card-intro">- Free: credit/mo (enough for ~2,000 items) - Starter: /mo - Scale: /mo (higher RAM, concurrency)</p></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Setup:</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">Create an Apify account (free)</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Find the Actor for the platform you want to scrape (e.g., &quot;Instagram Profile Scraper&quot;)</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Configure it with the accounts/URLs you want to track</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">4</div><div class="mini-flow-text">Get your API token from Settings</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">5</div><div class="mini-flow-text">Connect to n8n using an HTTP Request node with your API token</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">6</div><div class="mini-flow-text">Schedule it to run daily</div></div></div></div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Tips:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$5</span></div></div><p class="sub-card-intro">- Loop through accounts one at a time to avoid memory limits - Use POST LINK matching to prevent duplicate rows in your data - Track LAST SCRAPED...</p></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Modal (Heavy Compute When You Need It)</div><p class="fade-in"><strong>What it does:</strong> Serverless compute platform. Write a Python function, deploy it, and Modal handles scaling. Pay per second of compute. No servers to manage.</p>
+<p class="fade-in"><strong>When you need it:</strong> Processing thousands of documents at once, running custom AI models, batch data transformation, image/video processing at scale.</p>
+<p class="fade-in"><strong>Real example:</strong> One client needed to process 12,000 invoices per month. Running that through API calls sequentially would take 6 hours. Modal parallelised it across 50 containers and finished in 8 minutes.</p>
+</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Pricing:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$30</span></div><div class="mini-stat"><span class="mini-stat-num">$250</span></div><div class="mini-stat"><span class="mini-stat-num">$100</span></div></div><p class="sub-card-intro">- Free: /mo in compute credits (generous for testing) - Team: /mo (includes in credits) - Pay-per-use after credits **Setup:** Install the Modal...</p></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Frame.io (Video Collaboration)</div><p class="fade-in"><strong>What it does:</strong> Video review platform where editors upload cuts and reviewers leave timestamped feedback. No more &quot;go to 2:47 and fix the...&quot; in Slack messages.</p>
+<p class="fade-in"><strong>How we use it:</strong> Our editor (Fati) uploads cuts to Frame.io. Seti reviews with timestamped comments. Nothing gets lost.</p>
+</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Pricing:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$15</span></div></div><p class="sub-card-intro">- Free with Adobe Creative Cloud (if you already pay for Premiere Pro, you have Frame.io included) - Standalone Pro: /mo per user **Setup tip:**...</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="draw-divider draw-svg fade-in"><svg viewBox="0 0 800 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path class="draw-path" style="--path-length:900" d="M0 20 Q100 0 200 20 T400 20 T600 20 T800 20" /></svg></div>
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="pick-your-stack">
+  <div class="container">
+    <p class="section-label fade-in">Section</p>
+    <h3 class="section-title fade-in">Pick Your Stack</h3>
+        
+    <div class="level-ladder"><div class="level-card fade-in fade-in-delay-1"><div class="level-header"><div class="level-num">1</div><div class="level-name">Starter</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:6%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$0-40/mo</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">Test ideas, automate 1-2 workflows</span></div></div><div class="level-best">Solo operators, small teams</div></div><div class="level-card fade-in fade-in-delay-2"><div class="level-header"><div class="level-num">2</div><div class="level-name">Growth</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:10%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$60-150/mo</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">Run 5-10 workflows, save 10-20 hrs/week</span></div></div><div class="level-best">Teams of 2-10 people</div></div><div class="level-card fade-in fade-in-delay-3"><div class="level-header"><div class="level-num">3</div><div class="level-name">Production</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:25%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$200-500/mo</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">Full operations automation, save 20-141 hrs/week</span></div></div><div class="level-best">Operations-heavy businesses ($5M+)</div></div></div>
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Pick Your Stack</div><p class="fade-in">Start where you are. Upgrade when you hit limits, not before.</p>
+</div>
+<div class="sub-card fade-in"><div class="sub-card-title">Starter ($0-40/mo):</div><div class="icon-list"><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Claude free tier</div><div class=icon-item-desc>or ChatGPT free for AI tasks</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Zapier free tier</div><div class=icon-item-desc>(100 tasks/mo) or Make free tier (1,000 ops/mo)</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Google Sheets for</div><div class=icon-item-desc>tracking (free)</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><div><div class="icon-item-label">Good for: Testing</div><div class=icon-item-desc>ideas, proving the concept, automating your first workflow</div></div></div></div></div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Growth ($60-150/mo):</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$20</span></div><div class="mini-stat"><span class="mini-stat-num">$26</span></div><div class="mini-stat"><span class="mini-stat-num">$5</span></div></div><p class="sub-card-intro">- Claude Pro (/mo) for daily AI work - n8n Cloud (~/mo) for reliable automations - Apify free tier ( credit) for light scraping - Perplexity free...</p></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Production ($200-500/mo):</div><p class="fade-in">We've seen clients save $123K to $549K annually on the Production stack. The tools cost under $500/mo.</p>
+<ul class="fade-in">
+<li>Claude Pro + Claude Code for development and production</li>
+<li>n8n self-hosted (free) on a $10-20/mo VPS for unlimited runs</li>
+<li>Apify Starter ($39/mo) for daily scraping at scale</li>
+<li>Modal free tier ($30 credit) for batch processing</li>
+<li>Cursor Pro ($20/mo) for code editing</li>
+<li>Perplexity Pro ($20/mo) for deep research</li>
+<li>Frame.io (free with Adobe CC) for video collaboration</li>
+<li>Custom API integrations (CRM, accounting, project management)</li>
+<li>Good for: Full operations automation, saving 20-141 hours/week</li>
+</ul>
+<blockquote class="fade-in callout-green"><span class="callout-icon">&#128273;</span><div><p class="fade-in"><strong>Key Takeaway:</strong> Most businesses should start at Growth. If you're doing $5M+ revenue with admin bottlenecks, go straight to Production.</p></div></blockquote>
+<hr />
+</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="how-it-all-connects">
+  <div class="container">
+    <p class="section-label fade-in">Section</p>
+    <h3 class="section-title fade-in">How It All Connects</h3>
+        
+    
+    <div class="sub-cards">
+      <div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">How the Stack Connects (Our Actual Setup)</div><div class=template-intro><p>Here's how data flows through our systems daily, with zero manual work:</p>
+<ol>
+<li><strong>n8n triggers</strong> fire on schedule (daily at 6am for analytics, hourly for pipeline checks)</li>
+<li><strong>Apify scrapers</strong> pull fresh data from Instagram, TikTok, YouTube, and LinkedIn for us and 13 competitors</li>
+<li><strong>Data lands in Google Sheets</strong> in structured tabs (Our Analytics, Competitor Analytics)</li>
+<li><strong>Claude Code reads the Sheets</strong> via MCP, analyses what's performing, identifies patterns</li>
+<li><strong>Content briefs get generated</strong> with hooks, scripts, and CTAs based on what's actually working</li>
+<li><strong>Briefs go into the Content Pipeline</strong> sheet, assigned to team members with status tracking</li>
+<li><strong>Videos get uploaded to Frame.io</strong> for review with timestamped feedback</li>
+<li><strong>Lead magnets get auto-generated</strong> when content is flagged as needing one</li>
+<li><strong>Everything tracks back to the Sheet</strong> so we can see what's working and do more of it</li>
+</ol>
+<p>Six systems. One spreadsheet. Zero manual data entry.</p>
+<blockquote>
+<p><strong>Key Takeaway:</strong> The magic isn't in any single tool. It's in how they connect. n8n is the glue, Google Sheets is the brain, Claude is the intelligence, and Apify feeds it all fresh data.</p>
+</blockquote>
+<hr /></div><table>
+<thead>
+<tr>
+<th>System</th>
+<th>What It Does</th>
+<th>Tools Used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System 1: Delegation</td>
+<td>Content pipeline and task tracking</td>
+<td>Google Sheets</td>
+</tr>
+<tr>
+<td>System 2: Post Analytics</td>
+<td>Scrape our own post performance daily</td>
+<td>n8n + Apify + Google Sheets</td>
+</tr>
+<tr>
+<td>System 3: Competitor Scraping</td>
+<td>Track 13 competitors across 4 platforms</td>
+<td>n8n + Apify + Google Sheets</td>
+</tr>
+<tr>
+<td>System 4: Content Manager</td>
+<td>Generate data-driven content briefs</td>
+<td>Claude Code + Google Sheets MCP</td>
+</tr>
+<tr>
+<td>System 5: Lead Magnets</td>
+<td>Auto-create lead magnets for content</td>
+<td>Claude Code + Google Sheets MCP</td>
+</tr>
+<tr>
+<td>System 6: SEO Engine</td>
+<td>Generate and track SEO content</td>
+<td>Claude Code + Google Sheets</td>
+</tr>
+</tbody>
+</table></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="your-next-steps">
+  <div class="container">
+    <p class="section-label fade-in">Next Steps</p>
+    <h3 class="section-title fade-in">Your Next Steps</h3>
+        
+    <div class="checklist fade-in"><div class="checklist-item"><div class="checklist-box"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7" stroke="white" stroke-width="2.5" fill="none"/></svg></div><div class="checklist-text">Sign up for Claude Pro ($20/mo) and start using it for daily work</div></div><div class="checklist-item"><div class="checklist-box"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7" stroke="white" stroke-width="2.5" fill="none"/></svg></div><div class="checklist-text">Create a Google Sheet with your core processes and time tracking</div></div><div class="checklist-item"><div class="checklist-box"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7" stroke="white" stroke-width="2.5" fill="none"/></svg></div><div class="checklist-text">Set up an n8n Cloud account and build your first automation</div></div><div class="checklist-item"><div class="checklist-box"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7" stroke="white" stroke-width="2.5" fill="none"/></svg></div><div class="checklist-text">Connect n8n to your Google Sheet so data flows automatically</div></div><div class="checklist-item"><div class="checklist-box"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7" stroke="white" stroke-width="2.5" fill="none"/></svg></div><div class="checklist-text">Add Apify when you&#x27;re ready to track competitors or your own content</div></div></div>
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Your Next Steps</div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Do it yourself:</div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Want us to build it for you?</div><p class="fade-in">We'll audit your processes, map the tool stack to your specific business, and build production automations from your existing SOPs. Most clients see ROI within the first month.</p>
+</div>
+<div class="sub-card fade-in"><div class="sub-card-title">Book a Free Consultation</div><p class="fade-in">theentourageai.com/book</p>
+<p class="fade-in">No pressure. No pitch deck. Just a clear picture of what's costing you time and how to fix it.</p>
+<hr />
+</div>
+    </div>
+  </div>
+</section>
+
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- BACK COVER / FOOTER CTA -->
+  <section class="back-cover">
+    <div class="company-name fade-in">The Entourage AI</div>
+    <div class="stats fade-in fade-in-delay-1">
+      <div class="stat">
+        <span class="stat-number">1,116,529+</span>
+        <span class="stat-label">automations executed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">$123K–$549K</span>
+        <span class="stat-label">saved per client annually</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">20–141 hrs</span>
+        <span class="stat-label">per week automated</span>
+      </div>
+    </div>
+    <div class="cta fade-in fade-in-delay-2">
+      <div class="cta-text">Ready to see what AI can do for your business?</div>
+      <a class="cta-url" href="https://theentourageai.com/book" target="_blank">Book a Free Consultation &rarr;</a>
+    </div>
+    <div class="website fade-in fade-in-delay-3">theentourageai.com</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><a href="https://theentourageai.com/book" target="_blank">The Entourage AI</a></p>
+    <p style="margin-top: 8px; font-size: 12px; color: var(--white-30);">Custom AI solutions for operations-heavy businesses</p>
+  </footer>
+
+  <!-- SVG DEFS for gradients -->
+  <svg style="position:absolute;width:0;height:0">
+    <defs>
+      <linearGradient id="donutGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0A3D8F"/>
+        <stop offset="50%" stop-color="#146EF5"/>
+        <stop offset="100%" stop-color="#3B82F6"/>
+      </linearGradient>
+      <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0A3D8F"/>
+        <stop offset="100%" stop-color="#3B82F6"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <script>
+    // ── SCROLL ANIMATIONS ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── STICKY BAR ──
+    const stickyBar = document.getElementById('stickyBar');
+    const hero = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > hero.offsetHeight - 60) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+    });
+
+    // ── PARTICLE BACKGROUND ──
+    (function() {
+      const c = document.getElementById('particles');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      let w, h, particles = [];
+      function resize() { w = c.width = window.innerWidth; h = c.height = window.innerHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+      for (let i = 0; i < 60; i++) {
+        particles.push({
+          x: Math.random() * w, y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+          r: Math.random() * 1.5 + 0.5, a: Math.random() * 0.15 + 0.03
+        });
+      }
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(20,110,245,${p.a})`;
+          ctx.fill();
+        });
+        // Draw connections between nearby particles
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 150) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(20,110,245,${0.03 * (1 - d / 150)})`;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    // ── ANIMATED COUNTERS ──
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = 'true';
+          const el = entry.target;
+          const target = parseFloat(el.dataset.target);
+          const prefix = el.dataset.prefix || '';
+          const suffix = el.dataset.suffix || '';
+          const decimals = (el.dataset.target.includes('.')) ? 1 : 0;
+          const duration = 2000;
+          const start = performance.now();
+          function tick(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = target * eased;
+            if (target > 1000) {
+              el.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+            } else {
+              el.textContent = prefix + current.toFixed(decimals) + suffix;
+            }
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.counter-number[data-target]').forEach(el => counterObserver.observe(el));
+
+    // ── SVG CHART ANIMATIONS (donut, gauge, bar) ──
+    const chartObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Donut fills
+          entry.target.querySelectorAll('.donut-fill').forEach(el => {
+            const pct = parseFloat(el.dataset.percent) || 0;
+            const offset = 283 - (283 * pct / 100);
+            el.style.strokeDashoffset = offset;
+            el.classList.add('animated');
+          });
+          // Gauge fills
+          entry.target.querySelectorAll('.gauge-fill').forEach(el => {
+            const pct = parseFloat(el.dataset.percent) || 0;
+            const offset = 157 - (157 * pct / 100);
+            el.style.strokeDashoffset = offset;
+          });
+          // Bar fills
+          entry.target.querySelectorAll('.bar-fill').forEach(el => {
+            el.classList.add('animated');
+          });
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.donut-row, .gauge-row, .bar-chart').forEach(el => chartObserver.observe(el));
+
+    // ── ACCORDION ──
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+
+    // ── CHECKLIST ──
+    document.querySelectorAll('.checklist-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('checked');
+      });
+    });
+
+    // ── BEFORE/AFTER SLIDER ──
+    document.querySelectorAll('.ba-slider').forEach(slider => {
+      const handle = slider.querySelector('.ba-handle');
+      const after = slider.querySelector('.ba-after');
+      if (!handle || !after) return;
+      let dragging = false;
+      function setPos(x) {
+        const rect = slider.getBoundingClientRect();
+        let pct = ((x - rect.left) / rect.width) * 100;
+        pct = Math.max(10, Math.min(90, pct));
+        handle.style.left = pct + '%';
+        after.style.left = pct + '%';
+        after.style.width = (100 - pct) + '%';
+      }
+      setPos(slider.getBoundingClientRect().left + slider.getBoundingClientRect().width * 0.5);
+      handle.addEventListener('mousedown', () => dragging = true);
+      handle.addEventListener('touchstart', () => dragging = true, { passive: true });
+      window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+      window.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+      window.addEventListener('mouseup', () => dragging = false);
+      window.addEventListener('touchend', () => dragging = false);
+    });
+
+    // ── PROGRESS TRACKER ──
+    (function() {
+      const tracker = document.querySelector('.progress-tracker');
+      if (!tracker) return;
+      const dots = tracker.querySelectorAll('.pt-dot');
+      const sections = [];
+      dots.forEach(dot => {
+        const id = dot.dataset.section;
+        const sec = document.getElementById(id);
+        if (sec) sections.push({ dot, sec });
+        dot.addEventListener('click', () => {
+          const s = document.getElementById(id);
+          if (s) s.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+      // Show tracker after hero, highlight active section
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        if (scrollY > (hero ? hero.offsetHeight : 400)) {
+          tracker.classList.add('visible');
+        } else {
+          tracker.classList.remove('visible');
+        }
+        let active = null;
+        sections.forEach(({ dot, sec }) => {
+          const top = sec.offsetTop - 200;
+          if (scrollY >= top) active = dot;
+          dot.classList.remove('active');
+        });
+        if (active) active.classList.add('active');
+      });
+    })();
+
+    // ── DRAW-ON-SCROLL SVGs ──
+    const drawObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.draw-path').forEach(p => p.classList.add('drawn'));
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.draw-svg').forEach(el => drawObserver.observe(el));
+  </script>
+
+</body>
+</html>
