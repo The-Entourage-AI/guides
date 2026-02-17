@@ -1234,6 +1234,138 @@ body {
 }
 
 /* ============================================================
+   PROGRESS BARS — Animated horizontal bars for metrics
+   ============================================================ */
+.progress-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 24px 0 32px 0;
+}
+.progress-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.progress-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+  min-width: 160px;
+}
+.progress-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  min-width: 60px;
+  text-align: right;
+}
+.progress-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(20,110,245,0.1);
+  border-radius: 100px;
+  overflow: hidden;
+  min-width: 100px;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: var(--gradient-wide);
+  animation: progress-grow 1.2s ease-out forwards;
+  transform-origin: left;
+}
+@keyframes progress-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* ============================================================
+   LEVEL LADDER — Visual stages/tiers
+   ============================================================ */
+.level-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0 32px 0;
+}
+.level-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  transition: border-color 0.3s;
+}
+.level-card:hover {
+  border-color: rgba(20,110,245,0.2);
+}
+.level-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.level-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.level-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+}
+.level-bar-track {
+  height: 6px;
+  background: rgba(20,110,245,0.08);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.level-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: var(--gradient-wide);
+  animation: progress-grow 1s ease-out forwards;
+}
+.level-details {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+.level-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.level-detail-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--white-30);
+}
+.level-detail-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+}
+.level-best {
+  font-size: 13px;
+  color: var(--white-50);
+  font-style: italic;
+}
+
+/* ============================================================
    MINI FLOW — Horizontal process diagrams inside sub-cards
    ============================================================ */
 .mini-flow {
@@ -1494,27 +1626,105 @@ body {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+/* ============================================================
+   MOBILE — iPhone-first responsive
+   ============================================================ */
 @media (max-width: 768px) {
-  .container { padding: 0 20px; }
-  .hero { padding: 80px 20px 60px; min-height: 50vh; }
-  .hero h1 { font-size: 36px; }
-  .section-title { font-size: 28px; }
-  .quick-grid { grid-template-columns: 1fr; }
+  /* Layout */
+  .container { padding: 0 16px; }
+  body { font-size: 16px; }
+
+  /* Hero */
+  .hero { padding: 60px 16px 48px; min-height: 45vh; }
+  .hero h1 { font-size: 28px; letter-spacing: -1px; }
+  .hero h2 { font-size: 16px; }
+  .hero-badge { font-size: 12px; padding: 6px 14px; }
+
+  /* Sections */
+  .section { padding: 48px 0; }
+  .section-title { font-size: 24px; }
+  .section-subtitle { font-size: 15px; margin-bottom: 32px; }
+  .section-label { font-size: 11px; }
+
+  /* Grids → single column */
+  .quick-grid { grid-template-columns: 1fr; gap: 12px; }
   .info-grid { grid-template-columns: 1fr; }
   .compare-grid { grid-template-columns: 1fr; }
-  .toc-grid { grid-template-columns: 1fr; }
-  .back-cover .stats { flex-direction: column; gap: 32px; }
-  .back-cover .stat-number { font-size: 28px; }
-  .step-card-header { padding: 20px 24px; }
-  .step-card-body { padding: 24px; }
-  .sub-card { padding: 20px 24px; }
-  .template-card { padding: 20px 24px; }
+  .toc-grid { grid-template-columns: 1fr; gap: 8px; }
+
+  /* Cards — tighter padding */
+  .quick-card { padding: 20px 16px; }
+  .sub-card { padding: 16px; }
+  .template-card { padding: 16px; }
+  .step-card-header { padding: 16px; }
+  .step-card-body { padding: 16px; }
+  .icon-item { padding: 10px 12px; }
+
+  /* Text sizes for mobile readability */
+  .content p { font-size: 15px; }
+  .content li { font-size: 14px; }
+  .sub-card p { font-size: 14px; }
+  .sub-card-title { font-size: 15px; }
+  .sub-card li { font-size: 13px; }
+
+  /* Tables — scroll horizontally */
+  .sub-card table, .template-card table, .content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 12px;
+  }
+
+  /* Stats */
   .mini-stats { flex-direction: column; }
+  .back-cover .stats { flex-direction: column; gap: 24px; }
+  .back-cover .stat-number { font-size: 28px; }
+  .back-cover { padding: 60px 16px; }
+
+  /* Progress bars */
+  .progress-row { flex-direction: column; align-items: stretch; gap: 4px; }
+  .progress-label { min-width: 0; font-size: 13px; }
+  .progress-value { min-width: 0; text-align: left; font-size: 12px; }
+  .progress-track { min-width: 0; }
+
+  /* Level ladder */
+  .level-card { padding: 16px; }
+  .level-details { flex-direction: column; gap: 8px; }
+
+  /* Flow diagrams → vertical on mobile */
+  .flow-diagram { flex-direction: column; align-items: center; }
+  .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+  .flow-node { max-width: 200px; }
   .mini-flow { flex-direction: column; align-items: stretch; }
   .mini-flow-arrow { transform: rotate(90deg); justify-content: center; padding: 4px 0; }
   .mini-flow-text { white-space: normal; }
-  .flow-diagram { flex-direction: column; align-items: center; }
-  .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+
+  /* Compare cards */
+  .compare-card { padding: 16px; }
+  .compare-label { font-size: 11px; }
+
+  /* Sticky bar */
+  .sticky-bar { padding: 10px 16px; }
+  .sticky-brand { font-size: 12px; }
+  .sticky-cta { font-size: 11px; padding: 8px 16px; }
+
+  /* TOC */
+  .toc-item { padding: 12px 14px; }
+  .toc-num { width: 28px; height: 28px; font-size: 12px; }
+  .toc-text { font-size: 13px; }
+
+  /* Section connector — shorter on mobile */
+  .section-connector-line { height: 32px; }
+
+  /* Footer */
+  .footer { padding: 40px 0; }
+}
+
+/* Extra small — iPhone SE, older devices */
+@media (max-width: 375px) {
+  .hero h1 { font-size: 24px; }
+  .section-title { font-size: 22px; }
+  .quick-icon { width: 44px; height: 44px; font-size: 20px; }
 }
 
   </style>
@@ -1565,10 +1775,10 @@ body {
   <div class="container">
     <p class="section-label fade-in">About</p>
     <h3 class="section-title fade-in">About</h3>
+    
     <div class="sub-cards">
-      <div class="sub-card fade-in"><div class="sub-card-title">Who We Are</div><p class="fade-in">The Entourage AI is an AI transformation company that works with operations-heavy businesses daily. We go in, figure out how they can adopt AI to save money, reduce errors, and make their output way better.</p>
-</div>
-<div class="compare-grid fade-in"><div class="compare-card compare-good"><div class="compare-label">&#9989; Who This Is For</div><ul><li>Business owners doing $5M–$100M in revenue</li><li>Operations managers drowning in admin work</li><li>CFOs who want to cut costs without cutting people</li><li>Anyone tired of hearing about AI but not sure where to actually start</li></ul></div><div class="compare-card compare-bad"><div class="compare-label">&#10060; Who This Is NOT For</div><ul><li>Businesses looking for a magic button (this takes real work)</li><li>Anyone who wants to &quot;play&quot; with AI but not commit to change</li><li>Companies with no documented processes (start there first — we&#x27;ll show you how)</li></ul></div></div>
+      <div class="sub-card stat-card fade-in"><div class="sub-card-title">Who We Are</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">529 automations</span></div><div class="mini-stat"><span class="mini-stat-num">$123K to $549K</span></div></div><p class="sub-card-intro">We help businesses stop wasting time on work that AI can do better, faster, and cheaper. Over 1,116, run. saved per client per year. This is the...</p></div>
+<div class="compare-grid fade-in"><div class="compare-card compare-good"><div class="compare-label">&#9989; Who This Is For</div><ul><li>Business owners doing $5M to $100M in revenue</li><li>Operations managers buried in admin work</li><li>CFOs who want to cut costs without cutting people</li><li>Anyone who keeps hearing about AI but doesn&#x27;t know where to start</li></ul></div><div class="compare-card compare-bad"><div class="compare-label">&#10060; Who This Is NOT For</div><ul><li>People looking for a magic button (this takes real work)</li><li>Anyone who wants to &quot;play&quot; with AI but not actually change anything</li><li>Companies with zero documented processes (start there first)</li></ul></div></div>
     </div>
   </div>
 </section>
@@ -1578,11 +1788,13 @@ body {
   <div class="container">
     <p class="section-label fade-in">Overview</p>
     <h3 class="section-title fade-in">Introduction</h3>
-        <div class="sub-cards">
-      <div class="sub-card fade-in"><div class="sub-card-title">Introduction: Why Most Businesses Get AI Wrong</div><p class="fade-in">Here's what most businesses are doing with AI right now: copying and pasting from ChatGPT.</p>
+        
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Why Most Businesses Get AI Wrong</div><p class="fade-in">Right now, most businesses &quot;use AI&quot; like this: open ChatGPT, type a question, copy the answer, paste it into a document, format it, save it, and email it to someone.</p>
+<p class="fade-in"><strong>Using AI</strong> = You save 20 minutes on one task. You still do the rest by hand.</p>
+<p class="fade-in"><strong>Adopting AI</strong> = AI handles the whole job. The report gets written, saved to the right folder, and emailed to the right person. No human needed.</p>
 </div>
-<div class="sub-card stat-card fade-in"><div class="sub-card-title">The Gap Between &quot;Using AI&quot; and &quot;Adopting AI&quot;</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">70%</span></div><div class="mini-stat"><span class="mini-stat-num">100%</span></div></div><p class="sub-card-intro">Using AI means opening ChatGPT and asking it to write something. You still do of the work manually. Adopting AI means your AI employees handle 90-...</p></div>
-<div class="sub-card fade-in"><div class="sub-card-title">What You&#x27;ll Walk Away With</div><p class="sub-card-intro">By the end of this blueprint, you&#x27;ll have:</p><div class="icon-list"><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">A clear picture</div><div class=icon-item-desc>of every process in your business (and which ones to...</div></div></div><div class="icon-item"><span class="icon-item-icon">&#128200;</span><div><div class="icon-item-label">A time audit</div><div class=icon-item-desc>showing exactly where your team&#x27;s hours are going</div></div></div><div class="icon-item"><span class="icon-item-icon">&#127959;</span><div><div class="icon-item-label">An architecture plan</div><div class=icon-item-desc>for your AI solution</div></div></div><div class="icon-item"><span class="icon-item-icon">&#128187;</span><div><div class="icon-item-label">A development roadmap</div><div class=icon-item-desc>from free tools to custom builds</div></div></div><div class="icon-item"><span class="icon-item-icon">&#128640;</span><div><div class="icon-item-label">A deployment plan</div><div class=icon-item-desc>that avoids the mistakes that cost businesses tens of...</div></div></div></div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">By the end of this guide, you&#x27;ll have:</div><div class="icon-list"><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">A list of</div><div class=icon-item-desc>every process in your business and which ones to...</div></div></div><div class="icon-item"><span class="icon-item-icon">&#128200;</span><div><div class="icon-item-label">A time audit</div><div class=icon-item-desc>showing exactly where your team&#x27;s hours go</div></div></div><div class="icon-item"><span class="icon-item-icon">&#128203;</span><div><div class="icon-item-label">A design plan</div><div class=icon-item-desc>for your AI setup</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">A roadmap from</div><div class=icon-item-desc>free tools to custom builds</div></div></div><div class="icon-item"><span class="icon-item-icon">&#128203;</span><div><div class="icon-item-label">A rollout plan</div><div class=icon-item-desc>that avoids expensive mistakes</div></div></div></div></div>
     </div>
   </div>
 </section>
@@ -1612,13 +1824,13 @@ body {
     <p class="section-label fade-in">Step 1</p>
     <h3 class="section-title fade-in">Document Everything</h3>
     
+    
     <div class="sub-cards">
-      <div class="sub-card fade-in"><div class="sub-card-title">Step 1: Document Everything</div><p class="fade-in">This step is probably the most important, and almost everyone skips it.</p>
+      <div class="sub-card fade-in"><div class="sub-card-title">Step 1: Write Down Everything You Do</div><p class="fade-in">Before you touch any AI tool, write down your processes. All of them.</p>
+<p class="fade-in"><strong>Real story:</strong> A client thought they had a simple 6-step process. When we actually wrote it down, it was 47 steps. Nobody on the team could follow all of them.</p>
+<p class="fade-in"><strong>How to write it:</strong> Pretend you're explaining the task to someone who has never worked at your company. Every click, every login, every decision.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">The Reality Check</div><p class="fade-in">We had a client who thought they had a simple 6-step process. When we actually sat down and documented it, it turned out to be a 47-step nightmare that none of their employees could fully follow.</p>
-</div>
-<div class="sub-card fade-in"><div class="sub-card-title">What Good Documentation Looks Like</div><p class="sub-card-intro">Think of it this way: write it so a 5-year-old could follow it and a 95-year-old could understand it. That means documenting:</p><div class="icon-list"><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Every login (which</div><div class=icon-item-desc>system, which credentials, which screen)</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Every decision point</div><div class=icon-item-desc>(if X happens, do Y; if Z happens, do W)</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Every copy and</div><div class=icon-item-desc>paste (from where, to where, in what format)</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Every check or</div><div class=icon-item-desc>verification (what are you looking for, what counts as...</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Every handoff (who</div><div class=icon-item-desc>does it go to next, how do they receive it)</div></div></div></div></div>
-<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">Template: Process Documentation</div><table>
+<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">What to document for each process:</div><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -1631,74 +1843,49 @@ body {
 <td>e.g., &quot;New Client Onboarding&quot;</td>
 </tr>
 <tr>
-<td>Department</td>
-<td>e.g., Operations</td>
-</tr>
-<tr>
-<td>Owner</td>
-<td>Who's responsible for this process</td>
-</tr>
-<tr>
 <td>Trigger</td>
-<td>What kicks off this process</td>
+<td>What starts this process?</td>
 </tr>
 <tr>
 <td>Steps</td>
-<td>Numbered, detailed, every single action</td>
+<td>Every single action, numbered</td>
 </tr>
 <tr>
 <td>Tools Used</td>
-<td>List every software involved</td>
+<td>Every software involved</td>
 </tr>
 <tr>
 <td>Decision Points</td>
-<td>Where does a human need to make a judgement call</td>
-</tr>
-<tr>
-<td>Output</td>
-<td>What's the final deliverable</td>
-</tr>
-<tr>
-<td>Handoff</td>
-<td>Who receives the output and what do they do with it</td>
+<td>Where does a human need to decide?</td>
 </tr>
 <tr>
 <td>Time to Complete</td>
-<td>How long does this take on average</td>
-</tr>
-<tr>
-<td>Frequency</td>
-<td>How often is this done (daily, weekly, per client)</td>
+<td>How long on average?</td>
 </tr>
 <tr>
 <td>Common Mistakes</td>
-<td>Where do people typically screw this up</td>
+<td>Where do people mess this up?</td>
 </tr>
 </tbody>
 </table></div>
-<div class="sub-card fade-in"><div class="sub-card-title">Example: Documenting an Email Response Process</div><div class="compare-grid"><div class="compare-card compare-bad"><div class="compare-label">&#10060; Bad</div><div class="compare-text">Bad documentation:
+<div class="sub-card fade-in"><div class="sub-card-title">Bad vs Good Example</div><div class="compare-grid"><div class="compare-card compare-bad"><div class="compare-label">&#10060; Bad</div><div class="compare-text">Bad documentation:
 &quot;Check emails and reply to customers.&quot;</div></div><div class="compare-card compare-good"><div class="compare-label">&#9989; Good</div><div class="compare-text">Good documentation:
 <ol>
 <li>Log into Gmail (operations@company.com)</li>
-<li>Open inbox and filter by &quot;Unread&quot;</li>
-<li>For each email, check if the sender exists in the CRM (HubSpot)</li>
-<li>If they exist: open their contact record, note their account status</li>
-<li>If they don't exist: create a new contact with name, email, company</li>
-<li>Read the email and categorise it (support request, sales enquiry, billing question, general)</li>
-<li>For support requests: check if there's an existing ticket in Zendesk</li>
-<li>If ticket exists: add the email as a note to the existing ticket</li>
-<li>If no ticket: create a new ticket with priority level based on account tier</li>
-<li>Draft a reply using the appropriate template from the template library</li>
-<li>Customise the template with the client's specific details</li>
-<li>Send the reply</li>
-<li>Log the interaction in HubSpot under the contact record</li>
-<li>Update the ticket status in Zendesk</li>
+<li>Filter by &quot;Unread&quot;</li>
+<li>Check if sender exists in CRM</li>
+<li>If yes: open their record, note account status</li>
+<li>If no: create new contact</li>
+<li>Categorise the email (support, sales, billing)</li>
+<li>Pick the right reply template</li>
+<li>Personalise and send</li>
+<li>Log the interaction in CRM</li>
 </ol>
-See the difference? The second version is what an AI can actually work with.</div></div></div></div>
-<div class="sub-card fade-in"><div class="sub-card-title">How Many Processes Should You Document?</div><p class="fade-in">Start with your top 10 most time-consuming processes. Don't try to document everything at once.</p>
-<blockquote class="fade-in callout-green"><span class="callout-icon">&#128273;</span><div><p class="fade-in"><strong>Key Takeaway:</strong> If you can't document it, you can't automate it. This step alone — even without any AI — will reveal inefficiencies you didn't know existed.</p></div></blockquote>
-<hr />
-</div>
+Start with your top 10 most time-consuming processes. Don't try to do all of them at once.
+<blockquote>
+<strong>Key Takeaway:</strong> If you can't write it down, you can't automate it.
+</blockquote>
+<hr /></div></div></div></div>
     </div>
   </div>
 </section>
@@ -1709,138 +1896,18 @@ See the difference? The second version is what an AI can actually work with.</di
     <p class="section-label fade-in">Step 2</p>
     <h3 class="section-title fade-in">Audit Your Time</h3>
     
+    <div class="progress-bars"><div class="progress-row fade-in"><div class="progress-label">Email management</div><div class="progress-value">40hrs</div><div class="progress-track"><div class="progress-fill" style="width:50%"></div></div></div><div class="progress-row fade-in"><div class="progress-label">Data entry</div><div class="progress-value">35hrs</div><div class="progress-track"><div class="progress-fill" style="width:44%"></div></div></div><div class="progress-row fade-in"><div class="progress-label">Report generation</div><div class="progress-value">25hrs</div><div class="progress-track"><div class="progress-fill" style="width:31%"></div></div></div><div class="progress-row fade-in"><div class="progress-label">Invoice follow-ups</div><div class="progress-value">20hrs</div><div class="progress-track"><div class="progress-fill" style="width:25%"></div></div></div><div class="progress-row fade-in"><div class="progress-label">Client communication</div><div class="progress-value">15hrs</div><div class="progress-track"><div class="progress-fill" style="width:19%"></div></div></div></div>
     <div class="sub-cards">
-      <div class="sub-card stat-card fade-in"><div class="sub-card-title">Step 2: Audit Your Time</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">100 employees</span></div><div class="mini-stat"><span class="mini-stat-num">8 hours</span></div><div class="mini-stat"><span class="mini-stat-num">800 hours</span></div></div><p class="sub-card-intro">You&#x27;re paying for people&#x27;s time. Every single day. And most businesses have no idea where that time is actually going. Let&#x27;s say you have working...</p></div>
-<div class="sub-card fade-in"><div class="sub-card-title">The Time Audit</div><p class="fade-in">The goal here is simple: list and rank where everyone's time is going. You don't need to audit everyone in the company.</p>
+      <div class="sub-card fade-in"><div class="sub-card-title">Step 2: Find Where Your Time Goes</div><p class="fade-in">You pay for people's time every day. Most businesses have no idea where it actually goes.</p>
+<p class="fade-in"><strong>Do this:</strong> Ask each department head to break down a typical day for their team. Hour by hour. Task by task. Then rank the tasks by total hours.</p>
 </div>
-<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">Template: Employee Time Audit</div><div class=template-intro><p>Do this for each team member in the department. Then flip it around and look at it by task instead of by person.</p></div><table>
-<thead>
-<tr>
-<th>Time Block</th>
-<th>Employee</th>
-<th>Task</th>
-<th>Category</th>
-<th>Hours/Week</th>
-<th>Automatable?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>9:00-10:00</td>
-<td>Bob</td>
-<td>Pulling CRM data for reports</td>
-<td>Data entry</td>
-<td>5</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>10:00-11:00</td>
-<td>Bob</td>
-<td>Reading and sorting emails</td>
-<td>Email management</td>
-<td>5</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>11:00-12:30</td>
-<td>Bob</td>
-<td>Replying to client emails</td>
-<td>Communication</td>
-<td>7.5</td>
-<td>Partially</td>
-</tr>
-<tr>
-<td>1:00-2:00</td>
-<td>Bob</td>
-<td>Updating project status in spreadsheet</td>
-<td>Admin</td>
-<td>5</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>2:00-3:00</td>
-<td>Bob</td>
-<td>Preparing weekly report</td>
-<td>Reporting</td>
-<td>5</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>3:00-4:00</td>
-<td>Bob</td>
-<td>Team meeting</td>
-<td>Collaboration</td>
-<td>5</td>
-<td>No</td>
-</tr>
-<tr>
-<td>4:00-5:00</td>
-<td>Bob</td>
-<td>Following up on overdue invoices</td>
-<td>Finance admin</td>
-<td>5</td>
-<td>Partially</td>
-</tr>
-</tbody>
-</table></div>
-<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">The Flip: Tasks Ranked by Total Hours</div><div class=template-intro><p>Now you can see exactly where the biggest time sinks are. These are your automation priorities.</p></div><table>
-<thead>
-<tr>
-<th>Task</th>
-<th>Total Hours/Week (All Staff)</th>
-<th>Automatable</th>
-<th>Priority</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Email management</td>
-<td>40</td>
-<td>Yes</td>
-<td>HIGH</td>
-</tr>
-<tr>
-<td>Data entry / CRM updates</td>
-<td>35</td>
-<td>Yes</td>
-<td>HIGH</td>
-</tr>
-<tr>
-<td>Report generation</td>
-<td>25</td>
-<td>Yes</td>
-<td>HIGH</td>
-</tr>
-<tr>
-<td>Invoice follow-ups</td>
-<td>20</td>
-<td>Partially</td>
-<td>MEDIUM</td>
-</tr>
-<tr>
-<td>Client communication</td>
-<td>15</td>
-<td>Partially</td>
-<td>MEDIUM</td>
-</tr>
-<tr>
-<td>Meetings</td>
-<td>30</td>
-<td>No</td>
-<td>LOW</td>
-</tr>
-</tbody>
-</table></div>
-<div class="sub-card fade-in"><div class="sub-card-title">Don&#x27;t Forget: Track the Hidden Costs</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">Mistakes and errors** — Which...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Delays** — Where do bottlenecks...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Overtime** — Which tasks regularly...</div></div></div></div>
-<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">Template: Hidden Cost Tracker</div><table>
+<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">Don&#x27;t forget the hidden costs:</div><table>
 <thead>
 <tr>
 <th>Process</th>
-<th>Avg Errors/Month</th>
+<th>Errors/Month</th>
 <th>Cost Per Error</th>
-<th>Avg Delay (Hours)</th>
-<th>Overtime Hours/Month</th>
-<th>Total Hidden Cost/Month</th>
+<th>Hidden Cost/Month</th>
 </tr>
 </thead>
 <tbody>
@@ -1848,32 +1915,23 @@ See the difference? The second version is what an AI can actually work with.</di
 <td>Invoice processing</td>
 <td>12</td>
 <td>$150</td>
-<td>4</td>
-<td>8</td>
 <td>$3,400</td>
 </tr>
 <tr>
 <td>Client onboarding</td>
 <td>5</td>
 <td>$300</td>
-<td>24</td>
-<td>12</td>
 <td>$3,300</td>
 </tr>
 <tr>
 <td>Report generation</td>
 <td>8</td>
 <td>$100</td>
-<td>6</td>
-<td>4</td>
 <td>$1,400</td>
 </tr>
 </tbody>
 </table></div>
-<div class="sub-card fade-in"><div class="sub-card-title">&quot;What About the Employees?&quot;</div><p class="fade-in">This is the question every business owner asks. If AI is doing all these tasks, what happens to the people?</p>
-<blockquote class="fade-in callout-green"><span class="callout-icon">&#128273;</span><div><p class="fade-in"><strong>Key Takeaway:</strong> Time is money. Once you can see exactly where every hour goes, you'll know exactly where to point your AI. We've never done a time audit for a client and NOT found at least 20 hours per week of automatable work. Usually it's closer to 40-140.</p></div></blockquote>
-<hr />
-</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">&quot;What about the employees?&quot;</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">20 hours</span></div><div class="mini-stat"><span class="mini-stat-num">140 hours</span></div></div><p class="sub-card-intro">You&#x27;re not replacing anyone. You&#x27;re upgrading what they work on. Instead of data entry and email sorting, your team works on strategy, client...</p></div>
     </div>
   </div>
 </section>
@@ -1884,91 +1942,40 @@ See the difference? The second version is what an AI can actually work with.</di
     <p class="section-label fade-in">Step 3</p>
     <h3 class="section-title fade-in">Architect Your AI Solution</h3>
     
+    
     <div class="sub-cards">
-      <div class="sub-card fade-in"><div class="sub-card-title">Step 3: Architect Your AI Solution</div><p class="fade-in">Now you know what your processes look like (Step 1) and where the time is going (Step 2). This step is about designing how AI will actually handle those processes.</p>
-</div>
-<div class="sub-card fade-in"><div class="sub-card-title">The Video Game Analogy</div><p class="fade-in">Think of your SOP as a video game level. The goal is to get from start to finish.</p>
-</div>
-<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">The Architecture Framework</div><div class=template-intro><p>For each process you want to automate, map out:</p></div><table>
+      <div class="sub-card stat-card fade-in"><div class="sub-card-title">Step 3: Design Your AI Solution</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">33%</span></div><div class="mini-stat"><span class="mini-stat-num">100%</span></div></div><p class="sub-card-intro">You know your processes (Step 1) and where the time goes (Step 2). Now design how AI will handle it. **ChatGPT alone** gets you about of the way...</p></div>
+<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">For each process, map out:</div><table>
 <thead>
 <tr>
-<th>Component</th>
-<th>Question to Answer</th>
+<th>Question</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Trigger</td>
-<td>What starts this workflow? (Email received? Form submitted? Time of day?)</td>
+<td>What starts it?</td>
+<td>Email received, form submitted, time of day</td>
 </tr>
 <tr>
-<td>Inputs</td>
-<td>What data does the AI need to start? (Email content? CRM record? Spreadsheet data?)</td>
+<td>What data does AI need?</td>
+<td>Email content, CRM record, spreadsheet</td>
 </tr>
 <tr>
-<td>Processing</td>
-<td>What does the AI need to do with that data? (Analyse? Categorise? Generate? Calculate?)</td>
+<td>What does AI do with it?</td>
+<td>Sort, write, calculate, generate</td>
 </tr>
 <tr>
-<td>Outputs</td>
-<td>What's the deliverable? (Report? Email reply? Updated record? Notification?)</td>
+<td>Where does the output go?</td>
+<td>Google Doc, CRM, email, Slack</td>
 </tr>
 <tr>
-<td>Destination</td>
-<td>Where does the output go? (Google Doc? CRM? Email? Slack?)</td>
-</tr>
-<tr>
-<td>Human Checkpoint</td>
-<td>Does a human need to review before the output goes live?</td>
+<td>Does a human check it first?</td>
+<td>Yes for client-facing, no for internal</td>
 </tr>
 </tbody>
 </table></div>
-<div class="sub-card fade-in"><div class="sub-card-title">What AI Should NOT Do (Yet)</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">Voice interactions** — AI voice...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Financial transactions** — Paying...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Regulatory and compliance** —...</div></div></div></div>
-<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">Template: Process Architecture Map</div><table>
-<thead>
-<tr>
-<th>Process</th>
-<th>Current Steps</th>
-<th>AI-Handled Steps</th>
-<th>Human Steps</th>
-<th>Estimated Automation %</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Email triage</td>
-<td>14</td>
-<td>11</td>
-<td>3</td>
-<td>79%</td>
-</tr>
-<tr>
-<td>Report generation</td>
-<td>22</td>
-<td>20</td>
-<td>2</td>
-<td>91%</td>
-</tr>
-<tr>
-<td>Invoice follow-up</td>
-<td>8</td>
-<td>5</td>
-<td>3</td>
-<td>63%</td>
-</tr>
-<tr>
-<td>Client onboarding</td>
-<td>31</td>
-<td>24</td>
-<td>7</td>
-<td>77%</td>
-</tr>
-</tbody>
-</table></div>
-<div class="sub-card fade-in"><div class="sub-card-title">Modifying Your SOPs for AI</div><p class="fade-in">Here's something most people don't think about: you might need to slightly modify your existing SOPs to make them more AI-friendly.</p>
-<blockquote class="fade-in callout-green"><span class="callout-icon">&#128273;</span><div><p class="fade-in"><strong>Key Takeaway:</strong> Don't settle for 33% automation by just using ChatGPT as a fancy text generator. Architect your solution to hit 90-100% by building end-to-end workflows.</p></div></blockquote>
-<hr />
-</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Keep humans on these (for now):</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">33%</span></div><div class="mini-stat"><span class="mini-stat-num">100%</span></div></div><p class="sub-card-intro">- Phone calls and voice interactions - Money movement (paying invoices, refunds) - Legal and compliance documents &gt; **Key Takeaway:** Don&#x27;t settle...</p></div>
     </div>
   </div>
 </section>
@@ -1979,54 +1986,11 @@ See the difference? The second version is what an AI can actually work with.</di
     <p class="section-label fade-in">Step 4</p>
     <h3 class="section-title fade-in">Build &amp; Develop</h3>
     
+    <div class="level-ladder"><div class="level-card fade-in fade-in-delay-1"><div class="level-header"><div class="level-num">1</div><div class="level-name">Chatbot</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:25%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$20-100/user</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">20-30% time saved</span></div></div><div class="level-best">Solo operators, small teams</div></div><div class="level-card fade-in fade-in-delay-2"><div class="level-header"><div class="level-num">2</div><div class="level-name">Chatbot + Connections</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:45%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">~$100/user</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">40-50% time saved</span></div></div><div class="level-best">Teams wanting more from chatbots</div></div><div class="level-card fade-in fade-in-delay-3"><div class="level-header"><div class="level-num">3</div><div class="level-name">AI Software</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:55%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$50-500/tool</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">50-60% time saved</span></div></div><div class="level-best">Specific pain points</div></div><div class="level-card fade-in fade-in-delay-4"><div class="level-header"><div class="level-num">4</div><div class="level-name">Custom AI Workflows</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:95%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$5K-15K/month</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">90%+ time saved</span></div></div><div class="level-best">Replacing entire processes</div></div></div>
     <div class="sub-cards">
-      <div class="sub-card fade-in"><div class="sub-card-title">Step 4: Build &amp; Develop</div><p class="fade-in">This is the step that scares most people. But it doesn't have to be all-or-nothing.</p>
+      <div class="sub-card fade-in"><div class="sub-card-title">Step 4: Pick Your Tools and Build</div><p class="fade-in">You don't have to spend big on day one. Think of it as a ladder. Start at the bottom, prove the value, then climb.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">Level 1: ChatGPT / Claude ($20-100/month per user)</div><p class="sub-card-intro">This is where most business owners are right now. You&#x27;re using a chatbot to write emails, summarise documents, draft reports, or answer questions. What it does:</p><div class="icon-list"><div class="icon-item"><span class="icon-item-icon">&#128176;</span><div><div class="icon-item-label">Saves roughly 20-30%</div><div class=icon-item-desc>of time on individual tasks</div></div></div><div class="icon-item"><span class="icon-item-icon">&#128176;</span><div><div class="icon-item-label">Costs almost nothing</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Requires zero technical skill</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">It can&#x27;t connect</div><div class=icon-item-desc>to your other tools</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">You still manually</div><div class=icon-item-desc>copy/paste everything</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">It can&#x27;t trigger</div><div class=icon-item-desc>actions or update systems</div></div></div></div></div>
-<div class="sub-card fade-in"><div class="sub-card-title">Level 2: ChatGPT / Claude + MCPs ($100/month per user)</div><p class="sub-card-intro">MCPs (Model Context Protocol) let your chatbot connect to your existing tools. Instead of just generating text, it can read from and write to your actual systems. What it does:</p><div class="icon-list"><div class="icon-item"><span class="icon-item-icon">&#128176;</span><div><div class="icon-item-label">Saves roughly 20%</div><div class=icon-item-desc>additional time on top of Level 1</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Connects your chatbot</div><div class=icon-item-desc>to Google Sheets, CRM, email, etc.</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Reduces copy/paste significantly</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">It still requires</div><div class=icon-item-desc>you to prompt it manually</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">It can&#x27;t run</div><div class=icon-item-desc>on its own (no automation)</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Limited to what</div><div class=icon-item-desc>MCPs are available for your tools</div></div></div></div></div>
-<div class="sub-card fade-in"><div class="sub-card-title">Level 3: Out-of-the-Box AI Software ($50-500/month)</div><p class="fade-in">These are purpose-built AI tools designed for specific tasks. Think of them as specialist AI employees.</p>
-</div>
-<div class="sub-card fade-in"><div class="sub-card-title">Level 4: Custom AI Workflows &amp; Employees ($5,000-50,000+ to build)</div><p class="sub-card-intro">This is where companies like The Entourage AI come in. We use tools like n8n, Relevance AI, and custom code to build AI workflows specifically designed for your business and your SOPs. What it does:</p><div class="icon-list"><div class="icon-item"><span class="icon-item-icon">&#128176;</span><div><div class="icon-item-label">Saves 90%+ of</div><div class=icon-item-desc>time on targeted processes</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Handles end-to-end workflows autonomously</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Connects all your</div><div class=icon-item-desc>existing tools together</div></div></div><div class="icon-item"><span class="icon-item-icon">&#127912;</span><div><div class="icon-item-label">Custom-built for your</div><div class=icon-item-desc>specific processes</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">It&#x27;s not cheap</div><div class=icon-item-desc>(but the ROI is massive)</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">It takes 4-6</div><div class=icon-item-desc>weeks to build properly</div></div></div><div class="icon-item"><span class="icon-item-icon">&#128065;</span><div><div class="icon-item-label">Requires ongoing monitoring</div><div class=icon-item-desc>and maintenance</div></div></div></div></div>
-<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">The Cost vs. Savings Comparison</div><table>
-<thead>
-<tr>
-<th>Level</th>
-<th>Monthly Cost</th>
-<th>Time Saved</th>
-<th>Best For</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Level 1: Chatbot</td>
-<td>$20-100/user</td>
-<td>20-30%</td>
-<td>Getting started</td>
-</tr>
-<tr>
-<td>Level 2: Chatbot + MCPs</td>
-<td>~$100/user</td>
-<td>40-50%</td>
-<td>More value from chatbots</td>
-</tr>
-<tr>
-<td>Level 3: AI Software</td>
-<td>$50-500/tool</td>
-<td>10-20% per tool</td>
-<td>Specific pain points</td>
-</tr>
-<tr>
-<td>Level 4: Custom Workflows</td>
-<td>$5K-15K/month</td>
-<td>90%+</td>
-<td>Replacing entire processes</td>
-</tr>
-</tbody>
-</table></div>
-<div class="sub-card fade-in"><div class="sub-card-title">The Real Numbers</div><p class="fade-in">Level 4 sounds expensive until you do the maths.</p>
-<blockquote class="fade-in callout-green"><span class="callout-icon">&#128273;</span><div><p class="fade-in"><strong>Key Takeaway:</strong> You don't have to spend tens of thousands on day one. Start with Level 1 (free/cheap), prove the value, then move up. But know that Level 4 is where the real savings happen.</p></div></blockquote>
-<hr />
-</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">The real maths (Level 4):</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$80,000</span></div><div class="mini-stat"><span class="mini-stat-num">$6,000</span></div><div class="mini-stat"><span class="mini-stat-num">80%</span></div></div><p class="sub-card-intro">A department of 10 people costs you /month. A custom AI workflow costs /month and automates of their work. Net savings: **$58,000/month....</p></div>
     </div>
   </div>
 </section>
@@ -2037,98 +2001,38 @@ See the difference? The second version is what an AI can actually work with.</di
     <p class="section-label fade-in">Step 5</p>
     <h3 class="section-title fade-in">Deploy Without The Mess</h3>
     
+    
     <div class="sub-cards">
-      <div class="sub-card fade-in"><div class="sub-card-title">Step 5: Deploy Without the Mess</div><p class="fade-in">You've documented your processes, audited your time, architected your solution, and built it. Now you have to actually put it into your business.</p>
+      <div class="sub-card fade-in"><div class="sub-card-title">Step 5: Roll It Out Without Breaking Things</div><p class="fade-in">You've built it. Now you need to put it into your business without causing chaos.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">1. Quality Assurance (QA): Human vs. AI</div><p class="fade-in">Quality assurance means making sure the AI's output is correct before it goes anywhere important.</p>
-<p class="fade-in">The rule of thumb is simple:</p>
+<div class="sub-card fade-in"><div class="sub-card-title">Three things to get right:</div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">1. Check the AI&#x27;s work</div><p class="fade-in">Simple rule: If the output goes to a customer or outside your company, a human checks it first. For internal stuff (sorting emails, logging data), let AI check itself.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">If the output goes to a human or an external platform → a human must QA it.</div><p class="sub-card-intro">Examples:</p><div class="icon-list"><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">AI writes an</div><div class=icon-item-desc>email to a client → human reviews before sending</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">AI generates a</div><div class=icon-item-desc>safety compliance report → human checks before filing</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">AI creates a</div><div class=icon-item-desc>proposal for a prospect → human approves before delivery</div></div></div></div></div>
-<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">The Two-Layer QA System</div><div class=template-intro><p>We recommend building two layers of quality assurance into every workflow:</p>
-<p>This two-layer system reduces mistakes by magnitudes compared to manual-only processes. In many cases, the AI QA layer catches errors that humans would have missed.</p></div><table>
-<thead>
-<tr>
-<th>Layer</th>
-<th>Who</th>
-<th>What They Do</th>
-<th>Catches</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Layer 1: AI QA</td>
-<td>Built into the workflow</td>
-<td>Checks output against rules, templates, and expected formats</td>
-<td>90% of issues</td>
-</tr>
-<tr>
-<td>Layer 2: Human QA</td>
-<td>Department manager or team lead</td>
-<td>Reviews flagged items and random samples</td>
-<td>The remaining 10% (edge cases, nuance, judgement calls)</td>
-</tr>
-</tbody>
-</table></div>
-<div class="sub-card fade-in"><div class="sub-card-title">2. Edge Cases: Plan for the Unexpected</div><p class="fade-in">An edge case is something that happens outside of what you planned for when designing the process.</p>
+<div class="sub-card fade-in"><div class="sub-card-title">2. Plan for surprises</div><p class="fade-in">What happens when something unexpected comes in? Build a fallback for every decision point. When in doubt, the AI sends it to a human.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">How to Edge-Case-Proof Your System:</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">Build &quot;else&quot; logic** — For every...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Use AI to find edge cases** — Take...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Route unknowns to humans** — When...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">4</div><div class="mini-flow-text">Review edge cases monthly** — Keep a...</div></div></div></div>
-<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">Template: Edge Case Log</div><table>
-<thead>
-<tr>
-<th>Date</th>
-<th>Workflow</th>
-<th>Edge Case Description</th>
-<th>How It Was Handled</th>
-<th>Fix Implemented?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>15/02</td>
-<td>Email triage</td>
-<td>Client sent an email in French</td>
-<td>Routed to human (no language detection)</td>
-<td>Yes — added language detection</td>
-</tr>
-<tr>
-<td>18/02</td>
-<td>Invoice follow-up</td>
-<td>Invoice amount was $0</td>
-<td>AI sent a follow-up for a $0 invoice</td>
-<td>Yes — added minimum amount filter</td>
-</tr>
-<tr>
-<td>22/02</td>
-<td>Report generation</td>
-<td>Client requested a custom format</td>
-<td>AI used standard template</td>
-<td>No — too rare to automate</td>
-</tr>
-</tbody>
-</table></div>
-<div class="sub-card fade-in"><div class="sub-card-title">3. Training: Show Your Team How to Use It</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">Update your SOPs** — Your old SOP...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Record a walkthrough** — A 5-10...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Assign a champion** — Pick one...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">4</div><div class="mini-flow-text">Start with one process** — Don&#x27;t...</div></div></div></div>
-<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">The Training Timeline</div><div class=template-intro><blockquote>
-<p><strong>Key Takeaway:</strong> Deployment is where the money is saved or lost. Get QA right, plan for edge cases, and train your team properly. Do it wrong and it costs you. Do it right and it's almost frictionless.</p>
+<div class="sub-card fade-in"><div class="sub-card-title">3. Train your team</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">Update your written processes to...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Record a 5-minute video showing the...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Pick one person per department as...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">4</div><div class="mini-flow-text">Roll out one workflow at a time, not ten</div></div></div></div>
+<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">Rollout timeline:</div><div class=template-intro><blockquote>
+<p><strong>Key Takeaway:</strong> One workflow at a time. Get it right, then move to the next.</p>
 </blockquote>
 <hr /></div><table>
 <thead>
 <tr>
 <th>Week</th>
-<th>Action</th>
+<th>What to Do</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Week 1</td>
-<td>Deploy one workflow. Department champion learns the system.</td>
+<td>Deploy one workflow. Champion learns it.</td>
 </tr>
 <tr>
 <td>Week 2</td>
-<td>Champion trains the team. Everyone uses the new workflow.</td>
+<td>Champion trains the team. Everyone uses it.</td>
 </tr>
 <tr>
 <td>Week 3</td>
-<td>Collect feedback. Fix any issues. Refine the QA process.</td>
+<td>Collect feedback. Fix issues.</td>
 </tr>
 <tr>
 <td>Week 4</td>
@@ -2145,49 +2049,48 @@ See the difference? The second version is what an AI can actually work with.</di
   <div class="container">
     <p class="section-label fade-in">Real Results</p>
     <h3 class="section-title fade-in">Real Example</h3>
-        <div class="sub-cards">
-      <div class="sub-card stat-card fade-in"><div class="sub-card-title">Real Example: B2B Marketing Company, $4.5M Revenue</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$4</span></div></div><p class="sub-card-intro">Here&#x27;s what this blueprint looks like in practice. This is a real client — a B2B email marketing company in Australia with a turnover of .5-5M.</p></div>
-<div class="sub-card fade-in"><div class="sub-card-title">What We Automated:</div><div class="icon-list"><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Reporting (end-to-end automated)</div></div></div><div class="icon-item"><span class="icon-item-icon">&#128100;</span><div><div class="icon-item-label">Client communications (partially</div><div class=icon-item-desc>automated with human QA)</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Operations workflows (end-to-end automated)</div></div></div></div></div>
-<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">The Results (Net Savings After Our Fees):</div><table>
+        
+    <div class="sub-cards">
+      <div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">Real Results: B2B Marketing Company, $4.5M Revenue</div><div class=template-intro><p>This is a real client in Australia. Here's what happened.</p>
+<p><strong>What we automated:</strong> Reporting, client communications, and operations workflows.</p>
+<p><strong>The maths:</strong> They pay us ~$6K/month. They save ~$52K/month. That's nearly 9x return.</p>
+<p>By Month 4, they took on 6 more clients with zero new hires. More revenue, same team.</p>
+<hr /></div><table>
 <thead>
 <tr>
 <th>Month</th>
-<th>What We Did</th>
+<th>What Happened</th>
 <th>Net Savings</th>
-<th>Capacity Increase</th>
+<th>Extra Capacity</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Month 1</td>
-<td>Automated reporting, comms, and operations</td>
+<td>Automated reporting + operations</td>
 <td>$46,000</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Month 2</td>
-<td>Optimised accuracy, created internal training guides</td>
+<td>Improved accuracy, built training guides</td>
 <td>$46,000</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Month 3</td>
-<td>Increased AI QA accuracy, reduced human review time</td>
+<td>Better AI quality checks</td>
 <td>$51,000</td>
 <td>+2 accounts</td>
 </tr>
 <tr>
 <td>Month 4</td>
-<td>Near-full autonomy on core workflows</td>
+<td>Near-full automation</td>
 <td>$56,000</td>
 <td>+6 accounts</td>
 </tr>
 </tbody>
 </table></div>
-<div class="sub-card stat-card fade-in"><div class="sub-card-title">The Maths:</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$52,000</span></div><div class="mini-stat"><span class="mini-stat-num">$6,000</span></div><div class="mini-stat"><span class="mini-stat-num">$46,000</span></div></div><p class="sub-card-intro">- Gross savings: ~/month - Our fee: ~/month - Net savings: ~/month (Month 1) - Scaling to $56,000/month by Month 4</p></div>
-<div class="sub-card fade-in"><div class="sub-card-title">What &quot;Capacity Increase&quot; Means:</div><p class="fade-in">Because the AI handled the repetitive work, the team could take on more clients without hiring more people. By Month 4, they increased their account management capacity by 6.</p>
-<hr />
-</div>
     </div>
   </div>
 </section>
@@ -2197,64 +2100,9 @@ See the difference? The second version is what an AI can actually work with.</di
   <div class="container">
     <p class="section-label fade-in">Assessment</p>
     <h3 class="section-title fade-in">Maturity Model</h3>
-        <div class="sub-cards">
-      <div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">The AI Adoption Maturity Model</div><div class=template-intro><p>Where does your business sit today?</p>
-<p>Most businesses reading this are at Stage 0 or Stage 1. That's fine. The goal isn't to jump to Stage 5 overnight. It's to move one stage at a time, prove the ROI at each level, and keep climbing.</p></div><table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>Description</th>
-<th>Tools Used</th>
-<th>Time Saved</th>
-<th>Monthly Cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Stage 0: Manual</strong></td>
-<td>Everything done by hand</td>
-<td>Spreadsheets, email, phone</td>
-<td>0%</td>
-<td>$0 (but you're paying in labour)</td>
-</tr>
-<tr>
-<td><strong>Stage 1: Assisted</strong></td>
-<td>Using chatbots for individual tasks</td>
-<td>ChatGPT, Claude</td>
-<td>20-30%</td>
-<td>$20-100/user</td>
-</tr>
-<tr>
-<td><strong>Stage 2: Connected</strong></td>
-<td>Chatbots connected to your tools</td>
-<td>ChatGPT + MCPs, Claude + MCPs</td>
-<td>40-50%</td>
-<td>~$100/user</td>
-</tr>
-<tr>
-<td><strong>Stage 3: Augmented</strong></td>
-<td>Purpose-built AI tools for specific tasks</td>
-<td>Read AI, Superhuman, etc.</td>
-<td>50-60%</td>
-<td>$50-500/tool</td>
-</tr>
-<tr>
-<td><strong>Stage 4: Automated</strong></td>
-<td>Custom AI workflows built for your SOPs</td>
-<td>n8n, Relevance AI, custom code</td>
-<td>90%+</td>
-<td>$5K-15K/month</td>
-</tr>
-<tr>
-<td><strong>Stage 5: Autonomous</strong></td>
-<td>AI departments running operations with human oversight</td>
-<td>Full stack</td>
-<td>95%+</td>
-<td>Varies</td>
-</tr>
-</tbody>
-</table></div>
-<div class="sub-card fade-in"><div class="sub-card-title">How to Assess Your Stage:</div><p class="sub-card-intro">Ask yourself these questions:</p><div class="icon-list"><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Do we have</div><div class=icon-item-desc>documented SOPs for our core processes? (If no → you&#x27;re...</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Are we using</div><div class=icon-item-desc>ChatGPT or Claude for daily tasks? (If yes → Stage 1)</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Are our AI</div><div class=icon-item-desc>tools connected to our business systems? (If yes → Stage 2)</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Do we use</div><div class=icon-item-desc>specialised AI software for specific tasks? (If yes →...</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Do we have</div><div class=icon-item-desc>custom AI workflows that run autonomously? (If yes →...</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Are entire departments</div><div class=icon-item-desc>running on AI with human oversight only? (If yes → Stage 5)</div></div></div></div></div>
+        <div class="level-ladder"><div class="level-card fade-in fade-in-delay-1"><div class="level-header"><div class="level-num">0</div><div class="level-name">Manual</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:5%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$0</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">0% automated</span></div></div><div class="level-best">Everything done by hand</div></div><div class="level-card fade-in fade-in-delay-2"><div class="level-header"><div class="level-num">1</div><div class="level-name">Assisted</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:25%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$20-100/user</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">20-30% automated</span></div></div><div class="level-best">Using ChatGPT for individual tasks</div></div><div class="level-card fade-in fade-in-delay-3"><div class="level-header"><div class="level-num">2</div><div class="level-name">Connected</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:45%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">~$100/user</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">40-50% automated</span></div></div><div class="level-best">Chatbot talks to your tools</div></div><div class="level-card fade-in fade-in-delay-4"><div class="level-header"><div class="level-num">3</div><div class="level-name">Augmented</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:55%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$50-500/tool</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">50-60% automated</span></div></div><div class="level-best">Purpose-built AI for specific tasks</div></div><div class="level-card fade-in fade-in-delay-1"><div class="level-header"><div class="level-num">4</div><div class="level-name">Automated</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:95%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$5K-15K/month</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">90%+ automated</span></div></div><div class="level-best">Custom workflows for your SOPs</div></div><div class="level-card fade-in fade-in-delay-2"><div class="level-header"><div class="level-num">5</div><div class="level-name">Autonomous</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:100%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">Varies</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">95%+ automated</span></div></div><div class="level-best">AI departments with human oversight</div></div></div>
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Where Does Your Business Sit Today?</div><p class="sub-card-intro">**Quick check:** Where are you?</p><div class="icon-list"><div class="icon-item"><span class="icon-item-icon">&#128196;</span><div><div class="icon-item-label">No documented processes?</div><div class=icon-item-desc>→ Stage 0</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Using ChatGPT daily?</div><div class=icon-item-desc>→ Stage 1</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">AI connected to</div><div class=icon-item-desc>your business systems? → Stage 2</div></div></div><div class="icon-item"><span class="icon-item-icon">&#9889;</span><div><div class="icon-item-label">Using specialist AI</div><div class=icon-item-desc>tools? → Stage 3</div></div></div><div class="icon-item"><span class="icon-item-icon">&#127912;</span><div><div class="icon-item-label">Custom workflows running</div><div class=icon-item-desc>on autopilot? → Stage 4</div></div></div></div></div>
     </div>
   </div>
 </section>
@@ -2264,22 +2112,22 @@ See the difference? The second version is what an AI can actually work with.</di
   <div class="container">
     <p class="section-label fade-in">Watch Out</p>
     <h3 class="section-title fade-in">Common Mistakes</h3>
-        <div class="sub-cards">
-      <div class="sub-card fade-in"><div class="sub-card-title">Common Mistakes That Cost Businesses Thousands</div><p class="fade-in">We've seen these mistakes hundreds of times. Don't make them.</p>
+        
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">7 Mistakes That Cost Businesses Thousands</div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Mistake 1: Not writing things down</div><p class="fade-in">&quot;We know our processes.&quot; No, you don't. Write them down. You'll find steps you didn't know existed.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">Mistake 1: Skipping Documentation</div><p class="fade-in">&quot;We know our processes, we don't need to write them down.&quot; No, you don't. You think you do.</p>
+<div class="sub-card fade-in"><div class="sub-card-title">Mistake 2: Automating the fun stuff first</div><p class="fade-in">Automate the boring, repetitive tasks nobody wants to do. That's where the money is.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">Mistake 2: Automating the Wrong Things First</div><p class="fade-in">Don't automate the cool stuff first. Automate the boring, repetitive, time-consuming stuff. The tasks nobody wants to do. That's where the ROI is.</p>
+<div class="sub-card fade-in"><div class="sub-card-title">Mistake 3: Not checking AI&#x27;s work</div><p class="fade-in">AI makes mistakes. Confidently. One bad email to a client can cost more than the whole project saved.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">Mistake 3: No Quality Assurance</div><p class="fade-in">&quot;The AI is smart enough, we don't need to check its work.&quot; Wrong. AI makes mistakes. Confidently. Without QA, one bad output going to a client can cost you more than the entire automation saved.</p>
+<div class="sub-card fade-in"><div class="sub-card-title">Mistake 4: Doing everything at once</div><p class="fade-in">One workflow at a time. Get it stable. Then add the next.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">Mistake 4: Trying to Do Everything at Once</div><p class="fade-in">Deploy one workflow at a time. Get it stable. Train the team. Then move to the next one. Companies that try to automate everything simultaneously end up with nothing working properly.</p>
+<div class="sub-card fade-in"><div class="sub-card-title">Mistake 5: Expecting magic</div><p class="fade-in">AI needs good instructions. Bad inputs = bad outputs. Always.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">Mistake 5: Treating AI Like a Magic Button</div><p class="fade-in">AI is a tool, not a miracle. It needs good inputs (your documented SOPs), clear instructions (your architecture), and oversight (your QA process). Garbage in, garbage out still applies.</p>
+<div class="sub-card fade-in"><div class="sub-card-title">Mistake 6: Ignoring your team</div><p class="fade-in">Tell your team AI removes the boring parts of their job, not their job. Involve them early.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">Mistake 6: Ignoring Your Team</div><p class="fade-in">Your employees will resist change if they feel threatened by it. Frame AI as a way to remove the boring parts of their job, not as a replacement for their role.</p>
-</div>
-<div class="sub-card fade-in"><div class="sub-card-title">Mistake 7: Not Tracking ROI</div><p class="fade-in">If you're not measuring what you're saving, how do you know it's working? Track time saved, errors reduced, and capacity gained. Every month. No exceptions.</p>
+<div class="sub-card fade-in"><div class="sub-card-title">Mistake 7: Not measuring results</div><p class="fade-in">Track time saved, errors reduced, and capacity gained. Every month.</p>
 <hr />
 </div>
     </div>
@@ -2291,14 +2139,14 @@ See the difference? The second version is what an AI can actually work with.</di
   <div class="container">
     <p class="section-label fade-in">Next Steps</p>
     <h3 class="section-title fade-in">Your Next Steps</h3>
-        <div class="sub-cards">
-      <div class="sub-card fade-in"><div class="sub-card-title">Your Next Step</div><p class="fade-in">You now have the exact blueprint we use with every client. The same framework that's saved businesses millions of dollars.</p>
-<p class="fade-in">Here's what to do right now:</p>
+        
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Your Next Steps</div><p class="fade-in">You now have the exact playbook we use with every client.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">If you want to do it yourself:</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">Start with Step 1. Open a Google Doc...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Do the time audit with your...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Use the architecture template to map...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">4</div><div class="mini-flow-text">Start with Level 1 or 2 development...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">5</div><div class="mini-flow-text">Follow the deployment checklist when...</div></div></div></div>
-<div class="sub-card fade-in"><div class="sub-card-title">If you want us to do it for you:</div><p class="fade-in">We'll go through this entire blueprint with your business in 2-3 weeks. We audit your processes, calculate your ROI, and build you a technical blueprint showing exactly what to automate and how much you'll save.</p>
+<div class="sub-card fade-in"><div class="sub-card-title">Do it yourself:</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">Open a Google Doc. Write down your...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Do a time audit with your department...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Use the templates above to map your...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">4</div><div class="mini-flow-text">Start with ChatGPT or Claude. It&#x27;s...</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">5</div><div class="mini-flow-text">Roll out one workflow at a time.</div></div></div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Want us to do it for you?</div><p class="fade-in">We'll run through this entire playbook with your business in 2-3 weeks. We audit your processes, calculate your ROI, and build a plan showing exactly what to automate and how much you'll save.</p>
 </div>
-<div class="sub-card fade-in"><div class="sub-card-title">Book Your Free AI Roadmap</div><p class="fade-in">theentourageai.com/book</p>
+<div class="sub-card fade-in"><div class="sub-card-title">Book a Free Consultation</div><p class="fade-in">theentourageai.com/book</p>
 <p class="fade-in">No pitch. No pressure. Just a clear picture of what AI can do for your business.</p>
 <hr />
 </div>
