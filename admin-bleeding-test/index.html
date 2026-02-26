@@ -163,36 +163,92 @@
   <div class="container">
     <div class="logo">The Entourage AI</div>
     <h1>Is Your Business Bleeding <span>$100K+</span> on Admin?</h1>
-    <p class="subtitle">Tick the boxes. Count your score.</p>
+    <p class="subtitle">Tick every box that applies. The more you tick, the more you're bleeding.</p>
 
     <div class="checklist">
       <div class="check-item" onclick="toggle(this)">
         <div class="checkbox"><span class="checkmark">&#10003;</span></div>
         <div class="check-text">
-          <h3>Manual data entry between systems</h3>
-          <p>Your team copies info from one tool to another by hand. CRM to accounting. Timesheets to payroll. Job details into spreadsheets.</p>
+          <h3>Staff re-enter data from one system into another</h3>
+          <p>e.g. copying job details from your CRM into Xero, MYOB, or QuickBooks</p>
         </div>
       </div>
 
       <div class="check-item" onclick="toggle(this)">
         <div class="checkbox"><span class="checkmark">&#10003;</span></div>
         <div class="check-text">
-          <h3>Tasks that are 100% digital</h3>
-          <p>The work never touches the physical world. Just moving, formatting, or sending information. Could run at 3am with nobody in the office.</p>
+          <h3>Someone manually chases invoices or payments</h3>
+          <p>Sending follow-up emails or making calls to collect overdue invoices every week</p>
         </div>
       </div>
 
       <div class="check-item" onclick="toggle(this)">
         <div class="checkbox"><span class="checkmark">&#10003;</span></div>
         <div class="check-text">
-          <h3>Multiple people doing the same task</h3>
-          <p>You've hired more headcount just to handle the volume of a repetitive task. That's not a staffing problem. That's a systems problem.</p>
+          <h3>Timesheets come in from the field and get typed up by hand</h3>
+          <p>Someone in the office re-enters hours from paper, texts, or photos into payroll</p>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark">&#10003;</span></div>
+        <div class="check-text">
+          <h3>Job schedules are updated manually across multiple tools</h3>
+          <p>Updating the same job status in your scheduler, project management tool, and spreadsheet separately</p>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark">&#10003;</span></div>
+        <div class="check-text">
+          <h3>Someone compiles a weekly report by pulling from multiple sources</h3>
+          <p>Opening 3-4 different tools every Friday to build one spreadsheet for the boss</p>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark">&#10003;</span></div>
+        <div class="check-text">
+          <h3>The same follow-up emails get sent over and over</h3>
+          <p>Quote follow-ups, onboarding emails, project updates — same message, different name, sent manually</p>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark">&#10003;</span></div>
+        <div class="check-text">
+          <h3>Two or more people do the same task to keep up with volume</h3>
+          <p>You've hired headcount to handle repetitive work instead of automating the task itself</p>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark">&#10003;</span></div>
+        <div class="check-text">
+          <h3>Compliance or safety documents are tracked in spreadsheets</h3>
+          <p>Manually checking expiry dates, chasing subbies for updated licences, updating a spreadsheet by hand</p>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark">&#10003;</span></div>
+        <div class="check-text">
+          <h3>Client updates are sent manually after every job milestone</h3>
+          <p>Someone writes and sends an email or text to the client every time a job moves forward</p>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark">&#10003;</span></div>
+        <div class="check-text">
+          <h3>Purchase orders are matched to invoices by hand</h3>
+          <p>Someone cross-references supplier invoices against POs manually before approving payment</p>
         </div>
       </div>
     </div>
 
     <div class="result" id="result">
-      <div class="score">Your score: <span id="score-count">0</span>/3</div>
+      <div class="score">Your score: <span id="score-count">0</span>/10</div>
       <div class="verdict" id="verdict">Tick the boxes above to see your result.</div>
     </div>
 
@@ -213,15 +269,15 @@
       result.className = 'result';
       if (count === 0) {
         verdict.textContent = "Tick the boxes above to see your result.";
-      } else if (count === 1) {
+      } else if (count <= 2) {
         result.classList.add('green');
-        verdict.textContent = "You've got a quick win sitting there. One task to automate.";
-      } else if (count === 2) {
+        verdict.textContent = "A couple of quick wins. You could automate these in weeks.";
+      } else if (count <= 5) {
         result.classList.add('amber');
-        verdict.textContent = "You're likely wasting $50K\u2013$100K/year on admin a system should handle.";
+        verdict.textContent = "You're wasting $50K\u2013$100K/year on admin a system should handle.";
       } else {
         result.classList.add('red');
-        verdict.textContent = "You're bleeding six figures on work that doesn't need people. Highest-ROI fix you can make.";
+        verdict.textContent = "You're bleeding six figures. This is the highest-ROI fix you can make right now.";
       }
     }
   </script>
