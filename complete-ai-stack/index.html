@@ -1,0 +1,2872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Complete AI Stack for Business Owners — The Entourage AI</title>
+  <style>
+    /* The Entourage AI — Lead Magnet HTML Styles */
+/* Brand: Navy #030517, Blue #146EF5, Inter font */
+/* Animated web page — same design language as SBC system guides */
+
+/* ============================================================
+   FONTS
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================================
+   CSS VARIABLES
+   ============================================================ */
+:root {
+  --blue: #146EF5;
+  --blue-dark: #0A3D8F;
+  --blue-light: #3B82F6;
+  --blue-glow: rgba(20,110,245,0.4);
+  --blue-subtle: rgba(20,110,245,0.08);
+  --pink: #D92B6B;
+  --pink-subtle: rgba(217,43,107,0.08);
+  /* Primary: blue-to-blue. Pop: blue-to-pink (use sparingly) */
+  --gradient: linear-gradient(135deg, #0A3D8F, #146EF5, #3B82F6);
+  --gradient-pop: linear-gradient(135deg, #146EF5, #D92B6B);
+  --gradient-wide: linear-gradient(90deg, #0A3D8F 0%, #146EF5 50%, #3B82F6 100%);
+  --navy: #030517;
+  --navy-card: #0A0E23;
+  --navy-light: #0f1430;
+  --navy-border: rgba(255,255,255,0.06);
+  --white: #FFFFFF;
+  --white-90: rgba(255,255,255,0.9);
+  --white-70: rgba(255,255,255,0.7);
+  --white-50: rgba(255,255,255,0.5);
+  --white-30: rgba(255,255,255,0.3);
+  --white-10: rgba(255,255,255,0.06);
+  --green: #34D399;
+  --green-subtle: rgba(52,211,153,0.08);
+  --amber: #FBBF24;
+  --amber-subtle: rgba(251,191,36,0.08);
+  --red: #F87171;
+  --red-subtle: rgba(248,113,113,0.08);
+  --radius: 16px;
+  --radius-sm: 12px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+
+/* ============================================================
+   PARTICLE CANVAS — Floating dots background
+   ============================================================ */
+.particle-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   GRADIENT MESH BLOBS — Soft colored blobs
+   ============================================================ */
+.mesh-blobs {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.07;
+  animation: blob-drift 20s ease-in-out infinite;
+}
+.blob-1 {
+  width: 600px; height: 600px;
+  background: var(--blue);
+  top: 10%; left: -10%;
+  animation-delay: 0s;
+}
+.blob-2 {
+  width: 500px; height: 500px;
+  background: var(--blue-dark);
+  top: 50%; right: -10%;
+  animation-delay: -7s;
+  animation-duration: 25s;
+}
+.blob-3 {
+  width: 400px; height: 400px;
+  background: var(--pink);
+  bottom: 10%; left: 30%;
+  animation-delay: -14s;
+  animation-duration: 22s;
+  opacity: 0.04;
+}
+@keyframes blob-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(40px, -30px) scale(1.05); }
+  50% { transform: translate(-20px, 40px) scale(0.95); }
+  75% { transform: translate(30px, 20px) scale(1.02); }
+}
+
+/* ============================================================
+   FADE-IN ANIMATIONS
+   ============================================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================================
+   SECTION DIVIDER
+   ============================================================ */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(10,61,143,0.3), rgba(20,110,245,0.25), rgba(59,130,246,0.15), transparent);
+}
+
+/* ============================================================
+   SECTIONS — Proper spacing between major parts
+   ============================================================ */
+.section {
+  padding: 80px 0;
+}
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+  color: var(--white);
+}
+.section-subtitle {
+  font-size: 17px;
+  color: var(--white-50);
+  max-width: 640px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   STICKY TOP BAR — follows on scroll
+   ============================================================ */
+.sticky-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(3,5,23,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(20,110,245,0.1);
+  padding: 12px 40px;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.sticky-bar.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+.sticky-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sticky-brand {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white-90);
+  letter-spacing: 0.5px;
+}
+.sticky-cta {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--gradient-pop);
+  padding: 10px 24px;
+  border-radius: 100px;
+  letter-spacing: 0.3px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(20,110,245,0.2);
+}
+.sticky-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(20,110,245,0.3), 0 6px 24px rgba(217,43,107,0.1);
+}
+
+/* ============================================================
+   HERO / COVER
+   ============================================================ */
+.hero {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 80px;
+  background: linear-gradient(180deg, #060A20 0%, var(--navy) 60%, #0a0520 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(20,110,245,0.12) 0%, rgba(10,61,143,0.06) 40%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,43,107,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 100px;
+  background: rgba(20,110,245,0.1);
+  border: 1px solid rgba(20,110,245,0.25);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white-90);
+  margin-bottom: 32px;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+.hero-badge .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.hero h1 {
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+  position: relative;
+  line-height: 1.1;
+  max-width: 800px;
+  background: linear-gradient(135deg, var(--white) 0%, var(--white) 50%, #3B82F6 85%, #146EF5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero h1::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 4px;
+  margin: 20px auto 0;
+  border-radius: 4px;
+  background: var(--gradient);
+}
+.hero h2 {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--white-50);
+  margin-bottom: 12px;
+  max-width: 500px;
+  line-height: 1.6;
+}
+.hero .date {
+  font-size: 15px;
+  color: var(--white-30);
+  margin-bottom: 40px;
+}
+.hero-logo {
+  font-size: 14px;
+  color: var(--white-30);
+  letter-spacing: 1px;
+}
+.hero-logo span {
+  background: var(--gradient-pop);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+/* ============================================================
+   CONTENT BODY
+   ============================================================ */
+.content {
+  padding: 0;
+}
+
+/* ============================================================
+   HEADINGS inside content
+   ============================================================ */
+.content h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--white);
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+.content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white-90);
+  margin: 32px 0 12px 0;
+  line-height: 1.35;
+}
+.content h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white-90);
+  margin: 24px 0 8px 0;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   PARAGRAPHS & INLINE
+   ============================================================ */
+.content p {
+  font-size: 17px;
+  color: var(--white-50);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.content strong {
+  font-weight: 600;
+  color: var(--white-90);
+}
+.content em {
+  font-style: italic;
+  color: var(--white-70);
+}
+.content a {
+  color: var(--blue);
+  text-decoration: none;
+}
+.content a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   LISTS
+   ============================================================ */
+.content ul,
+.content ol {
+  margin: 8px 0 24px 0;
+  padding-left: 0;
+  list-style: none;
+}
+.content li {
+  padding: 6px 0 6px 20px;
+  font-size: 15px;
+  color: var(--white-50);
+  position: relative;
+  line-height: 1.6;
+}
+.content li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.6;
+}
+.content ol {
+  counter-reset: item;
+}
+.content ol li {
+  counter-increment: item;
+}
+.content ol li::before {
+  content: counter(item);
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  opacity: 1;
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 15px;
+  top: 6px;
+  left: 0;
+}
+.content li strong {
+  color: var(--white-90);
+}
+.content li > ul,
+.content li > ol {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   STEP CARDS — Numbered step sections
+   ============================================================ */
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.step-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.step-card:hover {
+  border-color: rgba(20,110,245,0.15);
+}
+.step-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--navy-border);
+}
+.step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.step-card-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  flex: 1;
+  margin: 0;
+  color: var(--white);
+}
+.step-card-body {
+  padding: 28px 32px;
+}
+.step-card-body p {
+  font-size: 15px;
+  color: var(--white-50);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.step-card-body p:last-child {
+  margin-bottom: 0;
+}
+.step-card-body ul,
+.step-card-body ol {
+  margin: 8px 0 16px 0;
+}
+.step-card-body h4 {
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+.step-card-body table {
+  margin: 12px 0 20px 0;
+}
+.step-card-body blockquote {
+  margin: 16px 0;
+}
+
+/* ============================================================
+   INFO CARDS — Two-column grid
+   ============================================================ */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+.info-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius-sm);
+  padding: 28px;
+  transition: border-color 0.3s;
+}
+.info-card:hover {
+  border-color: rgba(20,110,245,0.15);
+}
+.info-card .info-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.info-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: var(--white);
+}
+.info-card p {
+  font-size: 14px;
+  color: var(--white-50);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================================
+   QUICK CARDS — Three-column overview grid
+   ============================================================ */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 24px 0 32px 0;
+}
+.quick-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.quick-card:hover {
+  border-color: rgba(20,110,245,0.2);
+  transform: translateY(-2px);
+}
+.quick-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 24px;
+  box-shadow: 0 4px 20px rgba(20,110,245,0.25);
+}
+.quick-card h4 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: var(--white);
+}
+.quick-card p {
+  font-size: 14px;
+  color: var(--white-50);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================================
+   TABLES — Navy card, blue header labels
+   ============================================================ */
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0 32px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.content thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(20,110,245,0.12);
+}
+.content tbody td {
+  padding: 14px 20px;
+  font-size: 14px;
+  color: var(--white-70);
+  border-bottom: 1px solid var(--navy-border);
+}
+.content tbody tr:last-child td {
+  border-bottom: none;
+}
+.content tbody tr:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+/* ============================================================
+   BLOCKQUOTES — Callout cards with icon
+   ============================================================ */
+.content blockquote {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  line-height: 1.7;
+  background: rgba(20,110,245,0.06);
+  border: 1px solid rgba(20,110,245,0.15);
+  color: var(--white-70);
+  margin: 24px 0 32px 0;
+}
+.callout-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-top: -2px;
+}
+.content blockquote p {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  color: var(--white-70);
+}
+.content blockquote p:last-child {
+  margin-bottom: 0;
+}
+.content blockquote strong {
+  color: var(--white-90);
+}
+
+/* Callout variants */
+.callout-green {
+  background: rgba(52,211,153,0.06) !important;
+  border-color: rgba(52,211,153,0.15) !important;
+}
+.callout-amber {
+  background: rgba(251,191,36,0.06) !important;
+  border-color: rgba(251,191,36,0.15) !important;
+}
+.callout-red {
+  background: rgba(248,113,113,0.06) !important;
+  border-color: rgba(248,113,113,0.15) !important;
+}
+
+/* ============================================================
+   COMPARE CARDS — Bad vs Good, Before vs After
+   ============================================================ */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+.compare-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  overflow: hidden;
+}
+.compare-card.compare-bad {
+  border-top: 3px solid var(--red);
+}
+.compare-card.compare-good {
+  border-top: 3px solid var(--green);
+}
+.compare-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.compare-bad .compare-label {
+  color: var(--red);
+}
+.compare-good .compare-label {
+  color: var(--green);
+}
+.compare-card p {
+  font-size: 14px;
+  color: var(--white-50);
+  line-height: 1.6;
+  margin: 0;
+}
+.compare-card ol {
+  margin: 8px 0 0 0;
+}
+
+/* ============================================================
+   TABLE OF CONTENTS — Clickable navigation
+   ============================================================ */
+.toc {
+  padding: 60px 0;
+}
+.toc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 32px;
+}
+.toc-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: border-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+.toc-item:hover {
+  border-color: rgba(20,110,245,0.25);
+  transform: translateX(4px);
+}
+.toc-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.toc-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+}
+
+/* ============================================================
+   SUB-CARDS — Individual content blocks within a section
+   ============================================================ */
+.sub-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.sub-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  transition: border-color 0.3s;
+}
+.sub-card:hover {
+  border-color: rgba(20,110,245,0.12);
+}
+.sub-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sub-card-intro {
+  font-size: 15px;
+  color: var(--white-50);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.sub-card p {
+  font-size: 15px;
+  color: var(--white-50);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.sub-card p:last-child {
+  margin-bottom: 0;
+}
+.sub-card strong {
+  color: var(--white-90);
+  font-weight: 600;
+}
+.sub-card ul, .sub-card ol {
+  margin: 8px 0 12px 0;
+  padding-left: 0;
+  list-style: none;
+}
+.sub-card li {
+  padding: 4px 0 4px 18px;
+  font-size: 14px;
+  color: var(--white-50);
+  position: relative;
+  line-height: 1.6;
+}
+.sub-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.6;
+}
+.sub-card ol { counter-reset: item; }
+.sub-card ol li { counter-increment: item; }
+.sub-card ol li::before {
+  content: counter(item);
+  width: auto; height: auto; border-radius: 0;
+  background: none; opacity: 1;
+  color: var(--blue); font-weight: 600; font-size: 13px;
+  top: 4px;
+}
+.sub-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 13px;
+  border: 1px solid var(--navy-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sub-card thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--navy-border);
+}
+.sub-card tbody td {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--white-70);
+  border-bottom: 1px solid var(--navy-border);
+}
+.sub-card tbody tr:last-child td { border-bottom: none; }
+.sub-card blockquote {
+  margin: 16px 0;
+  padding: 18px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  background: rgba(20,110,245,0.06);
+  border: 1px solid rgba(20,110,245,0.15);
+  color: var(--white-70);
+}
+
+/* ============================================================
+   ICON LIST — Bullet items as icon rows
+   ============================================================ */
+.icon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.icon-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  border: 1px solid var(--navy-border);
+  transition: border-color 0.3s;
+}
+.icon-item:hover {
+  border-color: rgba(20,110,245,0.15);
+}
+.icon-item-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+  margin-top: 2px;
+}
+.icon-item-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+  line-height: 1.4;
+}
+.icon-item-desc {
+  font-size: 13px;
+  color: var(--white-50);
+  line-height: 1.5;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   TEMPLATE CARD — Tables with special styling
+   ============================================================ */
+.template-card {
+  background: var(--navy-card);
+  border: 1px solid rgba(20,110,245,0.15);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.template-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-wide);
+}
+.template-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.template-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.template-intro {
+  font-size: 14px;
+  color: var(--white-50);
+  margin-bottom: 16px;
+}
+.template-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  border: 1px solid var(--navy-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.template-card thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--navy-border);
+}
+.template-card tbody td {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--white-70);
+  border-bottom: 1px solid var(--navy-border);
+}
+.template-card tbody tr:last-child td { border-bottom: none; }
+
+/* ============================================================
+   MINI STATS — Highlighted numbers
+   ============================================================ */
+.stat-card {
+  border-color: rgba(20,110,245,0.15);
+}
+.mini-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.mini-stat {
+  padding: 10px 20px;
+  background: var(--blue-subtle);
+  border: 1px solid rgba(20,110,245,0.2);
+  border-radius: 10px;
+}
+.mini-stat-num {
+  font-size: 18px;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+/* ============================================================
+   HIGHLIGHT BAR — Key metric strip
+   ============================================================ */
+.highlight-bar {
+  display: flex;
+  gap: 20px;
+  padding: 24px 0;
+  margin: 20px 0 32px 0;
+  flex-wrap: wrap;
+}
+.highlight-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: var(--navy-card);
+  border: 1px solid rgba(20,110,245,0.15);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+  transition: border-color 0.3s;
+}
+.highlight-chip:hover {
+  border-color: rgba(20,110,245,0.3);
+}
+.highlight-chip .chip-num {
+  color: var(--blue);
+  font-weight: 800;
+}
+
+/* ============================================================
+   COMPARE TEXT — Inside compare cards
+   ============================================================ */
+.compare-text {
+  font-size: 14px;
+  color: var(--white-50);
+  line-height: 1.6;
+}
+.compare-text ol, .compare-text ul {
+  margin: 8px 0;
+  padding-left: 0;
+  list-style: none;
+}
+.compare-text ul li {
+  padding: 3px 0 3px 16px;
+  font-size: 13px;
+  position: relative;
+}
+.compare-text ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--white-30);
+}
+.compare-text ol {
+  counter-reset: compare-step;
+}
+.compare-text ol li {
+  counter-increment: compare-step;
+  padding: 6px 0 6px 28px;
+  font-size: 13px;
+  position: relative;
+  border-bottom: 1px solid var(--navy-border);
+}
+.compare-text ol li:last-child {
+  border-bottom: none;
+}
+.compare-text ol li::before {
+  content: counter(compare-step);
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: var(--green-subtle);
+  color: var(--green);
+  font-weight: 700;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.compare-card ul, .compare-card ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.compare-card li {
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--white-70);
+  border-bottom: 1px solid var(--navy-border);
+  padding-left: 0;
+}
+.compare-card li::before {
+  display: none;
+}
+.compare-card li:last-child {
+  border-bottom: none;
+}
+
+/* ============================================================
+   NUMBERED VISUAL — Styled ordered lists
+   ============================================================ */
+.numbered-visual {
+  counter-reset: step;
+}
+.numbered-visual li {
+  counter-increment: step;
+  padding: 8px 0 8px 32px;
+  position: relative;
+  font-size: 14px;
+  color: var(--white-50);
+}
+.numbered-visual li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   FLOW DIAGRAM — Animated process arrows
+   ============================================================ */
+.flow-section {
+  background: linear-gradient(180deg, var(--navy) 0%, #060A20 50%, var(--navy) 100%);
+}
+.flow-diagram {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 32px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 130px;
+  min-width: 100px;
+}
+.flow-box {
+  padding: 14px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--navy-card);
+  border: 1px solid rgba(20,110,245,0.2);
+  box-shadow: 0 0 20px rgba(20,110,245,0.1), 0 0 40px rgba(10,61,143,0.06);
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  color: var(--white-90);
+}
+.flow-arrow {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.flow-arrow-line {
+  width: 20px;
+  height: 2px;
+  background: rgba(20,110,245,0.3);
+  position: relative;
+  overflow: hidden;
+  margin-top: 23px;
+}
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue-dark), var(--blue), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% { left: -20px; }
+  100% { left: 20px; }
+}
+
+/* ============================================================
+   PROGRESS BARS — Animated horizontal bars for metrics
+   ============================================================ */
+.progress-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 24px 0 32px 0;
+}
+.progress-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.progress-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+  min-width: 160px;
+}
+.progress-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  min-width: 60px;
+  text-align: right;
+}
+.progress-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(20,110,245,0.1);
+  border-radius: 100px;
+  overflow: hidden;
+  min-width: 100px;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: var(--gradient-wide);
+  animation: progress-grow 1.2s ease-out forwards;
+  transform-origin: left;
+}
+@keyframes progress-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* ============================================================
+   LEVEL LADDER — Visual stages/tiers
+   ============================================================ */
+.level-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0 32px 0;
+}
+.level-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  transition: border-color 0.3s;
+}
+.level-card:hover {
+  border-color: rgba(20,110,245,0.2);
+}
+.level-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.level-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.level-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+}
+.level-bar-track {
+  height: 6px;
+  background: rgba(20,110,245,0.08);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.level-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: var(--gradient-wide);
+  animation: progress-grow 1s ease-out forwards;
+}
+.level-details {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+.level-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.level-detail-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--white-30);
+}
+.level-detail-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-90);
+}
+.level-best {
+  font-size: 13px;
+  color: var(--white-50);
+  font-style: italic;
+}
+
+/* ============================================================
+   MINI FLOW — Horizontal process diagrams inside sub-cards
+   ============================================================ */
+.mini-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 16px 0;
+}
+.mini-flow-node {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  background: rgba(20,110,245,0.06);
+  border: 1px solid rgba(20,110,245,0.15);
+  border-radius: 10px;
+}
+.mini-flow-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--gradient);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.mini-flow-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white-90);
+  line-height: 1.5;
+  white-space: normal;
+}
+.mini-flow-text a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+.mini-flow-arrow {
+  display: none;
+}
+.mini-flow-arrow-line {
+  width: 24px;
+  height: 2px;
+  background: rgba(20,110,245,0.25);
+  position: relative;
+  overflow: hidden;
+}
+.mini-flow-arrow-line .shimmer {
+  position: absolute;
+  top: 0;
+  left: -24px;
+  width: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue-dark), var(--blue), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ============================================================
+   SECTION CONNECTOR — Animated vertical line between sections
+   ============================================================ */
+.section-connector {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+}
+.section-connector-line {
+  width: 2px;
+  height: 48px;
+  background: linear-gradient(180deg, rgba(20,110,245,0.3), rgba(20,110,245,0.05));
+  position: relative;
+  overflow: hidden;
+}
+.section-connector-line::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 16px;
+  background: linear-gradient(180deg, transparent, var(--blue), transparent);
+  animation: connector-pulse 2.5s ease-in-out infinite;
+  top: -16px;
+}
+@keyframes connector-pulse {
+  0% { top: -16px; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: 48px; opacity: 0; }
+}
+.section-connector-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  position: absolute;
+  bottom: -4px;
+  left: -3px;
+  box-shadow: 0 0 12px var(--blue-glow);
+  animation: dot-glow 2.5s ease-in-out infinite;
+}
+@keyframes dot-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(20,110,245,0.2); }
+  50% { box-shadow: 0 0 16px rgba(20,110,245,0.5); }
+}
+
+/* ============================================================
+   ANIMATED COUNTER — Numbers count up on scroll
+   ============================================================ */
+.counter-row {
+  display: flex;
+  gap: 20px;
+  margin: 24px 0 32px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.counter-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  text-align: center;
+  flex: 1;
+  min-width: 140px;
+}
+.counter-number {
+  font-size: 36px;
+  font-weight: 900;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+.counter-label {
+  font-size: 13px;
+  color: var(--white-50);
+  margin-top: 6px;
+}
+
+/* ============================================================
+   SVG DONUT CHART — Animated ring chart
+   ============================================================ */
+.donut-row {
+  display: flex;
+  gap: 32px;
+  margin: 24px 0 32px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.donut-card {
+  text-align: center;
+}
+.donut-svg {
+  width: 120px;
+  height: 120px;
+}
+.donut-track {
+  fill: none;
+  stroke: rgba(20,110,245,0.1);
+  stroke-width: 8;
+}
+.donut-fill {
+  fill: none;
+  stroke: url(#donutGrad);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 1.5s ease-out;
+}
+.donut-fill.animated {
+  /* JS sets the final dashoffset */
+}
+.donut-center {
+  font-size: 24px;
+  font-weight: 800;
+  fill: var(--white);
+}
+.donut-label {
+  font-size: 13px;
+  color: var(--white-50);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   BAR CHART — Horizontal animated bars
+   ============================================================ */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0 32px 0;
+}
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bar-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white-90);
+  min-width: 130px;
+}
+.bar-track {
+  flex: 1;
+  height: 24px;
+  background: rgba(20,110,245,0.08);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: var(--gradient-wide);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s ease-out;
+}
+.bar-fill.animated { transform: scaleX(1); }
+.bar-value {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+/* ============================================================
+   GAUGE — Speedometer-style comparison
+   ============================================================ */
+.gauge-row {
+  display: flex;
+  gap: 40px;
+  margin: 24px 0 32px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.gauge-card {
+  text-align: center;
+}
+.gauge-svg {
+  width: 140px;
+  height: 80px;
+}
+.gauge-track {
+  fill: none;
+  stroke: rgba(20,110,245,0.1);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+.gauge-fill {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 157;
+  stroke-dashoffset: 157;
+  transition: stroke-dashoffset 1.5s ease-out;
+}
+.gauge-fill.bad { stroke: var(--red); }
+.gauge-fill.good { stroke: var(--green); }
+.gauge-fill.great { stroke: url(#gaugeGrad); }
+.gauge-value {
+  font-size: 20px;
+  font-weight: 800;
+  fill: var(--white);
+}
+.gauge-label {
+  font-size: 13px;
+  color: var(--white-50);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   TIMELINE — Animated vertical timeline
+   ============================================================ */
+.timeline {
+  position: relative;
+  margin: 32px 0;
+  padding-left: 40px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--blue), rgba(20,110,245,0.1));
+}
+.timeline-item {
+  position: relative;
+  padding: 0 0 32px 24px;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -31px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gradient);
+  box-shadow: 0 0 12px var(--blue-glow);
+}
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(20,110,245,0.2);
+}
+.timeline-date {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+.timeline-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.timeline-desc {
+  font-size: 14px;
+  color: var(--white-50);
+}
+.timeline-stat {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--blue-subtle);
+  border: 1px solid rgba(20,110,245,0.2);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue-light);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   ACCORDION — Expand/collapse sections
+   ============================================================ */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+.accordion-item {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.accordion-item.open {
+  border-color: rgba(20,110,245,0.2);
+}
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+  gap: 12px;
+}
+.accordion-header:hover {
+  background: rgba(255,255,255,0.02);
+}
+.accordion-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white-90);
+}
+.accordion-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: rgba(20,110,245,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  color: var(--blue);
+  font-size: 14px;
+}
+.accordion-item.open .accordion-icon {
+  transform: rotate(45deg);
+}
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.accordion-item.open .accordion-body {
+  max-height: 800px;
+}
+.accordion-content {
+  padding: 0 20px 16px;
+  font-size: 14px;
+  color: var(--white-50);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   INTERACTIVE CHECKLIST — Tickable items
+   ============================================================ */
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s;
+  user-select: none;
+}
+.checklist-item:hover {
+  border-color: rgba(20,110,245,0.2);
+}
+.checklist-item.checked {
+  border-color: rgba(52,211,153,0.3);
+  background: rgba(52,211,153,0.04);
+}
+.checklist-box {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--white-30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  margin-top: 1px;
+}
+.checklist-item.checked .checklist-box {
+  background: var(--green);
+  border-color: var(--green);
+}
+.checklist-box svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.checklist-item.checked .checklist-box svg {
+  opacity: 1;
+}
+.checklist-text {
+  font-size: 14px;
+  color: var(--white-70);
+  line-height: 1.5;
+  transition: color 0.3s;
+}
+.checklist-item.checked .checklist-text {
+  color: var(--white-50);
+  text-decoration: line-through;
+  text-decoration-color: var(--white-30);
+}
+
+/* ============================================================
+   BEFORE/AFTER SLIDER — Drag comparison
+   ============================================================ */
+.ba-slider {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 24px 0 32px 0;
+  border: 1px solid var(--navy-border);
+  user-select: none;
+  touch-action: none;
+}
+.ba-side {
+  padding: 28px;
+  min-height: 200px;
+}
+.ba-before {
+  background: rgba(248,113,113,0.05);
+  border-right: 2px solid var(--red);
+}
+.ba-after {
+  background: rgba(52,211,153,0.05);
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  border-left: 2px solid var(--green);
+}
+.ba-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.ba-before .ba-label { color: var(--red); }
+.ba-after .ba-label { color: var(--green); }
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  transform: translateX(-50%);
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.ba-handle-line {
+  width: 3px;
+  height: 100%;
+  background: var(--blue);
+  border-radius: 3px;
+  box-shadow: 0 0 12px var(--blue-glow);
+}
+.ba-handle-grip {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  color: var(--white);
+  font-size: 14px;
+}
+
+/* ============================================================
+   PROGRESS TRACKER — Sticky sidebar showing current section
+   ============================================================ */
+.progress-tracker {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.progress-tracker.visible {
+  opacity: 1;
+}
+.pt-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--white-10);
+  border: 1.5px solid var(--white-30);
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+.pt-dot.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  box-shadow: 0 0 8px var(--blue-glow);
+}
+.pt-dot:hover::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--white-90);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ============================================================
+   DRAW-ON-SCROLL SVG — Lines that animate in
+   ============================================================ */
+.draw-svg {
+  overflow: visible;
+}
+.draw-path {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: var(--path-length);
+  stroke-dashoffset: var(--path-length);
+  transition: stroke-dashoffset 1.5s ease-out;
+  opacity: 0.3;
+}
+.draw-path.drawn {
+  stroke-dashoffset: 0;
+}
+
+/* ============================================================
+   SVG ICONS — Clean vector icons (replacing emojis)
+   ============================================================ */
+.svg-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.svg-icon path, .svg-icon circle, .svg-icon rect,
+.svg-icon polyline, .svg-icon line {
+  stroke: var(--blue);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-item-icon .svg-icon {
+  width: 20px;
+  height: 20px;
+}
+.quick-icon .svg-icon {
+  width: 28px;
+  height: 28px;
+}
+.quick-icon .svg-icon path,
+.quick-icon .svg-icon circle,
+.quick-icon .svg-icon polyline,
+.quick-icon .svg-icon line,
+.quick-icon .svg-icon rect {
+  stroke: var(--white);
+}
+.flow-box .svg-icon {
+  width: 18px;
+  height: 18px;
+}
+.flow-box .svg-icon path,
+.flow-box .svg-icon circle,
+.flow-box .svg-icon polyline,
+.flow-box .svg-icon line {
+  stroke: var(--white-90);
+}
+.sub-card-title .svg-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================================
+   SECTION ILLUSTRATIONS — Animated SVG visuals for steps
+   ============================================================ */
+.section-illus-wrap {
+  display: flex;
+  justify-content: center;
+  margin: -8px 0 32px 0;
+}
+.section-illus {
+  width: 240px;
+  height: auto;
+  opacity: 0.7;
+  transition: opacity 0.5s;
+}
+.section-illus-wrap:hover .section-illus {
+  opacity: 1;
+}
+
+/* ============================================================
+   DRAW DIVIDER — Decorative SVG separators between sections
+   ============================================================ */
+.draw-divider {
+  padding: 16px 40px;
+  display: flex;
+  justify-content: center;
+}
+.draw-divider svg {
+  width: 100%;
+  max-width: 800px;
+  height: 40px;
+  overflow: visible;
+}
+
+/* ============================================================
+   CODE BLOCKS
+   ============================================================ */
+.content code {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 13px;
+  background: var(--navy-card);
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: var(--blue);
+  border: 1px solid var(--navy-border);
+}
+.content pre {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  padding: 24px 28px;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin: 20px 0 32px 0;
+}
+.content pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--white-70);
+}
+
+/* ============================================================
+   BACK COVER / CTA SECTION
+   ============================================================ */
+.back-cover {
+  padding: 100px 40px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--navy) 0%, #060A20 100%);
+  position: relative;
+}
+.back-cover::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(20,110,245,0.08) 0%, rgba(10,61,143,0.04) 40%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.back-cover .company-name {
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+  position: relative;
+}
+.back-cover .stats {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  margin-bottom: 48px;
+  position: relative;
+  flex-wrap: wrap;
+}
+.back-cover .stat {
+  text-align: center;
+}
+.back-cover .stat-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--white);
+  display: block;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+.back-cover .stat-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--white-50);
+  display: block;
+  margin-top: 4px;
+}
+.back-cover .cta {
+  margin-top: 20px;
+  padding-top: 40px;
+  border-top: 1px solid var(--navy-border);
+  position: relative;
+}
+.back-cover .cta-text {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--white-50);
+  margin-bottom: 12px;
+}
+.back-cover .cta-url {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--gradient-pop);
+  padding: 16px 40px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 24px rgba(20,110,245,0.3), 0 8px 40px rgba(217,43,107,0.1);
+}
+.back-cover .cta-url:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 32px rgba(20,110,245,0.4), 0 12px 48px rgba(217,43,107,0.15);
+}
+.back-cover .website {
+  margin-top: 48px;
+  font-size: 14px;
+  color: var(--white-30);
+  position: relative;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  padding: 60px 0;
+  text-align: center;
+  border-top: 1px solid var(--navy-border);
+}
+.footer p {
+  font-size: 14px;
+  color: var(--white-30);
+}
+.footer a {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+/* ============================================================
+   MOBILE — iPhone-first responsive
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Layout */
+  .container { padding: 0 16px; }
+  body { font-size: 16px; }
+
+  /* Hero */
+  .hero { padding: 60px 16px 48px; min-height: 45vh; }
+  .hero h1 { font-size: 28px; letter-spacing: -1px; }
+  .hero h2 { font-size: 16px; }
+  .hero-badge { font-size: 12px; padding: 6px 14px; }
+
+  /* Sections */
+  .section { padding: 48px 0; }
+  .section-title { font-size: 24px; }
+  .section-subtitle { font-size: 15px; margin-bottom: 32px; }
+  .section-label { font-size: 11px; }
+
+  /* Grids → single column */
+  .quick-grid { grid-template-columns: 1fr; gap: 12px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .toc-grid { grid-template-columns: 1fr; gap: 8px; }
+
+  /* Cards — tighter padding */
+  .quick-card { padding: 20px 16px; }
+  .sub-card { padding: 16px; }
+  .template-card { padding: 16px; }
+  .step-card-header { padding: 16px; }
+  .step-card-body { padding: 16px; }
+  .icon-item { padding: 10px 12px; }
+
+  /* Text sizes for mobile readability */
+  .content p { font-size: 15px; }
+  .content li { font-size: 14px; }
+  .sub-card p { font-size: 14px; }
+  .sub-card-title { font-size: 15px; }
+  .sub-card li { font-size: 13px; }
+
+  /* Tables — scroll horizontally */
+  .sub-card table, .template-card table, .content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 12px;
+  }
+
+  /* Stats */
+  .mini-stats { flex-direction: column; }
+  .back-cover .stats { flex-direction: column; gap: 24px; }
+  .back-cover .stat-number { font-size: 28px; }
+  .back-cover { padding: 60px 16px; }
+
+  /* Progress bars */
+  .progress-row { flex-direction: column; align-items: stretch; gap: 4px; }
+  .progress-label { min-width: 0; font-size: 13px; }
+  .progress-value { min-width: 0; text-align: left; font-size: 12px; }
+  .progress-track { min-width: 0; }
+
+  /* Level ladder */
+  .level-card { padding: 16px; }
+  .level-details { flex-direction: column; gap: 8px; }
+
+  /* Flow diagrams → vertical on mobile */
+  .flow-diagram { flex-direction: column; align-items: center; }
+  .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+  .flow-node { max-width: 200px; }
+  .mini-flow-text { font-size: 13px; }
+
+  /* Compare cards */
+  .compare-card { padding: 16px; }
+  .compare-label { font-size: 11px; }
+
+  /* Sticky bar */
+  .sticky-bar { padding: 10px 16px; }
+  .sticky-brand { font-size: 12px; }
+  .sticky-cta { font-size: 11px; padding: 8px 16px; }
+
+  /* TOC */
+  .toc-item { padding: 12px 14px; }
+  .toc-num { width: 28px; height: 28px; font-size: 12px; }
+  .toc-text { font-size: 13px; }
+
+  /* Section connector — shorter on mobile */
+  .section-connector-line { height: 32px; }
+
+  /* New components */
+  .counter-row { gap: 12px; }
+  .counter-card { padding: 20px 16px; min-width: 100px; }
+  .counter-number { font-size: 28px; }
+  .donut-row { gap: 20px; }
+  .donut-svg { width: 100px; height: 100px; }
+  .gauge-row { gap: 20px; }
+  .gauge-svg { width: 120px; height: 68px; }
+  .bar-label { min-width: 0; font-size: 12px; }
+  .bar-row { flex-wrap: wrap; }
+  .bar-track { min-width: 100px; }
+  .timeline { padding-left: 32px; }
+  .timeline::before { left: 11px; }
+  .timeline-dot { left: -27px; }
+  .accordion-header { padding: 14px 16px; }
+  .accordion-content { padding: 0 16px 14px; }
+  .ba-side { padding: 20px; }
+  .progress-tracker { display: none; }
+  .checklist-item { padding: 10px 12px; }
+
+  /* Section illustrations */
+  .section-illus-wrap { margin: 0 0 24px 0; }
+  .section-illus { width: 180px; }
+
+  /* Draw dividers */
+  .draw-divider { padding: 8px 16px; }
+  .draw-divider svg { height: 24px; }
+
+  /* Footer */
+  .footer { padding: 40px 0; }
+}
+
+/* Extra small — iPhone SE, older devices */
+@media (max-width: 375px) {
+  .hero h1 { font-size: 24px; }
+  .section-title { font-size: 22px; }
+  .quick-icon { width: 44px; height: 44px; font-size: 20px; }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- PARTICLE BACKGROUND -->
+  <canvas id="particles" class="particle-canvas"></canvas>
+
+  <!-- GRADIENT MESH BLOBS -->
+  <div class="mesh-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- STICKY TOP BAR — appears on scroll -->
+  <div class="sticky-bar" id="stickyBar">
+    <div class="sticky-inner">
+      <span class="sticky-brand">The Entourage AI</span>
+      <a class="sticky-cta" href="https://theentourageai.com/book" target="_blank">Book a Free Consultation &rarr;</a>
+    </div>
+  </div>
+
+  <!-- HERO / COVER -->
+  <section class="hero">
+    <div class="hero-badge fade-in"><span class="dot"></span> Free Guide</div>
+    <h1 class="fade-in fade-in-delay-1">The Complete AI Stack for Business Owners</h1>
+    <h2 class="fade-in fade-in-delay-2">The exact tools we use to replace 17 random apps with one system. No fluff. Just the stack.</h2>
+    <p class="date fade-in fade-in-delay-3">2026</p>
+    <p class="hero-logo fade-in fade-in-delay-4">Built by <span>The Entourage AI</span></p>
+  </section>
+
+  <!-- CONTENT — each section wraps its own container -->
+  <div class="content">
+    <div class="progress-tracker"><div class="pt-dot" data-section="introduction" data-label="Introduction"></div><div class="pt-dot" data-section="the-ai-brain" data-label="The AI Brain"></div><div class="pt-dot" data-section="the-connector" data-label="The Connector"></div><div class="pt-dot" data-section="the-integrations" data-label="The Integrations"></div><div class="pt-dot" data-section="build-workflows" data-label="Build Workflows"></div><div class="pt-dot" data-section="common-mistakes" data-label="Common Mistakes"></div><div class="pt-dot" data-section="your-next-steps" data-label="Your Next Steps"></div></div>
+<section class="section"><div class="container"><div class="sub-cards"><div class="sub-card fade-in"><hr />
+</div></div></div></section>
+
+<section class="section toc">
+  <div class="container">
+    <p class="section-label fade-in">Contents</p>
+    <h3 class="section-title fade-in">What's Inside</h3>
+    <div class="toc-grid"><a href="#introduction" class="toc-item fade-in fade-in-delay-2"><div class="toc-num">1</div><div class="toc-text">Introduction</div></a><a href="#the-ai-brain" class="toc-item fade-in fade-in-delay-3"><div class="toc-num">2</div><div class="toc-text">Step 1: The AI Brain</div></a><a href="#the-connector" class="toc-item fade-in fade-in-delay-4"><div class="toc-num">3</div><div class="toc-text">Step 2: The Connector</div></a><a href="#the-integrations" class="toc-item fade-in fade-in-delay-1"><div class="toc-num">4</div><div class="toc-text">Step 3: The Integrations</div></a><a href="#build-workflows" class="toc-item fade-in fade-in-delay-2"><div class="toc-num">5</div><div class="toc-text">Step 4: Build Workflows</div></a><a href="#common-mistakes" class="toc-item fade-in fade-in-delay-3"><div class="toc-num">6</div><div class="toc-text">Common Mistakes</div></a><a href="#your-next-steps" class="toc-item fade-in fade-in-delay-4"><div class="toc-num">7</div><div class="toc-text">Your Next Steps</div></a></div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="introduction">
+  <div class="container">
+    <p class="section-label fade-in">Overview</p>
+    <h3 class="section-title fade-in">Introduction</h3>
+        
+    
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Your Team Doesn't Have an AI Problem. They Have a Tools Problem.</div><p class="fade-in">Here's what most businesses look like right now: half the team has random ChatGPT accounts, someone's using Gemini, three people have Copilot because it came with Office 365, and nobody shares anything.</p>
+<p class="fade-in"><strong>Random tools</strong> = Everyone reinvents the wheel every day. Knowledge dies in private chat windows.</p>
+<p class="fade-in"><strong>A proper stack</strong> = One brain, connected to your business tools, with shared context your whole team builds on.</p>
+<blockquote class="fade-in callout-green"><span class="callout-icon">&#128273;</span><div><p class="fade-in"><strong>Key Takeaway:</strong> The problem isn't that your team doesn't use AI. It's that they all use different AI in different places with zero shared context.</p></div></blockquote>
+<hr />
+</div>
+    </div>
+  </div>
+</section>
+
+<div class="draw-divider draw-svg fade-in"><svg viewBox="0 0 800 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path class="draw-path" style="--path-length:900" d="M0 20 H250 L300 5 L350 35 L400 5 L450 35 L500 20 H800" /></svg></div>
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section">
+  <div class="container">
+    <p class="section-label fade-in">Quick Overview</p>
+    <h3 class="section-title fade-in">What You'll Learn</h3>
+    <div class="quick-grid"><div class="quick-card fade-in fade-in-delay-1"><div class="quick-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h4>The AI Brain</h4><p>Step 1 of the framework</p></div><div class="quick-card fade-in fade-in-delay-2"><div class="quick-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h4>The Connector</h4><p>Step 2 of the framework</p></div><div class="quick-card fade-in fade-in-delay-3"><div class="quick-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div><h4>The Integrations</h4><p>Step 3 of the framework</p></div><div class="quick-card fade-in fade-in-delay-4"><div class="quick-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><h4>Build Workflows</h4><p>Step 4 of the framework</p></div></div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section flow-section">
+  <div class="container">
+    <p class="section-label fade-in">The Process</p>
+    <h3 class="section-title fade-in">How It Works</h3>
+    <p class="section-subtitle fade-in">The complete framework at a glance.</p>
+    <div class="flow-diagram fade-in"><div class="flow-node"><div class="flow-box"><span style="margin-right:6px"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>The AI Brain</div></div><div class="flow-arrow"><div class="flow-arrow-line"><div class="shimmer"></div></div></div><div class="flow-node"><div class="flow-box"><span style="margin-right:6px"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>The Connector</div></div><div class="flow-arrow"><div class="flow-arrow-line"><div class="shimmer"></div></div></div><div class="flow-node"><div class="flow-box"><span style="margin-right:6px"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></span>The Integrations</div></div><div class="flow-arrow"><div class="flow-arrow-line"><div class="shimmer"></div></div></div><div class="flow-node"><div class="flow-box"><span style="margin-right:6px"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span>Build Workflows</div></div></div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="the-ai-brain">
+  <div class="container">
+    <p class="section-label fade-in">Step 1</p>
+    <h3 class="section-title fade-in">The AI Brain</h3>
+    
+    
+    <div class="level-ladder"><div class="level-card fade-in fade-in-delay-1"><div class="level-header"><div class="level-num">1</div><div class="level-name">Claude Pro</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:10%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$20/month</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">Individual use, 5x free usage</span></div></div><div class="level-best">Founders and solo operators</div></div><div class="level-card fade-in fade-in-delay-2"><div class="level-header"><div class="level-num">2</div><div class="level-name">Claude Team</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:25%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">$25/user/month</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">Shared projects, admin controls, SSO</span></div></div><div class="level-best">Teams of 5+ people</div></div><div class="level-card fade-in fade-in-delay-3"><div class="level-header"><div class="level-num">3</div><div class="level-name">Claude Enterprise</div></div><div class="level-bar-track"><div class="level-bar-fill" style="width:25%"></div></div><div class="level-details"><div class="level-detail"><span class="level-detail-label">Cost</span><span class="level-detail-value">Custom pricing</span></div><div class="level-detail"><span class="level-detail-label">Result</span><span class="level-detail-value">Audit logs, SCIM, custom retention</span></div></div><div class="level-best">Regulated industries, 50+ users</div></div></div>
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Step 1: Centralise on One AI Platform</div><p class="sub-card-intro">Stop letting everyone pick their own tool. Your AI platform is infrastructure, not a personal preference. You wouldn&#x27;t let every department pick their own accounting software. We use [Claude](https://claude.ai) as the central brain. Here&#x27;s why:</p><div class="icon-list"><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">**200K token context</div><div class=icon-item-desc>window** — it can hold an entire operations manual in...</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">**Projects** — shared</div><div class=icon-item-desc>workspaces where your team adds SOPs, brand guidelines,...</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">**Enterprise search** —</div><div class=icon-item-desc>find information across all connected tools from one place</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">**Admin controls** —</div><div class=icon-item-desc>SSO, usage monitoring, budget allocation per user</div></div></div></div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">How to set it up:</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">Go to <a href="https://claude.ai/settings/organization" target="_blank" rel="noopener">claude.ai/settings/organization</a></div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Click **Create Organization</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Choose <strong>Team</strong> plan (minimum 5 seats)</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">4</div><div class="mini-flow-text">Invite your team by email</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">5</div><div class="mini-flow-text">Create your first Project — name it "Company Operations" and upload your SOPs</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="draw-divider draw-svg fade-in"><svg viewBox="0 0 800 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path class="draw-path" style="--path-length:850" d="M0 30 L100 10 L200 30 L300 10 L400 30 L500 10 L600 30 L700 10 L800 30" /></svg></div>
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="the-connector">
+  <div class="container">
+    <p class="section-label fade-in">Step 2</p>
+    <h3 class="section-title fade-in">The Connector</h3>
+    
+    
+    <div class="progress-bars"><div class="progress-row fade-in"><div class="progress-label">Invoice processing</div><div class="progress-value">Manual 4hrs/week</div><div class="progress-track"><div class="progress-fill" style="width:85%"></div></div></div><div class="progress-row fade-in"><div class="progress-label">Lead follow-ups</div><div class="progress-value">Manual 6hrs/week</div><div class="progress-track"><div class="progress-fill" style="width:70%"></div></div></div><div class="progress-row fade-in"><div class="progress-label">Report generation</div><div class="progress-value">Manual 3hrs/week</div><div class="progress-track"><div class="progress-fill" style="width:55%"></div></div></div><div class="progress-row fade-in"><div class="progress-label">Data entry</div><div class="progress-value">Manual 5hrs/week</div><div class="progress-track"><div class="progress-fill" style="width:40%"></div></div></div></div>
+    <div class="sub-cards">
+      <div class="sub-card stat-card fade-in"><div class="sub-card-title">Step 2: Connect Your Business Tools</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$12M</span></div></div><p class="sub-card-intro">Claude is your AI brain. Now it needs hands. That&#x27;s where [n8n](https://n8n.io) comes in. n8n is a workflow automation platform. Think of it as...</p></div>
+<div class="sub-card fade-in"><div class="sub-card-title">What n8n connects to your AI:</div><div class="icon-list"><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">**Xero** — invoice</div><div class=icon-item-desc>creation, expense categorisation, cash flow alerts</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">**Your CRM** (HubSpot,</div><div class=icon-item-desc>Pipedrive, Salesforce) — lead scoring, follow-up...</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg></span><div><div class="icon-item-label">**Gmail/Outlook** — email</div><div class=icon-item-desc>triage, auto-drafting replies, meeting scheduling</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">**Google Sheets** —</div><div class=icon-item-desc>live dashboards, automated reporting, data pipelines</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><div><div class="icon-item-label">**Slack/Teams** — notifications,</div><div class=icon-item-desc>approvals, AI-powered answers to team questions</div></div></div></div></div>
+<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">Pricing:</div><div class=template-intro><p>Start with <a href="https://n8n.io/cloud">n8n Cloud</a> if you don't have a developer. It takes 5 minutes to set up and you don't need to manage anything.</p>
+<blockquote>
+<p><strong>Key Takeaway:</strong> n8n is the glue between Claude and your business tools. It turns &quot;AI that answers questions&quot; into &quot;AI that actually does the work.&quot;</p>
+</blockquote>
+<hr /></div><table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>Cost</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Self-hosted</td>
+<td>Free</td>
+<td>Teams with a developer who can manage a server</td>
+</tr>
+<tr>
+<td>n8n Cloud Starter</td>
+<td>€24/month (~$26)</td>
+<td>Small teams, no server management</td>
+</tr>
+<tr>
+<td>n8n Cloud Pro</td>
+<td>€60/month (~$65)</td>
+<td>Growing teams, more executions</td>
+</tr>
+</tbody>
+</table></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="the-integrations">
+  <div class="container">
+    <p class="section-label fade-in">Step 3</p>
+    <h3 class="section-title fade-in">The Integrations</h3>
+    
+    
+    
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Step 3: Wire Up Your Core Business Tools</div><p class="fade-in">Here's the actual stack. Not theory. These are the tools we set up for every client.</p>
+</div>
+<div class="sub-card stat-card fade-in"><div class="sub-card-title">Tier 1 — Set up first (Week 1):</div><div class="mini-stats"><div class="mini-stat"><span class="mini-stat-num">$25</span></div><div class="mini-stat"><span class="mini-stat-num">$26</span></div></div><p class="sub-card-intro">- [Claude Team](https://claude.ai) — Your AI brain. /user/month. - [n8n](https://n8n.io) — Your automation layer. ~/month. -...</p></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Tier 2 — Add next (Week 2-3):</div><div class="icon-list"><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Your CRM (we</div><div class=icon-item-desc>recommend [HubSpot](https://www.hubspot.com) for SMBs or...</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">[Google Workspace](https://workspace.google.com) or</div><div class=icon-item-desc>Microsoft 365 — email, docs, sheets</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">[Slack](https://slack.com) or [Microsoft</div><div class=icon-item-desc>Teams](https://www.microsoft.com/en-au/microsoft-teams/)...</div></div></div></div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Tier 3 — Optimise later (Month 2+):</div><div class="icon-list"><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">[Make](https://www.make.com) or [Zapier](https://zapier.com)</div><div class=icon-item-desc>— backup automation for simple one-off connections</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><div class="icon-item-label">Industry-specific tools (project</div><div class=icon-item-desc>management, field service, inventory)</div></div></div><div class="icon-item"><span class="icon-item-icon"><svg class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></span><div><div class="icon-item-label">Custom Claude Code</div><div class=icon-item-desc>scripts for complex analysis</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="build-workflows">
+  <div class="container">
+    <p class="section-label fade-in">Step 4</p>
+    <h3 class="section-title fade-in">Build Workflows</h3>
+    
+    <div class="section-illus-wrap fade-in"><svg class="section-illus" viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="20" width="140" height="100" rx="8" fill="none" stroke="rgba(20,110,245,0.2)" stroke-width="1.5"/><line x1="30" y1="40" x2="170" y2="40" stroke="rgba(20,110,245,0.15)" stroke-width="1"/><circle cx="45" cy="30" r="4" fill="rgba(248,113,113,0.3)"/><circle cx="57" cy="30" r="4" fill="rgba(251,191,36,0.3)"/><circle cx="69" cy="30" r="4" fill="rgba(52,211,153,0.3)"/><rect x="45" y="52" width="50" height="8" rx="2" fill="rgba(20,110,245,0.15)"/><rect x="45" y="66" width="35" height="8" rx="2" fill="rgba(20,110,245,0.1)"/><rect x="45" y="80" width="45" height="8" rx="2" fill="rgba(20,110,245,0.08)"/><rect x="110" y="52" width="45" height="55" rx="4" fill="none" stroke="rgba(59,130,246,0.2)" stroke-width="1"/><path d="M120 70l5 5 10-10" stroke="rgba(52,211,153,0.4)" stroke-width="2" fill="none"><animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite"/></path></svg></div>
+    
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Step 4: Build Your First Workflow</div><div class="mini-flow"><div class="mini-flow-node"><div class="mini-flow-num">1</div><div class="mini-flow-text">Invoice processing** — Xero + Claude + n8n. Categorise, create bills, flag anomalies.</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">2</div><div class="mini-flow-text">Lead follow-up** — CRM + Claude + n8n. Score leads, draft personalised emails, schedule follow-ups.</div></div><div class="mini-flow-arrow"><div class="mini-flow-arrow-line"><div class="shimmer"></div></div></div><div class="mini-flow-node"><div class="mini-flow-num">3</div><div class="mini-flow-text">Weekly reporting** — Google Sheets + Claude + n8n. Pull data from all tools, generate a summary, email to management.</div></div></div></div>
+<div class="template-card fade-in"><div class="template-label">&#128203; Template</div><div class="template-title">The rules for building workflows that don&#x27;t break:</div><div class=template-intro><ul>
+<li><strong>Human checkpoints on anything customer-facing.</strong> AI drafts the email. A person clicks send.</li>
+<li><strong>One workflow at a time.</strong> Get it stable for 2 weeks before building the next one.</li>
+<li><strong>Log everything.</strong> Every automation should write to a log sheet so you can audit what happened.</li>
+<li><strong>Build from your existing SOPs.</strong> If you don't have written processes, write them first. You can't automate what you can't explain.</li>
+</ul>
+<blockquote>
+<p><strong>Key Takeaway:</strong> Start with one workflow. Get it stable. Then add the next. Most businesses hit 20+ hours saved per week within 3 months.</p>
+</blockquote>
+<hr /></div><table>
+<thead>
+<tr>
+<th>Month</th>
+<th>What to Build</th>
+<th>Expected Savings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Month 1</td>
+<td>Invoice processing + email triage</td>
+<td>8-12 hrs/week</td>
+</tr>
+<tr>
+<td>Month 2</td>
+<td>Lead follow-up + CRM enrichment</td>
+<td>6-10 hrs/week</td>
+</tr>
+<tr>
+<td>Month 3</td>
+<td>Reporting + team notifications</td>
+<td>4-8 hrs/week</td>
+</tr>
+<tr>
+<td>Month 6</td>
+<td>Full operations automation</td>
+<td>20-40 hrs/week</td>
+</tr>
+</tbody>
+</table></div>
+    </div>
+  </div>
+</section>
+
+<div class="draw-divider draw-svg fade-in"><svg viewBox="0 0 800 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path class="draw-path" style="--path-length:900" d="M0 20 Q100 0 200 20 T400 20 T600 20 T800 20" /></svg></div>
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="common-mistakes">
+  <div class="container">
+    <p class="section-label fade-in">Watch Out</p>
+    <h3 class="section-title fade-in">Common Mistakes</h3>
+        <div class="accordion fade-in"><div class="accordion-item open"><div class="accordion-header"><span class="accordion-title">Mistake 1: Letting everyone pick their own AI tool</span><span class="accordion-icon">+</span></div><div class="accordion-body"><div class="accordion-content"><p>This is the big one. Five people using five different AI tools means five different contexts, no shared learning, and zero compounding value. Centralise on one platform.</p>
+</div></div></div><div class="accordion-item"><div class="accordion-header"><span class="accordion-title">Mistake 2: Automating before documenting</span><span class="accordion-icon">+</span></div><div class="accordion-body"><div class="accordion-content"><p>If your process isn't written down step by step, don't automate it. You'll build a fast version of a broken process. Write the SOP first, then automate.</p>
+</div></div></div><div class="accordion-item"><div class="accordion-header"><span class="accordion-title">Mistake 3: Going straight to enterprise tools</span><span class="accordion-icon">+</span></div><div class="accordion-body"><div class="accordion-content"><p>You don't need a $50K Salesforce implementation. Claude Team + n8n + Xero handles 90% of what a $5M-$100M business needs. Start simple, add complexity when the simple stuff is running.</p>
+</div></div></div><div class="accordion-item"><div class="accordion-header"><span class="accordion-title">Mistake 4: No human checkpoints</span><span class="accordion-icon">+</span></div><div class="accordion-body"><div class="accordion-content"><p>AI makes mistakes. Not often, but when it does, you want a human catching it before it reaches a client. Every workflow that touches customers should have an approval step.</p>
+</div></div></div><div class="accordion-item"><div class="accordion-header"><span class="accordion-title">Mistake 5: Building it yourself with no plan</span><span class="accordion-icon">+</span></div><div class="accordion-body"><div class="accordion-content"><p>Watching YouTube tutorials and stitching together random automations creates technical debt. Start with a proper architecture. Know which tools connect where before you build anything.</p>
+<blockquote>
+<p><strong>Key Takeaway:</strong> The biggest mistake is treating AI like individual productivity tools instead of shared business infrastructure.</p>
+</blockquote>
+<hr />
+</div></div></div></div>
+  </div>
+</section>
+
+<div class="section-connector"><div class="section-connector-line"><div class="section-connector-dot"></div></div></div>
+<section class="section" id="your-next-steps">
+  <div class="container">
+    <p class="section-label fade-in">Next Steps</p>
+    <h3 class="section-title fade-in">Your Next Steps</h3>
+        
+    <div class="checklist fade-in"><div class="checklist-item"><div class="checklist-box"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7" stroke="white" stroke-width="2.5" fill="none"/></svg></div><div class="checklist-text">Audit your current tools — list every app your team uses and what they use AI for</div></div><div class="checklist-item"><div class="checklist-box"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7" stroke="white" stroke-width="2.5" fill="none"/></svg></div><div class="checklist-text">Set up a Claude Team organisation at [claude.ai](https://claude.ai)</div></div><div class="checklist-item"><div class="checklist-box"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7" stroke="white" stroke-width="2.5" fill="none"/></svg></div><div class="checklist-text">Create your first Project and upload your top 5 SOPs</div></div><div class="checklist-item"><div class="checklist-box"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7" stroke="white" stroke-width="2.5" fill="none"/></svg></div><div class="checklist-text">Sign up for [n8n Cloud](https://n8n.io/cloud) and connect your email</div></div><div class="checklist-item"><div class="checklist-box"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7" stroke="white" stroke-width="2.5" fill="none"/></svg></div><div class="checklist-text">Build one workflow (start with invoice processing or email triage)</div></div></div>
+    <div class="sub-cards">
+      <div class="sub-card fade-in"><div class="sub-card-title">Your Next Steps</div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Do it yourself (this week):</div></div>
+<div class="sub-card fade-in"><div class="sub-card-title">Want us to build the full stack?</div><p class="fade-in">We audit your operations, identify the highest-ROI automations, and build the entire system in 4-6 weeks. Our clients save $123K-$549K per year.</p>
+<p class="fade-in"><strong>Book a Free AI Roadmap Session:</strong> <a href="https://theentourageai.com/call">theentourageai.com/call</a></p>
+<hr />
+</div>
+    </div>
+  </div>
+</section>
+
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- BACK COVER / FOOTER CTA -->
+  <section class="back-cover">
+    <div class="company-name fade-in">The Entourage AI</div>
+    <div class="stats fade-in fade-in-delay-1">
+      <div class="stat">
+        <span class="stat-number">1,116,529+</span>
+        <span class="stat-label">automations executed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">$123K–$549K</span>
+        <span class="stat-label">saved per client annually</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">20–141 hrs</span>
+        <span class="stat-label">per week automated</span>
+      </div>
+    </div>
+    <div class="cta fade-in fade-in-delay-2">
+      <div class="cta-text">Ready to see what AI can do for your business?</div>
+      <a class="cta-url" href="https://theentourageai.com/book" target="_blank">Book a Free Consultation &rarr;</a>
+    </div>
+    <div class="website fade-in fade-in-delay-3">theentourageai.com</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><a href="https://theentourageai.com/book" target="_blank">The Entourage AI</a></p>
+    <p style="margin-top: 8px; font-size: 12px; color: var(--white-30);">Custom AI solutions for operations-heavy businesses</p>
+  </footer>
+
+  <!-- SVG DEFS for gradients -->
+  <svg style="position:absolute;width:0;height:0">
+    <defs>
+      <linearGradient id="donutGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0A3D8F"/>
+        <stop offset="50%" stop-color="#146EF5"/>
+        <stop offset="100%" stop-color="#3B82F6"/>
+      </linearGradient>
+      <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0A3D8F"/>
+        <stop offset="100%" stop-color="#3B82F6"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <script>
+    // ── SCROLL ANIMATIONS ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── STICKY BAR ──
+    const stickyBar = document.getElementById('stickyBar');
+    const hero = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > hero.offsetHeight - 60) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+    });
+
+    // ── PARTICLE BACKGROUND ──
+    (function() {
+      const c = document.getElementById('particles');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      let w, h, particles = [];
+      function resize() { w = c.width = window.innerWidth; h = c.height = window.innerHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+      for (let i = 0; i < 60; i++) {
+        particles.push({
+          x: Math.random() * w, y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+          r: Math.random() * 1.5 + 0.5, a: Math.random() * 0.15 + 0.03
+        });
+      }
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(20,110,245,${p.a})`;
+          ctx.fill();
+        });
+        // Draw connections between nearby particles
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 150) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(20,110,245,${0.03 * (1 - d / 150)})`;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    // ── ANIMATED COUNTERS ──
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = 'true';
+          const el = entry.target;
+          const target = parseFloat(el.dataset.target);
+          const prefix = el.dataset.prefix || '';
+          const suffix = el.dataset.suffix || '';
+          const decimals = (el.dataset.target.includes('.')) ? 1 : 0;
+          const duration = 2000;
+          const start = performance.now();
+          function tick(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = target * eased;
+            if (target > 1000) {
+              el.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+            } else {
+              el.textContent = prefix + current.toFixed(decimals) + suffix;
+            }
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.counter-number[data-target]').forEach(el => counterObserver.observe(el));
+
+    // ── SVG CHART ANIMATIONS (donut, gauge, bar) ──
+    const chartObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Donut fills
+          entry.target.querySelectorAll('.donut-fill').forEach(el => {
+            const pct = parseFloat(el.dataset.percent) || 0;
+            const offset = 283 - (283 * pct / 100);
+            el.style.strokeDashoffset = offset;
+            el.classList.add('animated');
+          });
+          // Gauge fills
+          entry.target.querySelectorAll('.gauge-fill').forEach(el => {
+            const pct = parseFloat(el.dataset.percent) || 0;
+            const offset = 157 - (157 * pct / 100);
+            el.style.strokeDashoffset = offset;
+          });
+          // Bar fills
+          entry.target.querySelectorAll('.bar-fill').forEach(el => {
+            el.classList.add('animated');
+          });
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.donut-row, .gauge-row, .bar-chart').forEach(el => chartObserver.observe(el));
+
+    // ── ACCORDION ──
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+
+    // ── CHECKLIST ──
+    document.querySelectorAll('.checklist-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('checked');
+      });
+    });
+
+    // ── BEFORE/AFTER SLIDER ──
+    document.querySelectorAll('.ba-slider').forEach(slider => {
+      const handle = slider.querySelector('.ba-handle');
+      const after = slider.querySelector('.ba-after');
+      if (!handle || !after) return;
+      let dragging = false;
+      function setPos(x) {
+        const rect = slider.getBoundingClientRect();
+        let pct = ((x - rect.left) / rect.width) * 100;
+        pct = Math.max(10, Math.min(90, pct));
+        handle.style.left = pct + '%';
+        after.style.left = pct + '%';
+        after.style.width = (100 - pct) + '%';
+      }
+      setPos(slider.getBoundingClientRect().left + slider.getBoundingClientRect().width * 0.5);
+      handle.addEventListener('mousedown', () => dragging = true);
+      handle.addEventListener('touchstart', () => dragging = true, { passive: true });
+      window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+      window.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+      window.addEventListener('mouseup', () => dragging = false);
+      window.addEventListener('touchend', () => dragging = false);
+    });
+
+    // ── PROGRESS TRACKER ──
+    (function() {
+      const tracker = document.querySelector('.progress-tracker');
+      if (!tracker) return;
+      const dots = tracker.querySelectorAll('.pt-dot');
+      const sections = [];
+      dots.forEach(dot => {
+        const id = dot.dataset.section;
+        const sec = document.getElementById(id);
+        if (sec) sections.push({ dot, sec });
+        dot.addEventListener('click', () => {
+          const s = document.getElementById(id);
+          if (s) s.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+      // Show tracker after hero, highlight active section
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        if (scrollY > (hero ? hero.offsetHeight : 400)) {
+          tracker.classList.add('visible');
+        } else {
+          tracker.classList.remove('visible');
+        }
+        let active = null;
+        sections.forEach(({ dot, sec }) => {
+          const top = sec.offsetTop - 200;
+          if (scrollY >= top) active = dot;
+          dot.classList.remove('active');
+        });
+        if (active) active.classList.add('active');
+      });
+    })();
+
+    // ── DRAW-ON-SCROLL SVGs ──
+    const drawObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.draw-path').forEach(p => p.classList.add('drawn'));
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.draw-svg').forEach(el => drawObserver.observe(el));
+  </script>
+
+</body>
+</html>
