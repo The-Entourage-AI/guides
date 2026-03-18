@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Host OpenClaw on a VPS — Complete Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --surface2: #1a2236;
+    --border: #1f2d45;
+    --accent: #3b82f6;
+    --accent2: #06b6d4;
+    --green: #10b981;
+    --orange: #f59e0b;
+    --red: #ef4444;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --code-bg: #0d1117;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+  .hero {
+    position: relative;
+    padding: 80px 40px 60px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.3);
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .hero-badge::before { content: '●'; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+  }
+  h1 span {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub { font-size: 17px; color: var(--muted); max-width: 540px; margin: 0 auto 40px; font-weight: 300; }
+  .hero-stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-value { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--accent); }
+  .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 1; }
+  .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 32px; margin-bottom: 48px; }
+  .toc-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 16px; }
+  .toc ol { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
+  @media (max-width: 560px) { .toc ol { grid-template-columns: 1fr; } }
+  .toc a { color: var(--text); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+  .toc a:hover { color: var(--accent); }
+  .toc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); min-width: 20px; }
+  .step { margin-bottom: 56px; animation: fadeUp 0.5s ease backwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .step:nth-child(1) { animation-delay: 0.05s; } .step:nth-child(2) { animation-delay: 0.1s; } .step:nth-child(3) { animation-delay: 0.15s; } .step:nth-child(4) { animation-delay: 0.2s; } .step:nth-child(5) { animation-delay: 0.25s; } .step:nth-child(6) { animation-delay: 0.3s; } .step:nth-child(7) { animation-delay: 0.35s; } .step:nth-child(8) { animation-delay: 0.4s; }
+  .step-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .step-num { width: 36px; height: 36px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: white; flex-shrink: 0; }
+  h2 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+  h3 { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin: 24px 0 8px; }
+  p { color: #94a3b8; margin-bottom: 12px; font-weight: 300; }
+  .code-block { background: var(--code-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin: 16px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .code-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--border); }
+  .code-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .copy-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 3px 10px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+  .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .copy-btn.copied { border-color: var(--green); color: var(--green); }
+  pre { padding: 16px; overflow-x: auto; line-height: 1.6; }
+  code { color: #e2e8f0; }
+  code .comment { color: #4d5f7a; font-style: italic; }
+  code .cmd { color: #93c5fd; }
+  code .str { color: #86efac; }
+  code .flag { color: #fbbf24; }
+  code .var { color: #f0abfc; }
+  p code, li code { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); padding: 1px 6px; border-radius: 4px; font-size: 12px; color: #93c5fd; font-family: 'JetBrains Mono', monospace; }
+  .callout { border-radius: 10px; padding: 16px 20px; margin: 16px 0; display: flex; gap: 12px; font-size: 14px; font-weight: 300; }
+  .callout-icon { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
+  .callout.info { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); color: #93c5fd; }
+  .callout.warning { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); color: #fcd34d; }
+  .callout.success { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); color: #6ee7b7; }
+  .callout.danger { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); color: #fca5a5; }
+  .providers { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+  .provider-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; transition: border-color 0.2s; }
+  .provider-card:hover { border-color: var(--accent); }
+  .provider-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .provider-price { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--green); margin-bottom: 6px; }
+  .provider-spec { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .provider-rec { display: inline-block; margin-top: 8px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); background: rgba(59,130,246,0.1); padding: 2px 8px; border-radius: 100px; }
+  .channels { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin: 16px 0; }
+  .channel-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-size: 13px; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .channel-icon { font-size: 18px; }
+  .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
+  .spec-table th { background: var(--surface2); color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+  .spec-table td { padding: 10px 16px; border-bottom: 1px solid rgba(31,45,69,0.5); color: #94a3b8; vertical-align: top; }
+  .spec-table tr:last-child td { border-bottom: none; }
+  .spec-table .ok { color: var(--green); }
+  .spec-table .warn { color: var(--orange); }
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; color: #94a3b8; font-size: 14px; font-weight: 300; }
+  .checklist li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 12px; margin-top: 3px; flex-shrink: 0; }
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 48px 0; }
+  .footer { text-align: center; padding: 40px 24px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); }
+  .footer a { color: var(--accent); text-decoration: none; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-badge">Complete Setup Guide · 2026</div>
+  <h1>Self-Host <span>OpenClaw</span><br>on a VPS</h1>
+  <p class="hero-sub">No Mac Mini. No thousands of dollars. Just a $6–$10/month server and 30 minutes of your time.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-value">~30 min</div><div class="stat-label">Setup Time</div></div>
+    <div class="stat"><div class="stat-value">$6–10</div><div class="stat-label">Per Month</div></div>
+    <div class="stat"><div class="stat-value">24/7</div><div class="stat-label">Always On</div></div>
+    <div class="stat"><div class="stat-value">0</div><div class="stat-label">Mac Minis Needed</div></div>
+  </div>
+</div>
+<div class="container">
+  <div class="toc">
+    <div class="toc-title">// Table of Contents</div>
+    <ol>
+      <li><a href="#step1"><span class="toc-num">01</span> What is OpenClaw?</a></li>
+      <li><a href="#step2"><span class="toc-num">02</span> Pick a VPS Provider</a></li>
+      <li><a href="#step3"><span class="toc-num">03</span> Set Up Your Server</a></li>
+      <li><a href="#step4"><span class="toc-num">04</span> Install OpenClaw</a></li>
+      <li><a href="#step5"><span class="toc-num">05</span> Configure AI Provider</a></li>
+      <li><a href="#step6"><span class="toc-num">06</span> Connect Messaging Channels</a></li>
+      <li><a href="#step7"><span class="toc-num">07</span> Secure Your Instance</a></li>
+      <li><a href="#step8"><span class="toc-num">08</span> Keep It Running</a></li>
+    </ol>
+  </div>
+  <div class="step" id="step1"><div class="step-header"><div class="step-num">01</div><h2>What is OpenClaw?</h2></div><p>OpenClaw (formerly Moltbot / Clawdbot) is an open-source, self-hosted AI assistant gateway. It connects the messaging apps you already use — WhatsApp, Telegram, Discord, Slack, and more — directly to AI models like Claude or GPT-4.</p><p>Instead of paying for yet another SaaS AI subscription, you run it on your own server, keep your data private, and pay only for the API calls you actually make.</p><div class="callout info"><span class="callout-icon">ℹ️</span><div><strong>Why a VPS instead of your laptop or a Mac Mini?</strong> A VPS is a cheap cloud server that runs 24/7. When you close your laptop, your assistant goes offline. A VPS keeps it running constantly, is far cheaper than a Mac Mini (~$6–10/month vs $500+ upfront), and is more secure since it's isolated from your personal machine.</div></div><div class="callout warning"><span class="callout-icon">⚠️</span><div><strong>Claude subscription note:</strong> As of January 2026, Anthropic enforces its Terms of Service — Claude Pro/Max subscription OAuth tokens no longer work with third-party tools like OpenClaw. You'll need an <strong>Anthropic API key</strong> (pay-per-use) instead, or use OpenAI / Gemini / Ollama.</div></div></div>
+  <div class="step" id="step2"><div class="step-header"><div class="step-num">02</div><h2>Pick a VPS Provider</h2></div><p>Any provider running Ubuntu 22.04 or 24.04 LTS works. Here are the most popular options with tested specs. The minimum viable spec is 2 GB RAM / 1–2 vCPU — but 4 GB RAM is strongly recommended for stability.</p><div class="providers"><div class="provider-card"><div class="provider-name">Hetzner</div><div class="provider-price">From ~€4/month</div><div class="provider-spec">CX22: 4 GB RAM<br>2 vCPU · 40 GB SSD<br>EU & US datacenters</div><span class="provider-rec">⭐ Best value</span></div><div class="provider-card"><div class="provider-name">DigitalOcean</div><div class="provider-price">From $6/month</div><div class="provider-spec">Basic Droplet<br>1–2 GB RAM · 1 vCPU<br>Go 4 GB for comfort</div></div><div class="provider-card"><div class="provider-name">Contabo</div><div class="provider-price">From ~$7/month</div><div class="provider-spec">4 vCPU · 8 GB RAM<br>75 GB NVMe SSD<br>Great raw specs/price</div></div><div class="provider-card"><div class="provider-name">Oracle Cloud</div><div class="provider-price">Free forever</div><div class="provider-spec">4 ARM vCPU · 24 GB RAM<br>200 GB storage<br>Always Free tier</div><span class="provider-rec">Free option</span></div></div><h3>Minimum Requirements</h3><table class="spec-table"><tr><th>Resource</th><th>Minimum</th><th>Recommended</th></tr><tr><td>RAM</td><td class="warn">2 GB</td><td class="ok">4 GB</td></tr><tr><td>vCPU</td><td class="warn">1–2</td><td class="ok">2+</td></tr><tr><td>Storage</td><td>10 GB SSD</td><td class="ok">20 GB+ SSD</td></tr><tr><td>OS</td><td colspan="2">Ubuntu 22.04 LTS or Ubuntu 24.04 LTS (recommended)</td></tr></table><div class="callout warning"><span class="callout-icon">⚠️</span><div>The official docs say 1 GB RAM is sufficient — but real-world testing shows this is not enough. Installation will fail with memory errors on 1 GB. Stick to 2 GB minimum, 4 GB recommended.</div></div></div>
+  <div class="step" id="step3"><div class="step-header"><div class="step-num">03</div><h2>Set Up Your Server</h2></div><p>Once you've created your VPS (choose Ubuntu 22.04 or 24.04 when prompted), you'll receive an IP address, username (usually <code>root</code> or <code>ubuntu</code>), and either a password or SSH key.</p><h3>Connect via SSH</h3><div class="code-block"><div class="code-header"><span class="code-label">Your Terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="comment"># Replace YOUR_SERVER_IP with the IP from your provider</span>
+<span class="cmd">ssh</span> root@YOUR_SERVER_IP</code></pre></div><h3>Update the System First</h3><div class="code-block"><div class="code-header"><span class="code-label">SSH — Run on Server</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="comment"># Always update before installing anything</span>
+<span class="cmd">apt update</span> <span class="flag">&&</span> <span class="cmd">apt upgrade</span> <span class="flag">-y</span></code></pre></div><h3>Create a Dedicated User (Recommended)</h3><p>Running OpenClaw as root is a security risk. Create a dedicated user instead:</p><div class="code-block"><div class="code-header"><span class="code-label">SSH — Run as Root</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="comment"># Create a new user named "openclaw"</span>
+<span class="cmd">adduser</span> openclaw
+<span class="cmd">usermod</span> <span class="flag">-aG</span> sudo openclaw
+<span class="comment"># Switch to the new user</span>
+<span class="cmd">su</span> - openclaw</code></pre></div><h3>Set Up Firewall (UFW)</h3><div class="code-block"><div class="code-header"><span class="code-label">SSH — Firewall Rules</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="comment"># Block all incoming traffic, allow only SSH</span>
+<span class="cmd">sudo ufw default deny incoming</span>
+<span class="cmd">sudo ufw default allow outgoing</span>
+<span class="cmd">sudo ufw allow</span> <span class="str">22/tcp</span>
+<span class="cmd">sudo ufw limit</span> <span class="str">22/tcp</span>   <span class="comment"># Rate-limit to slow brute-force attacks</span>
+<span class="cmd">sudo ufw enable</span>
+<span class="cmd">sudo ufw status</span></code></pre></div><h3>Enable Automatic Security Updates</h3><div class="code-block"><div class="code-header"><span class="code-label">SSH</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="cmd">sudo apt install</span> unattended-upgrades <span class="flag">-y</span>
+<span class="cmd">sudo dpkg-reconfigure</span> <span class="flag">-plow</span> unattended-upgrades</code></pre></div></div>
+  <div class="step" id="step4"><div class="step-header"><div class="step-num">04</div><h2>Install OpenClaw</h2></div><p>The official installer script handles everything — Node.js detection, installation, and onboarding — in one command.</p><div class="callout info"><span class="callout-icon">ℹ️</span><div>The installer requires <strong>Node.js 24</strong> (recommended) or Node.js 22.16+ LTS. If you don't have it, the script installs it automatically. OpenClaw requires Node.js — <strong>not</strong> Docker (though Docker is an alternative install method).</div></div><h3>Run the Installer</h3><div class="code-block"><div class="code-header"><span class="code-label">SSH — The One Command</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="cmd">curl</span> <span class="flag">-fsSL</span> https://openclaw.ai/install.sh | bash</code></pre></div><p>The script will launch an interactive onboarding wizard. It will ask you several questions — here's what to choose:</p><table class="spec-table"><tr><th>Question</th><th>What to Choose</th><th>Why</th></tr><tr><td>Where is the gateway running?</td><td class="ok">Local (this machine)</td><td>Gateway runs on your VPS — correct</td></tr><tr><td>AI Provider</td><td>Anthropic / OpenAI / Gemini</td><td>See Step 5 for details</td></tr><tr><td>Messaging channel</td><td>Your preference</td><td>Telegram is easiest to start with</td></tr><tr><td>Install as daemon?</td><td class="ok">Yes</td><td>Keeps OpenClaw running 24/7 on restart</td></tr></table><h3>Verify the Installation</h3><div class="code-block"><div class="code-header"><span class="code-label">SSH — Check Everything Works</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="cmd">openclaw doctor</span>    <span class="comment"># Check for config issues</span>
+<span class="cmd">openclaw status</span>    <span class="comment"># See if gateway is running</span>
+<span class="cmd">openclaw dashboard</span> <span class="comment"># Open the browser UI (via SSH tunnel)</span></code></pre></div><div class="callout warning"><span class="callout-icon">⚠️</span><div><strong>Command not found?</strong> Your PATH might not include npm global binaries. Fix it by running:<br><code>export PATH="$(npm prefix -g)/bin:$PATH"</code><br>Then add that line to your <code>~/.bashrc</code> to make it permanent.</div></div><h3>Optional: Enable Startup Performance Cache</h3><p>On small or ARM VMs, CLI commands can feel slow. Enable Node's compile cache to speed things up:</p><div class="code-block"><div class="code-header"><span class="code-label">SSH — Performance Tuning</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code>grep <span class="flag">-q</span> <span class="str">'NODE_COMPILE_CACHE'</span> ~/.bashrc || cat >> ~/.bashrc &lt;&lt;<span class="str">'EOF'</span>
+export NODE_COMPILE_CACHE=/var/tmp/openclaw-compile-cache
+mkdir -p /var/tmp/openclaw-compile-cache
+export OPENCLAW_NO_RESPAWN=1
+<span class="str">EOF</span>
+<span class="cmd">source</span> ~/.bashrc</code></pre></div></div>
+  <div class="step" id="step5"><div class="step-header"><div class="step-num">05</div><h2>Configure Your AI Provider</h2></div><p>OpenClaw is the gateway — it needs an AI model to power it. You get an API key from your chosen provider and paste it into OpenClaw. You only pay for what you actually use.</p><div class="callout danger"><span class="callout-icon">🚫</span><div><strong>Do not use a Claude Pro/Max subscription.</strong> Since January 2026, Anthropic has blocked OAuth tokens from third-party tools. You must use an <strong>API key</strong>, not a subscription login. API keys are available at console.anthropic.com.</div></div><table class="spec-table"><tr><th>Provider</th><th>Best For</th><th>Cost Estimate</th><th>Get Key</th></tr><tr><td><strong>Anthropic Claude</strong></td><td>Complex tasks, precise instruction-following</td><td>~$5–15/month typical use</td><td>console.anthropic.com</td></tr><tr><td><strong>OpenAI GPT-4o</strong></td><td>All-round, broad compatibility</td><td>~$5–20/month typical use</td><td>platform.openai.com</td></tr><tr><td><strong>Google Gemini Flash</strong></td><td>High-volume, budget-friendly</td><td>Very cheap — best for volume</td><td>aistudio.google.com</td></tr><tr><td><strong>Ollama (local)</strong></td><td>100% private, no API costs</td><td>$0 API cost (uses VPS resources)</td><td>ollama.com</td></tr></table><p>You can configure multiple providers and switch between them per conversation — use a cheaper model for quick queries and a stronger one for complex tasks.</p><h3>Add or Update Your API Key</h3><div class="code-block"><div class="code-header"><span class="code-label">SSH</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="cmd">openclaw configure</span>   <span class="comment"># Opens the interactive configuration wizard</span></code></pre></div><div class="callout info"><span class="callout-icon">💡</span><div><strong>Cost tip:</strong> For typical personal use (a few dozen queries per day), expect $5–15/month in API costs on top of your VPS bill. OpenClaw logs every API call with token counts in the Control UI so you can monitor usage.</div></div></div>
+  <div class="step" id="step6"><div class="step-header"><div class="step-num">06</div><h2>Connect Your Messaging Channels</h2></div><p>OpenClaw works through the messaging apps you already use. Telegram is the easiest to set up and is recommended for beginners.</p><div class="channels"><div class="channel-card"><span class="channel-icon">✈️</span>Telegram</div><div class="channel-card"><span class="channel-icon">💬</span>WhatsApp</div><div class="channel-card"><span class="channel-icon">🎮</span>Discord</div><div class="channel-card"><span class="channel-icon">💼</span>Slack</div><div class="channel-card"><span class="channel-icon">📱</span>iMessage</div><div class="channel-card"><span class="channel-icon">👥</span>Signal</div></div><h3>Setting Up Telegram (Recommended for Beginners)</h3><p>Telegram requires creating a "bot" — which is just a special Telegram account your OpenClaw talks through.</p><ol style="padding-left: 24px; color: #94a3b8; font-size: 14px; line-height: 2; font-weight: 300;"><li>Open Telegram and search for <code>@BotFather</code></li><li>Send <code>/newbot</code> and follow the prompts to name your bot</li><li>BotFather will give you a <strong>bot token</strong> — copy it</li><li>In OpenClaw, run <code>openclaw channels add telegram</code></li><li>Paste the token when prompted</li><li>Send a message to your bot in Telegram — it should respond!</li></ol><div class="code-block"><div class="code-header"><span class="code-label">SSH — List Connected Channels</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="cmd">openclaw channels list</span>   <span class="comment"># See all connected channels</span></code></pre></div><div class="callout info"><span class="callout-icon">ℹ️</span><div><strong>Telegram bot not responding?</strong> Verify your bot token is correct with <code>openclaw channels list</code>. Also check that your VPS can reach <code>api.telegram.org</code> — some providers block outbound traffic by default.</div></div><h3>Setting Up WhatsApp</h3><p>WhatsApp requires scanning a QR code to link your account — similar to WhatsApp Web.</p><ol style="padding-left: 24px; color: #94a3b8; font-size: 14px; line-height: 2; font-weight: 300;"><li>Run <code>openclaw channels add whatsapp</code></li><li>A QR code will appear in your terminal</li><li>Open WhatsApp on your phone → Settings → Linked Devices → Link a Device</li><li>Scan the QR code — you're connected</li></ol><div class="callout warning"><span class="callout-icon">⚠️</span><div>If you see <code>WhatsApp login failed: status=515 Unknown Stream Errored</code>, go to Settings → Config and press Update, then return to Channels.</div></div></div>
+  <div class="step" id="step7"><div class="step-header"><div class="step-num">07</div><h2>Secure Your Instance</h2></div><p>Security is critical. OpenClaw can read your files, execute code, browse the web, and interact with services on your behalf. If it's exposed to the internet without protection, that's a serious risk.</p><h3>Most Important: Bind Gateway to Localhost Only</h3><p>This is the single most important security step. Your gateway should never be accessible directly from the internet.</p><div class="code-block"><div class="code-header"><span class="code-label">SSH — Verify Gateway is on Localhost</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="cmd">openclaw configure</span>
+<span class="comment"># When asked "where is the gateway?", choose "Local (this machine)"
+# You want the gateway bound to 127.0.0.1:18789
+# NOT 0.0.0.0:18789</span></code></pre></div><h3>Access the Control UI Securely via SSH Tunnel</h3><p>Since the gateway is on localhost, access the web UI by forwarding the port to your own computer:</p><div class="code-block"><div class="code-header"><span class="code-label">Your Local Machine (not the server)</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="comment"># Run this on your laptop/desktop, not on the server</span>
+<span class="cmd">ssh</span> <span class="flag">-L</span> <span class="str">18789:localhost:18789</span> user@YOUR_SERVER_IP
+<span class="comment"># Then open this in your browser:</span>
+<span class="comment"># http://localhost:18789</span></code></pre></div><h3>Optional but Recommended: Tailscale (Zero Public Ports)</h3><p>Tailscale is a free VPN tool that makes your VPS invisible to the internet while still letting you access it. Zero public ports = near-zero attack surface.</p><div class="code-block"><div class="code-header"><span class="code-label">SSH — Install Tailscale</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="comment"># Install Tailscale on the VPS</span>
+<span class="cmd">curl</span> <span class="flag">-fsSL</span> https://tailscale.com/install.sh | sh
+<span class="comment"># Start Tailscale with SSH enabled</span>
+<span class="cmd">sudo tailscale up</span> <span class="flag">--ssh</span>
+<span class="comment"># Follow the auth link, then your VPS is on your private network</span></code></pre></div><h3>Set a Gateway Auth Token</h3><div class="code-block"><div class="code-header"><span class="code-label">SSH</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="comment"># Add authentication so only you can access the gateway</span>
+<span class="cmd">openclaw configure</span>
+<span class="comment"># Set gateway.auth.token to a strong random string</span></code></pre></div><h3>Disable Bonjour/mDNS</h3><div class="code-block"><div class="code-header"><span class="code-label">SSH</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code>echo <span class="str">'export OPENCLAW_DISABLE_BONJOUR=1'</span> >> ~/.bashrc
+<span class="cmd">source</span> ~/.bashrc</code></pre></div><h3>Security Principles to Follow</h3><ul class="checklist"><li>Only give your agent the permissions it truly needs (least privilege)</li><li>Don't provide API keys it doesn't need access to</li><li>Use short-lived API keys and rotate them regularly</li><li>Be careful with web browsing — prompt injection via untrusted sites is a real risk</li><li>Only install skills from sources you truly trust</li><li>Keep the agent on a dedicated VPS, separate from your personal machine</li><li>Enable automatic security updates (done in Step 3)</li></ul></div>
+  <div class="step" id="step8"><div class="step-header"><div class="step-num">08</div><h2>Keep It Running</h2></div><p>A few final steps to make sure OpenClaw stays healthy long-term.</p><h3>Run as a System Service (Daemon)</h3><p>If you set up OpenClaw as a daemon during onboarding, it will automatically restart if it crashes or the server reboots. Verify it's configured correctly:</p><div class="code-block"><div class="code-header"><span class="code-label">SSH — Systemd Service Config</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="comment"># Edit the systemd service for better reliability</span>
+<span class="cmd">sudo systemctl edit openclaw</span>
+<span class="comment"># Add these lines in the editor:</span>
+[Service]
+<span class="var">Environment</span>=OPENCLAW_NO_RESPAWN=1
+<span class="var">Environment</span>=NODE_COMPILE_CACHE=/var/tmp/openclaw-compile-cache
+<span class="var">Restart</span>=always
+<span class="var">RestartSec</span>=2
+<span class="var">TimeoutStartSec</span>=90</code></pre></div><h3>Check Service Status</h3><div class="code-block"><div class="code-header"><span class="code-label">SSH — Service Management</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="cmd">sudo systemctl status openclaw</span>    <span class="comment"># Check if running</span>
+<span class="cmd">sudo systemctl restart openclaw</span>   <span class="comment"># Restart if needed</span>
+<span class="cmd">sudo journalctl</span> <span class="flag">-u</span> openclaw <span class="flag">-f</span>    <span class="comment"># View live logs</span></code></pre></div><h3>Update OpenClaw</h3><div class="code-block"><div class="code-header"><span class="code-label">SSH — Updating</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="cmd">npm install</span> <span class="flag">-g</span> openclaw@latest
+<span class="cmd">sudo systemctl restart openclaw</span></code></pre></div><h3>Back Up Your Data</h3><p>Your config and conversation history lives on the VPS. Back it up:</p><div class="code-block"><div class="code-header"><span class="code-label">SSH — What to Back Up</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="comment"># Config file — your API keys, settings, channels</span>
+~/.openclaw/config.json
+<span class="comment"># Conversation history and memory</span>
+~/.openclaw/data/
+<span class="comment"># Example: copy to your local machine</span>
+<span class="cmd">scp</span> <span class="flag">-r</span> user@YOUR_SERVER_IP:~/.openclaw/data ./openclaw-backup</code></pre></div><div class="divider"></div><div class="callout success"><span class="callout-icon">✅</span><div><strong>You're done!</strong> Your OpenClaw instance is now running 24/7 on a cheap VPS, accessible through your messaging apps, secured against the internet, and automatically restarting on any crash or reboot. Total cost: about $6–10/month in VPS fees, plus whatever API calls you make.</div></div><h3>Useful Commands Reference</h3><div class="code-block"><div class="code-header"><span class="code-label">Quick Reference</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><pre><code><span class="cmd">openclaw status</span>            <span class="comment"># Check gateway status</span>
+<span class="cmd">openclaw doctor</span>            <span class="comment"># Diagnose config issues</span>
+<span class="cmd">openclaw configure</span>         <span class="comment"># Edit configuration</span>
+<span class="cmd">openclaw channels list</span>     <span class="comment"># See connected channels</span>
+<span class="cmd">openclaw channels add</span>      <span class="comment"># Add a new channel</span>
+<span class="cmd">openclaw dashboard</span>         <span class="comment"># Open the web UI</span>
+<span class="cmd">openclaw skills list</span>       <span class="comment"># See installed skills</span></code></pre></div></div>
+</div>
+<div class="footer">
+  <p>Based on the official <a href="https://docs.openclaw.ai" target="_blank">OpenClaw documentation</a> · Sources: docs.openclaw.ai, bitlaunch.io, dsebastien.net, deployhq.com</p>
+  <p style="margin-top: 8px; color: #2d3d56;">Guide accurate as of March 2026</p>
+</div>
+<script>
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  const text = pre.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>
