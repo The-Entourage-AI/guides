@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>True ROAS Report - Feb/Mar 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e5e5e5; padding: 40px; max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .subtitle { color: #888; font-size: 13px; margin-bottom: 32px; }
+  .section { background: #141414; border: 1px solid #222; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #666; font-weight: 600; margin-bottom: 16px; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+  .kpi { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px; padding: 16px; text-align: center; }
+  .kpi-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 6px; }
+  .kpi-value { font-size: 22px; font-weight: 700; color: #fff; }
+  .kpi-value.green { color: #34d399; }
+  .kpi-value.blue { color: #60a5fa; }
+  .kpi-value.amber { color: #fbbf24; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 12px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #666; font-weight: 600; border-bottom: 1px solid #333; }
+  th.right { text-align: right; }
+  td { padding: 10px 12px; border-bottom: 1px solid #1e1e1e; color: #ccc; }
+  td.right { text-align: right; }
+  td.bold { font-weight: 700; color: #fff; }
+  td.green { color: #34d399; font-weight: 700; }
+  td.blue { color: #60a5fa; }
+  td.muted { color: #666; }
+  tr.total { background: #1a1a1a; }
+  tr.total td { font-weight: 700; color: #fff; border-top: 1px solid #333; }
+  tr.excluded { opacity: 0.4; }
+  .formula { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px 16px; font-family: 'SF Mono', Monaco, monospace; font-size: 12px; color: #888; margin: 8px 0; }
+  .formula span { color: #60a5fa; }
+  .note { font-size: 12px; color: #666; margin-top: 8px; line-height: 1.5; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+  .badge-blue { background: rgba(96,165,250,0.15); color: #60a5fa; }
+  .badge-green { background: rgba(52,211,153,0.15); color: #34d399; }
+  .badge-red { background: rgba(239,68,68,0.15); color: #ef4444; }
+  .badge-gray { background: rgba(255,255,255,0.08); color: #666; }
+  .highlight-box { background: #0f2a1a; border: 1px solid #166534; border-radius: 10px; padding: 20px; text-align: center; margin-bottom: 20px; }
+  .highlight-box .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #34d399; margin-bottom: 4px; }
+  .highlight-box .value { font-size: 36px; font-weight: 800; color: #34d399; }
+  .highlight-box .sub { font-size: 12px; color: #666; margin-top: 4px; }
+  .source-tag { font-size: 10px; color: #666; margin-top: 24px; padding-top: 16px; border-top: 1px solid #1e1e1e; }
+  @media print {
+    body { background: #0a0a0a; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .section { break-inside: avoid; page-break-inside: avoid; }
+    @page { margin: 12mm 10mm; }
+  }
+</style>
+</head>
+<body>
+
+<h1>True ROAS Report</h1>
+<p class="subtitle">February 1 - March 31, 2026 | Campaign: The Entourage AI | 90-day attribution window | Ad-sourced deals only</p>
+
+<!-- ROAS Highlight -->
+<div class="highlight-box">
+  <div class="label">Return on Ad Spend (ROAS)</div>
+  <div class="value">12.6x</div>
+  <div class="sub">$153,987 revenue from $12,220 ad spend (90-day attribution window)</div>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-grid">
+  <div class="kpi">
+    <div class="kpi-label">Ad Spend</div>
+    <div class="kpi-value">$12,220</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Revenue (Ad-Sourced)</div>
+    <div class="kpi-value green">$153,987</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Deals Won (from Ads)</div>
+    <div class="kpi-value blue">3</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Total Leads</div>
+    <div class="kpi-value">360</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Qualified Leads ($3M+)</div>
+    <div class="kpi-value green">218</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Qualified Bookings</div>
+    <div class="kpi-value blue">25</div>
+  </div>
+</div>
+
+<!-- Cost Metrics -->
+<div class="section">
+  <div class="section-title">Cost Metrics</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th class="right">Value</th>
+        <th>Calculation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="bold">Cost Per Lead</td>
+        <td class="right bold">$33.95</td>
+        <td><div class="formula"><span>$12,220.29</span> / <span>360 leads</span> = $33.95</div></td>
+      </tr>
+      <tr>
+        <td class="bold">Cost Per Qualified Lead</td>
+        <td class="right bold">$56.06</td>
+        <td><div class="formula"><span>$12,220.29</span> / <span>218 qualified leads</span> = $56.06</div></td>
+      </tr>
+      <tr>
+        <td class="bold">Cost Per Call (Booking)</td>
+        <td class="right bold">$488.81</td>
+        <td><div class="formula"><span>$12,220.29</span> / <span>25 bookings</span> = $488.81</div></td>
+      </tr>
+      <tr>
+        <td class="bold">Cost Per Acquisition</td>
+        <td class="right bold">$4,073.43</td>
+        <td><div class="formula"><span>$12,220.29</span> / <span>3 deals won</span> = $4,073.43</div></td>
+      </tr>
+      <tr>
+        <td class="bold">ROAS</td>
+        <td class="right green">12.6x</td>
+        <td><div class="formula"><span>$153,987</span> / <span>$12,220.29</span> = 12.6x</div></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Won Deals -->
+<div class="section">
+  <div class="section-title">Won Deals - 90-Day Attribution Window</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th class="right">Deal Value</th>
+        <th>Lead Entry</th>
+        <th>Deal Closed</th>
+        <th>Days to Close</th>
+        <th>Attribution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="bold">Chris McCauley (Striking Construction)</td>
+        <td class="right green">$100,000</td>
+        <td>24 Feb 2026</td>
+        <td>19 Mar 2026</td>
+        <td class="right">23 days</td>
+        <td><span class="badge badge-green">Within 90 days</span></td>
+      </tr>
+      <tr>
+        <td class="bold">Jade Wood (Popology)</td>
+        <td class="right green">$42,992</td>
+        <td>20 Feb 2026</td>
+        <td>20 Mar 2026</td>
+        <td class="right">28 days</td>
+        <td><span class="badge badge-green">Within 90 days</span></td>
+      </tr>
+      <tr>
+        <td class="bold">Ash Baxter (Colorworks)</td>
+        <td class="right green">$10,995</td>
+        <td>28 Jan 2026</td>
+        <td>26 Mar 2026</td>
+        <td class="right">57 days</td>
+        <td><span class="badge badge-green">Within 90 days</span></td>
+      </tr>
+      <tr class="total">
+        <td>Attributed Total (3 deals)</td>
+        <td class="right green">$153,987</td>
+        <td colspan="4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <div class="section-title" style="margin-bottom: 8px; color: #555;">Excluded from ROAS (outside 90-day window)</div>
+    <table>
+      <tbody>
+        <tr class="excluded">
+          <td class="bold">Nate Ruff (SolarGain Bendigo)</td>
+          <td class="right">$28,994</td>
+          <td>21 Jul 2025</td>
+          <td>30 Mar 2026</td>
+          <td class="right">97 days*</td>
+          <td><span class="badge badge-gray">Outside 90 days</span></td>
+        </tr>
+        <tr class="excluded">
+          <td class="bold">Stephen Blackmore (Southern Cross)</td>
+          <td class="right">$29,995</td>
+          <td>30 Jul 2025</td>
+          <td>30 Mar 2026</td>
+          <td class="right">243 days</td>
+          <td><span class="badge badge-gray">Outside 90 days</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top: 8px;">*Nate Ruff's first pipeline movement was Dec 23, 2025 (97 days before close). Lead originally entered Jul 2025. Both outside the 90-day window. Stephen Blackmore's lead entered Jul 2025 (243 days before close). These are ad-sourced deals with long sales cycles that fall outside the attribution window.</p>
+  </div>
+</div>
+
+<!-- Funnel -->
+<div class="section">
+  <div class="section-title">Conversion Funnel (Feb 1 - Mar 31, 2026)</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Stage</th>
+        <th class="right">Count</th>
+        <th class="right">Conversion Rate</th>
+        <th class="right">Cost Per</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="bold">Leads (from Meta ads)</td>
+        <td class="right">360</td>
+        <td class="right">-</td>
+        <td class="right">$33.95</td>
+      </tr>
+      <tr>
+        <td class="bold">Qualified Leads ($3M+ revenue)</td>
+        <td class="right">218</td>
+        <td class="right">60.6% of leads</td>
+        <td class="right">$56.06</td>
+      </tr>
+      <tr>
+        <td class="bold">Qualified Bookings (Disco+)</td>
+        <td class="right">25</td>
+        <td class="right">11.5% of qualified</td>
+        <td class="right">$488.81</td>
+      </tr>
+      <tr>
+        <td class="bold">Deals Won (within 90-day window)</td>
+        <td class="right">3</td>
+        <td class="right">12.0% of bookings</td>
+        <td class="right">$4,073.43</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Data Sources -->
+<div class="section">
+  <div class="section-title">Data Sources & Methodology</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Data Point</th>
+        <th>Source</th>
+        <th>How It Was Pulled</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="bold">Ad Spend ($12,220.29)</td>
+        <td>Meta Marketing API v21.0</td>
+        <td>Campaign-level insights for "The Entourage AI" campaign, Feb 1 - Mar 31 2026. Ad account: act_830586899187050</td>
+      </tr>
+      <tr>
+        <td class="bold">Total Leads (360)</td>
+        <td>GoHighLevel Contacts API</td>
+        <td>All contacts added Feb 1 - Mar 31 where source = "Facebook" or tagged "lead-fb". Excludes organic social tags.</td>
+      </tr>
+      <tr>
+        <td class="bold">Qualified Leads (218)</td>
+        <td>GoHighLevel Contacts API</td>
+        <td>Subset of above where "Yearly Revenue" custom field = "$3,000,000-$10,000,000" or "$10,000,000+". These are the ICP leads.</td>
+      </tr>
+      <tr>
+        <td class="bold">Qualified Bookings (25)</td>
+        <td>GoHighLevel Pipeline API</td>
+        <td>Facebook-sourced opportunities at Disco Booking or Consult Booked stage, with stage change date in Feb-Mar 2026.</td>
+      </tr>
+      <tr>
+        <td class="bold">Won Deals (3)</td>
+        <td>GoHighLevel Pipeline + Contacts API</td>
+        <td>Deals at "Deal Won" or "Roadmap SOLD" stage, closed in Feb-Mar 2026, where the lead entered within 90 days of close date. Popology (Jade Wood) and Colorworks (Ash Baxter) came through ads but were tagged as "Website Booking" / "MANUAL" in GHL -- confirmed ad-sourced by sales team. Two additional ad-sourced deals (Nate Ruff, Stephen Blackmore) were excluded because their lead entry dates fall outside the 90-day attribution window.</td>
+      </tr>
+      <tr>
+        <td class="bold">Attribution Window</td>
+        <td>90-day</td>
+        <td>Only deals where the lead entered the pipeline within 90 days of the deal close date are counted toward ROAS. This matches industry-standard offline attribution for long sales cycle B2B.</td>
+      </tr>
+      <tr>
+        <td class="bold">ROAS (12.6x)</td>
+        <td>Calculated</td>
+        <td>Attributed ad-sourced revenue ($153,987) / Total ad spend ($12,220.29). Conservative number -- excludes 2 additional ad-sourced deals ($58,989) that fall outside the 90-day window.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top: 12px;"><strong>Note on attribution:</strong> Some leads see the ad but book directly via the website, so GHL doesn't tag them as "Facebook". These were verified with the sales team. If all 5 ad-sourced deals that closed in Feb/Mar were included (regardless of attribution window), total revenue would be $212,976 and ROAS would be 17.4x.</p>
+</div>
+
+<div class="source-tag">
+  Report generated: 31 March 2026 | Data sources: Meta Marketing API (v21.0), GoHighLevel API (v1) | Pipeline: k3WwUd9RxhdCZDdt6P73 | Ad Account: act_830586899187050
+</div>
+
+</body>
+</html>
